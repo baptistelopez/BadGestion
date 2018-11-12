@@ -3,6 +3,9 @@ package fenetres;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -13,11 +16,15 @@ import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JTextField;
 import javax.swing.JSeparator;
+import javax.swing.JCheckBox;
 
-public class fenetreGestionCompetitionsCreationEtape2Tournoi1 extends JFrame implements ActionListener {
+public class fenetreGestionCompetitionsCreationEtape2Tournoi1 extends JFrame implements ActionListener, ItemListener {
 	private Fenetre2 fen;
 	private JTextField textField;
 	private JTextField textField_1;
+	private JTextField textField_2;
+	private JTextField textField_3;
+	private JTextField textField_4;
 
 //  private JButton bouton = new JButton("Appel à la corpsFenetreGestionCompetitions");
 
@@ -73,7 +80,7 @@ public class fenetreGestionCompetitionsCreationEtape2Tournoi1 extends JFrame imp
     getContentPane().add(lblFormeDeComptition);
     
     JComboBox comboBox_4 = new JComboBox();
-    comboBox_4.setModel(new DefaultComboBoxModel(new String[] {"Ronde suisse", "Ronde italienne", "Poules", "Poules puis élimination directe", "Élimination directe uniquement", "Poule(s) unique(s)"}));
+    comboBox_4.setModel(new DefaultComboBoxModel(new String[] {"Ronde suisse", "Ronde italienne", "Poules", "Poules puis élimination directe", "Élimination directe uniquement", "Poule(s) unique(s)", "Rencontres entre équipes"}));
     comboBox_4.setToolTipText("Tournoi\r\nChampionnat");
     comboBox_4.setBounds(265, 219, 296, 22);
     getContentPane().add(comboBox_4);
@@ -83,7 +90,7 @@ public class fenetreGestionCompetitionsCreationEtape2Tournoi1 extends JFrame imp
     getContentPane().add(lblNomDeComptition);
     
     textField = new JTextField();
-    textField.setToolTipText("S'il est déjà existant sous Poona, vous pouvez le saisir.\r\nSinon, s'il n'existe pas encore, le champ est grisé et inactif.");
+    textField.setToolTipText("S'il est déjà existant sous Poona mais pas encore répertorié dans le logiciel (première modification via le logiciel d'une compétition dont le dossier existe déjà sur Poona), vous pouvez le saisir, cela remplira automatiquement ceux des champs de formulaires restants qui sont partagés entre le logiciel et Poona.\r\nS'il est déjà existant et répertorié dans le logiciel, le champ sera rempli, grisé et inactif.\r\nSinon, s'il n'existe pas encore, le champ est vide. \r\nLe n° correspondant sera créé automatiquement à la fin du processus, lors de la transmission des informations saisies à Poona.");
     textField.setBounds(265, 55, 296, 22);
     getContentPane().add(textField);
     textField.setColumns(10);
@@ -101,8 +108,69 @@ public class fenetreGestionCompetitionsCreationEtape2Tournoi1 extends JFrame imp
     textField_1.setText("20");
     textField_1.setToolTipText("En minutes ; voir le RGC (onglet Divers > Documentation bad > Compétitions > RGC) pour plus de précisions règlementaires.");
     textField_1.setColumns(10);
-    textField_1.setBounds(265, 137, 296, 22);
+    textField_1.setBounds(265, 137, 45, 22);
     getContentPane().add(textField_1);
+    
+    JCheckBox chckbxNewCheckBox = new JCheckBox("Différencié");
+chckbxNewCheckBox.addItemListener(new ItemListener() {
+	@Override
+	public void itemStateChanged(ItemEvent item) {
+	int status = item.getStateChange();
+	if (status == ItemEvent.SELECTED) 
+	{
+//	showStatus("choix selectionne");
+		
+		textField_2 = new JTextField();
+	    textField_2.setToolTipText("En minutes ; voir le RGC (onglet Divers > Documentation bad > Compétitions > RGC) pour plus de précisions règlementaires.");
+	    textField_2.setText("20");
+	    textField_2.setColumns(10);
+	    textField_2.setBounds(501, 137, 45, 22);
+	    textField_2.setVisible(true);
+	    getContentPane().add(textField_2);
+	    
+	    JLabel lblSimples = new JLabel("Simples : ");
+	    lblSimples.setBounds(426, 131, 63, 34);
+	    getContentPane().add(lblSimples);
+	    
+	    JLabel lblDoubles = new JLabel("Doubles : ");
+	    lblDoubles.setBounds(558, 131, 63, 34);
+	    getContentPane().add(lblDoubles);
+	    
+	    textField_3 = new JTextField();
+	    textField_3.setToolTipText("En minutes ; voir le RGC (onglet Divers > Documentation bad > Compétitions > RGC) pour plus de précisions règlementaires.");
+	    textField_3.setText("20");
+	    textField_3.setColumns(10);
+	    textField_3.setBounds(633, 137, 45, 22);
+	    getContentPane().add(textField_3);
+	    
+	    JLabel lblMixtes = new JLabel("Mixtes : ");
+	    lblMixtes.setBounds(690, 131, 63, 34);
+	    getContentPane().add(lblMixtes);
+	    
+	    textField_4 = new JTextField();
+	    textField_4.setToolTipText("En minutes ; voir le RGC (onglet Divers > Documentation bad > Compétitions > RGC) pour plus de précisions règlementaires.");
+	    textField_4.setText("20");
+	    textField_4.setColumns(10);
+	    textField_4.setBounds(765, 137, 45, 22);
+	    getContentPane().add(textField_4);
+	}
+
+
+//    if (chckbxNewCheckBox.isSelected())
+//	{
+
+
+    		
+
+//	}
+    
+	}
+
+});
+    chckbxNewCheckBox.setBounds(318, 136, 99, 25);
+    getContentPane().add(chckbxNewCheckBox);
+    
+    
 
 //    this.getContentPane().add(bouton);
 //
@@ -138,5 +206,11 @@ public static void main(String[] args) {
     // TODO Auto-generated method stub
       
 	fenetreGestionCompetitionsCreationEtape2Tournoi1 fen= new fenetreGestionCompetitionsCreationEtape2Tournoi1();
+}
+
+@Override
+public void itemStateChanged(ItemEvent e) {
+	// TODO Stub de la méthode généré automatiquement
+	
 }
 }

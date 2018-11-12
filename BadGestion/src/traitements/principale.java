@@ -27,6 +27,7 @@ package traitements;
 //import javax.swing.border.*;
 //import traitements.authentification;
 import fenetres.fenetreAuthentification;
+import fenetres.fenetreAuthentificationLogiciel;
 import fenetres.fenetreGestionCompetitionsCreationEtape1Generale;
 
 import java.awt.FlowLayout;
@@ -45,13 +46,13 @@ public class principale
 //        btnLogin.addActionListener(
 //                new ActionListener(){
 //                    public void actionPerformed(ActionEvent e) {
-                        fenetreAuthentification fenAuthentif = new fenetres.fenetreAuthentification (null);
-                        fenAuthentif.setVisible(true);  
-                        fenAuthentif.setSize(300, 100);
-                        fenAuthentif.setLayout(new FlowLayout());
+                        fenetreAuthentificationLogiciel fenAuthentifLogiciel = new fenetres.fenetreAuthentificationLogiciel ();
+                        fenAuthentifLogiciel.setVisible(true);  
+                        fenAuthentifLogiciel.setSize(800, 600);
+                        fenAuthentifLogiciel.setLayout(new FlowLayout());
     
                         // if logon successfully
-                        if(fenAuthentif.isSucceeded())
+                        if(fenAuthentifLogiciel.isSucceeded())
                         {
 //                            btnLogin.setText ("Hi " + loginDlg.getUsername() + " !");
                         	fenetres.FenetreAccueil fenAccueil = new fenetres.FenetreAccueil ();

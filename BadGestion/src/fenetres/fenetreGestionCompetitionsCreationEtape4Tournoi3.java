@@ -31,63 +31,42 @@ public class fenetreGestionCompetitionsCreationEtape4Tournoi3 extends JFrame imp
     this.setLocationRelativeTo(null);
     getContentPane().setLayout(null);
     
-    JLabel lblNewLabel = new JLabel(" :");
+    JLabel lblNewLabel = new JLabel("Niveaux :");
     lblNewLabel.setBounds(25, 90, 145, 34);
     getContentPane().add(lblNewLabel);
     
     JComboBox comboBox = new JComboBox();
-    comboBox.setModel(new DefaultComboBoxModel(new String[] {"1 set de 11 points (1x11)", "1 set de 21 points (1x21)", "3 sets de 15 points (3x15)", "3 sets de 21 points (3x21)", "5 sets de 11 points (5x11) - sans tie break", "5 sets de 11 points (5x11) - avec tie break"}));
-    comboBox.setBounds(265, 96, 296, 22);
+    comboBox.setModel(new DefaultComboBoxModel(new String[] {"NC", "P12", "P11", "P10", "P", "D9", "D8", "D7", "D", "R6", "R5", "R4", "R", "N3", "N2", "N1", "N"}));
+    comboBox.setBounds(521, 96, 145, 22);
     getContentPane().add(comboBox);
     
-    JLabel lblModeDeComptition = new JLabel(" : ");
-    lblModeDeComptition.setBounds(25, 131, 145, 34);
-    getContentPane().add(lblModeDeComptition);
-    
-    JComboBox comboBox_1 = new JComboBox();
-    comboBox_1.setModel(new DefaultComboBoxModel(new String[] {"Priorité au vainqueur de la confrontation entre ex-aequo (règles BWF)", "Priorité au meilleur : 1°) au nombre de sets 2°) au nombre de points, 3°) à l'âge"}));
-    comboBox_1.setToolTipText("Rappel (cf Documentation bad > Compétitions > Règlement Général des Compétitions (RGC) pour plus de précisions) : en France, le RGC définit le départage des joueurs ou paires en dernier recours à l'âge ; dans le cas d'un tournoi hors vétérans, c'est au bénéfice du joueur le plus jeune, dans le cas d'un tournoi vétérans, c'est au bénéfice du joueur le plus âgé. ");
-    comboBox_1.setBounds(265, 137, 296, 22);
-    getContentPane().add(comboBox_1);
-    
-    JLabel lblNiveauGographique = new JLabel("Portée géographique : ");
-    lblNiveauGographique.setBounds(25, 172, 145, 34);
-    getContentPane().add(lblNiveauGographique);
-    
-    JComboBox comboBox_2 = new JComboBox();
-    // à passer en énum lorsque l'énum correspondante sera créée dans la bonne classe d'objets
-    comboBox_2.setModel(new DefaultComboBoxModel(new String[] {"Interne", "Locale", "Départementale", "Régionale", "Nationale", "Continentale", "Internationale"}));
-    comboBox_2.setToolTipText("La portée correspond à l'étendue d'influence voulue pour la compétition.\r\n\r\nChoisissez entre :\r\n- Interne (au sein d'un seul club)\r\n- Locale (en France : niveau d'une ou deux ville(s)/club(s))\r\n- Départementale (en France : niveau d'un département/CODEP)\r\n- Régionale (en France : niveau d'une région/Ligue)\r\n- Nationale (en France : niveau du pays/Fédération Française de Badminton (FFBad) ; à l'étranger : niveau d'un pays/d'une fédération nationale)\r\n- Continentale (en France : niveau du continent/Badminton Europe (BE) ; à l'étranger : niveau d'un continent/d'une fédération continentale)\r\n- Internationale (niveau mondial/Badminton World Federation (BWF))");
-    comboBox_2.setBounds(265, 178, 296, 22);
-    getContentPane().add(comboBox_2);
-    
-    JLabel lblNumAutorisationCompetition = new JLabel("N° dossier d'autorisation : ");
+    JLabel lblNumAutorisationCompetition = new JLabel("Intitulé tableau : ");
     lblNumAutorisationCompetition.setBounds(25, 49, 175, 34);
     getContentPane().add(lblNumAutorisationCompetition);
     
     JComboBox comboBox_3 = new JComboBox();
     comboBox_3.setModel(new DefaultComboBoxModel(new String[] {"Amicale", "Officielle"}));
     comboBox_3.setToolTipText("Amicale (non-officielle/officieuse)\r\nOfficielle (enregistrée dans un ou plusieurs logiciel(s) : BadNet/ICManager, et en base de données : Poona)");
-    comboBox_3.setBounds(265, 260, 296, 22);
+    comboBox_3.setBounds(370, 350, 296, 22);
     getContentPane().add(comboBox_3);
     
     JLabel lblFormeDeComptition = new JLabel("Forme de compétition : ");
-    lblFormeDeComptition.setBounds(25, 213, 145, 34);
+    lblFormeDeComptition.setBounds(25, 303, 145, 34);
     getContentPane().add(lblFormeDeComptition);
     
     JComboBox comboBox_4 = new JComboBox();
     comboBox_4.setModel(new DefaultComboBoxModel(new String[] {"Ronde suisse", "Ronde italienne", "Poules", "Poules puis élimination directe", "Élimination directe uniquement", "Poule(s) unique(s)"}));
     comboBox_4.setToolTipText("Tournoi\r\nChampionnat");
-    comboBox_4.setBounds(265, 219, 296, 22);
+    comboBox_4.setBounds(370, 309, 296, 22);
     getContentPane().add(comboBox_4);
     
     JLabel lblNomDeComptition = new JLabel("Nom de compétition : ");
-    lblNomDeComptition.setBounds(25, 254, 145, 34);
+    lblNomDeComptition.setBounds(25, 344, 145, 34);
     getContentPane().add(lblNomDeComptition);
     
     textField = new JTextField();
     textField.setToolTipText("S'il est déjà existant sous Poona, vous pouvez le saisir.\r\nSinon, s'il n'existe pas encore, le champ est grisé et inactif.");
-    textField.setBounds(265, 55, 296, 22);
+    textField.setBounds(370, 55, 296, 22);
     getContentPane().add(textField);
     textField.setColumns(10);
     
@@ -97,8 +76,21 @@ public class fenetreGestionCompetitionsCreationEtape4Tournoi3 extends JFrame imp
     
     JButton btnSuivant = new JButton("Suivant");
     btnSuivant.addActionListener(this);
-    btnSuivant.setBounds(464, 304, 97, 25);
+    btnSuivant.setBounds(569, 394, 97, 25);
     getContentPane().add(btnSuivant);
+    
+    JLabel lblMini = new JLabel("Mini :");
+    lblMini.setBounds(370, 90, 145, 34);
+    getContentPane().add(lblMini);
+    
+    JLabel lblMaxi = new JLabel("Maxi :");
+    lblMaxi.setBounds(370, 131, 145, 34);
+    getContentPane().add(lblMaxi);
+    
+    JComboBox comboBox_5 = new JComboBox();
+    comboBox_5.setModel(new DefaultComboBoxModel(new String[] {"NC", "P12", "P11", "P10", "P", "D9", "D8", "D7", "D", "R6", "R5", "R4", "R", "N3", "N2", "N1", "N"}));
+    comboBox_5.setBounds(521, 137, 145, 22);
+    getContentPane().add(comboBox_5);
 
 //    this.getContentPane().add(bouton);
 //
@@ -135,5 +127,4 @@ public static void main(String[] args) {
       
 	fenetreGestionCompetitionsCreationEtape4Tournoi3 fen= new fenetreGestionCompetitionsCreationEtape4Tournoi3();
 }
-
 }

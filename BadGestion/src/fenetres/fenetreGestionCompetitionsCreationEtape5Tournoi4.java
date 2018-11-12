@@ -13,6 +13,8 @@ import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JTextField;
 import javax.swing.JSeparator;
+import javax.swing.JCheckBox;
+import javax.swing.SwingConstants;
 
 public class fenetreGestionCompetitionsCreationEtape5Tournoi4 extends JFrame implements ActionListener {
 	private Fenetre2 fen;
@@ -24,42 +26,16 @@ public class fenetreGestionCompetitionsCreationEtape5Tournoi4 extends JFrame imp
   public fenetreGestionCompetitionsCreationEtape5Tournoi4(){
   	setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);      
 
-    this.setTitle("GestionBad - Gestion compétition > Création compétition > Étape 5 : Composition tableaux");
+    this.setTitle("GestionBad - Gestion compétition > Création compétition > Étape 5 : Composition tableaux - Poules");
 
     this.setSize(881, 684);
 
     this.setLocationRelativeTo(null);
     getContentPane().setLayout(null);
     
-    JLabel lblNewLabel = new JLabel(" :");
-    lblNewLabel.setBounds(25, 90, 145, 34);
+    JLabel lblNewLabel = new JLabel("Limitation Têtes de Série (TdS) :");
+    lblNewLabel.setBounds(25, 90, 195, 34);
     getContentPane().add(lblNewLabel);
-    
-    JComboBox comboBox = new JComboBox();
-    comboBox.setModel(new DefaultComboBoxModel(new String[] {"1 set de 11 points (1x11)", "1 set de 21 points (1x21)", "3 sets de 15 points (3x15)", "3 sets de 21 points (3x21)", "5 sets de 11 points (5x11) - sans tie break", "5 sets de 11 points (5x11) - avec tie break"}));
-    comboBox.setBounds(265, 96, 296, 22);
-    getContentPane().add(comboBox);
-    
-    JLabel lblModeDeComptition = new JLabel(" : ");
-    lblModeDeComptition.setBounds(25, 131, 145, 34);
-    getContentPane().add(lblModeDeComptition);
-    
-    JComboBox comboBox_1 = new JComboBox();
-    comboBox_1.setModel(new DefaultComboBoxModel(new String[] {"Priorité au vainqueur de la confrontation entre ex-aequo (règles BWF)", "Priorité au meilleur : 1°) au nombre de sets 2°) au nombre de points, 3°) à l'âge"}));
-    comboBox_1.setToolTipText("Rappel (cf Documentation bad > Compétitions > Règlement Général des Compétitions (RGC) pour plus de précisions) : en France, le RGC définit le départage des joueurs ou paires en dernier recours à l'âge ; dans le cas d'un tournoi hors vétérans, c'est au bénéfice du joueur le plus jeune, dans le cas d'un tournoi vétérans, c'est au bénéfice du joueur le plus âgé. ");
-    comboBox_1.setBounds(265, 137, 296, 22);
-    getContentPane().add(comboBox_1);
-    
-    JLabel lblNiveauGographique = new JLabel("Portée géographique : ");
-    lblNiveauGographique.setBounds(25, 172, 145, 34);
-    getContentPane().add(lblNiveauGographique);
-    
-    JComboBox comboBox_2 = new JComboBox();
-    // à passer en énum lorsque l'énum correspondante sera créée dans la bonne classe d'objets
-    comboBox_2.setModel(new DefaultComboBoxModel(new String[] {"Interne", "Locale", "Départementale", "Régionale", "Nationale", "Continentale", "Internationale"}));
-    comboBox_2.setToolTipText("La portée correspond à l'étendue d'influence voulue pour la compétition.\r\n\r\nChoisissez entre :\r\n- Interne (au sein d'un seul club)\r\n- Locale (en France : niveau d'une ou deux ville(s)/club(s))\r\n- Départementale (en France : niveau d'un département/CODEP)\r\n- Régionale (en France : niveau d'une région/Ligue)\r\n- Nationale (en France : niveau du pays/Fédération Française de Badminton (FFBad) ; à l'étranger : niveau d'un pays/d'une fédération nationale)\r\n- Continentale (en France : niveau du continent/Badminton Europe (BE) ; à l'étranger : niveau d'un continent/d'une fédération continentale)\r\n- Internationale (niveau mondial/Badminton World Federation (BWF))");
-    comboBox_2.setBounds(265, 178, 296, 22);
-    getContentPane().add(comboBox_2);
     
     JLabel lblNumAutorisationCompetition = new JLabel("N° dossier d'autorisation : ");
     lblNumAutorisationCompetition.setBounds(25, 49, 175, 34);
@@ -68,26 +44,26 @@ public class fenetreGestionCompetitionsCreationEtape5Tournoi4 extends JFrame imp
     JComboBox comboBox_3 = new JComboBox();
     comboBox_3.setModel(new DefaultComboBoxModel(new String[] {"Amicale", "Officielle"}));
     comboBox_3.setToolTipText("Amicale (non-officielle/officieuse)\r\nOfficielle (enregistrée dans un ou plusieurs logiciel(s) : BadNet/ICManager, et en base de données : Poona)");
-    comboBox_3.setBounds(265, 260, 296, 22);
+    comboBox_3.setBounds(265, 348, 296, 22);
     getContentPane().add(comboBox_3);
     
     JLabel lblFormeDeComptition = new JLabel("Forme de compétition : ");
-    lblFormeDeComptition.setBounds(25, 213, 145, 34);
+    lblFormeDeComptition.setBounds(25, 301, 145, 34);
     getContentPane().add(lblFormeDeComptition);
     
     JComboBox comboBox_4 = new JComboBox();
     comboBox_4.setModel(new DefaultComboBoxModel(new String[] {"Ronde suisse", "Ronde italienne", "Poules", "Poules puis élimination directe", "Élimination directe uniquement", "Poule(s) unique(s)"}));
     comboBox_4.setToolTipText("Tournoi\r\nChampionnat");
-    comboBox_4.setBounds(265, 219, 296, 22);
+    comboBox_4.setBounds(265, 307, 296, 22);
     getContentPane().add(comboBox_4);
     
     JLabel lblNomDeComptition = new JLabel("Nom de compétition : ");
-    lblNomDeComptition.setBounds(25, 254, 145, 34);
+    lblNomDeComptition.setBounds(25, 342, 145, 34);
     getContentPane().add(lblNomDeComptition);
     
     textField = new JTextField();
     textField.setToolTipText("S'il est déjà existant sous Poona, vous pouvez le saisir.\r\nSinon, s'il n'existe pas encore, le champ est grisé et inactif.");
-    textField.setBounds(265, 55, 296, 22);
+    textField.setBounds(370, 55, 296, 22);
     getContentPane().add(textField);
     textField.setColumns(10);
     
@@ -97,8 +73,31 @@ public class fenetreGestionCompetitionsCreationEtape5Tournoi4 extends JFrame imp
     
     JButton btnSuivant = new JButton("Suivant");
     btnSuivant.addActionListener(this);
-    btnSuivant.setBounds(464, 304, 97, 25);
+    btnSuivant.setBounds(464, 392, 97, 25);
     getContentPane().add(btnSuivant);
+    
+    JCheckBox chckbxNewCheckBox = new JCheckBox("");
+    chckbxNewCheckBox.setToolTipText("par défaut : non (case non-cochée)");
+    chckbxNewCheckBox.setBounds(367, 95, 296, 25);
+    getContentPane().add(chckbxNewCheckBox);
+    
+    JLabel label = new JLabel("Gestion ex-aequo (à fin de phase de poules) : ");
+    label.setBounds(25, 129, 278, 34);
+    getContentPane().add(label);
+    
+    JComboBox comboBox = new JComboBox();
+    comboBox.setToolTipText("Rappel (cf Documentation bad > Compétitions > Règlement Général des Compétitions (RGC) pour plus de précisions) : en France, le RGC définit le départage des joueurs ou paires en dernier recours à l'âge ; dans le cas d'un tournoi hors vétérans, c'est au bénéfice du joueur le plus jeune, dans le cas d'un tournoi vétérans, c'est au bénéfice du joueur le plus âgé. ");
+    comboBox.setBounds(370, 135, 296, 22);
+    getContentPane().add(comboBox);
+    
+    JLabel label_1 = new JLabel("Sortie de poule : ");
+    label_1.setBounds(25, 170, 145, 34);
+    getContentPane().add(label_1);
+    
+    JComboBox comboBox_5 = new JComboBox();
+    comboBox_5.setToolTipText("Phase de définition des sorties de poule vers les tableaux finaux (à l'issue du dernier match de la poule).\r\nRappels RGC :\r\n- Le tirage intégral correspond à un tirage au sort total du placement dans les tableaux finaux des joueurs/paires non-TdS à l'origine et/ou non-TdS en sortie de poules, les TdS étant placées ordinalement de haut en bas dans les tableaux finaux (système actuellement utilisé).\r\n- 1er(s)/1ère(s) de poule contre 2ème(s) de poule : le(s) joueurs/paires arrivé(e)(s) 1er(s)/1ère(s)  de poule rencontrent les joueurs/paires arrivé(e)(s) 2ème(s) d'une autre poule (ancien système).");
+    comboBox_5.setBounds(370, 176, 296, 22);
+    getContentPane().add(comboBox_5);
 
 //    this.getContentPane().add(bouton);
 //
@@ -135,5 +134,4 @@ public static void main(String[] args) {
       
 	fenetreGestionCompetitionsCreationEtape5Tournoi4 fen= new fenetreGestionCompetitionsCreationEtape5Tournoi4();
 }
-
 }

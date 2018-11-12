@@ -1,6 +1,7 @@
 package fenetres;
 
 import java.awt.EventQueue;
+import java.awt.FlowLayout;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -153,5 +154,25 @@ public class fenetreAuthentificationLogiciel {
 		JCheckBox chckbxPremireConnexion = new JCheckBox("<html>Première connexion ?<br>\r\n--> enregistrer l'utilisateur et le mot de passe<br>\r\ndans le gestionnaire de comptes du logiciel</html>");
 		chckbxPremireConnexion.setBounds(180, 418, 336, 57);
 		frameAuthLogiciel.getContentPane().add(chckbxPremireConnexion);
+	}
+
+	public void setVisible(boolean b) {
+		// TODO Stub de la méthode généré automatiquement
+		
+	}
+
+	public void setSize(int i, int j) {
+		// TODO Stub de la méthode généré automatiquement
+		
+	}
+
+	public void setLayout(FlowLayout flowLayout) {
+		// TODO Stub de la méthode généré automatiquement
+		
+	}
+
+	public boolean isSucceeded() {
+		// TODO Stub de la méthode généré automatiquement
+		return false;
 	}
 }

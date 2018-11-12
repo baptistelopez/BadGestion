@@ -9,7 +9,7 @@ public class authentification {
     public static boolean authenticate (String nomutilisateur, String mdp) 
     {
         // hardcoded nomutilisateur and mdp
-        if (nomutilisateur.equals("bob") && mdp.equals("secret")) 
+        if (nomutilisateur.equals("bob") && mdp.equals("secret"))
         {
             return true;
         }

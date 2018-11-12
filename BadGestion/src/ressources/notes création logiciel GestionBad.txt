@@ -1,0 +1,43 @@
+﻿Fonctionnalités :
+- gestion des formations à thème particulier (exple : entraînement > thème du service en double)
+- désigner capitaines d'équipes IC
+- désigner arbitres sur l'année
+- permettre ajout de comptes "particuliers" externes (exple : cptes sur sites web de ligues, CODEPs, etc.) dans la partie Gestionnaire de comptes
+- interfaçage/rétrocompat' avec Badiste/BadNet/Tournament Planner/BadIC/ICManager/Poona
+- gestion des mutations (documentation et implémentation processus concret)
+- gestion de commissions de discipline et litiges/d'IC national/fédé, régions/Ligue et départements/CODEP
+
+Notes diverses :
+- lors rencontres : arbitres pouvant être différents d'arbitres désignés sur année, possibilité de mentionner un arbitre différent (cf feuilles BadNet)
+- BdD embarquée : choix SGBD (MySQL/SQLite/Derby/HSQLDB) ?
+- compétitions : prise en compte des matchs "transgenres" (SH vs SD, DH vs DD, DMx vs DH ou DD) ==> organisation des compétitions et impact sur classements individuels
+- dirigeant (président/secrétaire) : documents/processus à prendre en compte : convention sécurité/occupation gymnase - assurances
+- joueurs/dirigeants : tout ce qui tourne autour des assurances et gestion décla blessures au cours de la pratique
+- présence de scoreurs (IC notamment) avec/à la place/parmi JdL
+
+Notes diverses infobulles champs et étiquettes
+			|
+			v
+
+tooltips champs saisie :
+
+Choisissez à quoi vous souhaitez accéder : Local (Application) si vous voulez utiliser l'application en elle-même, ou Distant (Poona) si vous voulez vous connecter sur Poona au travers de l'application.
+
+Amicale (non-officielle/officieuse)
+Officielle (enregistrée dans )
+
+La portée correspond à l'étendue d'influence voulue pour la compétition.
+
+Choisissez entre :
+- Interne (au sein d'un seul club)
+- Locale (en France : niveau d'une ville/club)
+- Départementale (en France : niveau d'un département/CODEP)
+- Régionale (en France : niveau d'une région/Ligue)
+- Nationale (en France : niveau du pays/Fédération Française de Badminton (FFBad) ; à l'étranger : niveau d'un pays/d'une fédération nationale)
+- Continentale (en France : niveau du continent/Badminton Europe (BE) ; à l'étranger : niveau d'un continent/d'une fédération continentale)
+- Internationale (niveau mondial/Badminton World Federation (BWF))
+
+À mettre ds énumérations :
+
+Local (Application)
+Distant (Poona)
