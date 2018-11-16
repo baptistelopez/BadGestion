@@ -23,6 +23,7 @@ package objets;
 // existence/absence de connexion à Internet et/ou possibilité de connexion à Internet
 // hauteur maxi/totale
 // hauteur sous plafond(s)/structure(s)
+// dispositifs particuliers (Système de Sécurité Incendie (SSI) -> caution ?, etc.)
 
 public class objetGymnases {
 

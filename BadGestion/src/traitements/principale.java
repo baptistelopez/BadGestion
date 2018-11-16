@@ -29,8 +29,11 @@ package traitements;
 import fenetres.fenetreAuthentification;
 import fenetres.fenetreAuthentificationLogiciel;
 import fenetres.fenetreGestionCompetitionsCreationEtape1Generale;
+import fenetres.FenetreAccueil;
 
 import java.awt.FlowLayout;
+
+import javax.swing.JFrame;
 
 //import javax.swing.JFrame;
 
@@ -40,7 +43,9 @@ public class principale
 {
     public static void main (String [] args) 
     {
-//final JFrame fnAccueil = new JFrame("Accueil");
+//JFrame fenAccueil = new JFrame("Accueil");
+final FenetreAccueil fenAccueil = new FenetreAccueil();
+//final JFrame fenAccueil = new JFrame("Accueil");
 //        final JButton btnLogin = new JButton("Click to login");
 // 
 //        btnLogin.addActionListener(
@@ -48,20 +53,21 @@ public class principale
 //                    public void actionPerformed(ActionEvent e) {
                         fenetreAuthentificationLogiciel fenAuthentifLogiciel = new fenetres.fenetreAuthentificationLogiciel ();
                         fenAuthentifLogiciel.setVisible(true);  
-                        fenAuthentifLogiciel.setSize(800, 600);
+                        fenAuthentifLogiciel.setSize(1280, 800);
                         fenAuthentifLogiciel.setLayout(new FlowLayout());
     
                         // if logon successfully
                         if(fenAuthentifLogiciel.isSucceeded())
                         {
 //                            btnLogin.setText ("Hi " + loginDlg.getUsername() + " !");
-                        	fenetres.FenetreAccueil fenAccueil = new fenetres.FenetreAccueil ();
+//                        	fenAccueil = new fenetres.FenetreAccueil ();
+//                        	FenetreAccueil fenAccueil = new FenetreAccueil();
                         	fenAccueil.setVisible(true);
                         }
                         
 //    );
                         
-                        fenetreGestionCompetitionsCreationEtape1Generale fen = new fenetreGestionCompetitionsCreationEtape1Generale();
+//                        fenetreGestionCompetitionsCreationEtape1Generale fen = new fenetreGestionCompetitionsCreationEtape1Generale();
  
     }
     

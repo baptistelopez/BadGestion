@@ -16,22 +16,34 @@ import java.util.Locale;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.JButton;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import javax.swing.JComboBox;
+import javax.swing.JDialog;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
+
 import java.awt.Color;
 import javax.swing.border.LineBorder;
+
+import traitements.authentification;
+
 import javax.swing.AbstractListModel;
 import java.awt.SystemColor;
 import javax.swing.UIManager;
 import javax.swing.JCheckBox;
 
-public class fenetreAuthentificationLogiciel {
+public class fenetreAuthentificationLogiciel extends JDialog {
 
 	private JFrame frameAuthLogiciel;
 	private JPasswordField pwdFldAuthLogicielMdp;
 	private JTextField txtFldAuthLogicielNomUtilisateur;
+    private boolean succeeded;
+    public boolean b;
+    private FenetreAccueil fenAccueil;
 
 	/**
 	 * Launch the application.
@@ -52,8 +64,19 @@ public class fenetreAuthentificationLogiciel {
 	/**
 	 * Create the application.
 	 */
-	public fenetreAuthentificationLogiciel() {
+	public fenetreAuthentificationLogiciel() 
+	{
 		initialize();
+		
+		try 
+        {
+  		  UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
+
+  		}
+        catch (Exception e) 
+        {
+  		}
+		
 	}
 
 	/**
@@ -61,13 +84,13 @@ public class fenetreAuthentificationLogiciel {
 	 */
 	private void initialize() {
 		frameAuthLogiciel = new JFrame();
+		frameAuthLogiciel.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frameAuthLogiciel.setVisible(true);
 		frameAuthLogiciel.setTitle("GestionBad - Logiciel > Authentification");
 		frameAuthLogiciel.setName("Fenêtre authentification");
 		frameAuthLogiciel.getContentPane().setLocale(Locale.FRANCE);
 		frameAuthLogiciel.setLocale(Locale.FRANCE);
 		frameAuthLogiciel.setBounds(100, 100, 581, 585);
-		frameAuthLogiciel.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frameAuthLogiciel.getContentPane().setLayout(null);
 		
 		JLabel lblauthlogicielutilisateur = new JLabel("Utilisateur : ");
@@ -92,7 +115,7 @@ public class fenetreAuthentificationLogiciel {
 		
 		pwdFldAuthLogicielMdp = new JPasswordField();
 		pwdFldAuthLogicielMdp.setAutoscrolls(false);
-		pwdFldAuthLogicielMdp.setToolTipText("Entrez votre mot de passe ; si vous voulez accéder en local (à l'application en elle-même) : votre mot de passe défini lors de la création de votre compte sur l'application / si vous voulez accéder à distance à Poona : votre mot de passe habituel pour l'accès à Poona.");
+		pwdFldAuthLogicielMdp.setToolTipText("Entrez votre mot de passe ; si vous voulez accéder en local (à l'application en elle-même) : votre mot de passe défini lors de la création de votre compte sur l'application / si vous voulez accéder à un compte \"à distance\" (comme Poona, ICManager, BadNet, etc.) : votre mot de passe habituel pour l'accès au compte en question.");
 		pwdFldAuthLogicielMdp.setBounds(180, 61, 336, 22);
 		frameAuthLogiciel.getContentPane().add(pwdFldAuthLogicielMdp);
 		
@@ -109,6 +132,42 @@ public class fenetreAuthentificationLogiciel {
 		btnAuthLogicielValider.setName("Valider");
 		btnAuthLogicielValider.setMnemonic(KeyEvent.VK_ACCEPT);
 		btnAuthLogicielValider.setBounds(180, 503, 97, 25);
+		// ajout action btn valider
+		btnAuthLogicielValider.addActionListener(new ActionListener() 
+        {
+ 
+            public void actionPerformed(ActionEvent e) 
+            {
+                if (authentification.authenticate (getUsername (), getPassword ())) 
+                {
+//                    JOptionPane.showMessageDialog(fenetreAuthentificationLogiciel.this,
+//                            "Bonjour/bonsoir " + getUsername () + "!",
+//                            "Authentification",
+//                            JOptionPane.INFORMATION_MESSAGE);
+                	succeeded = true;
+                	frameAuthLogiciel.dispose ();
+                    fenAccueil = new FenetreAccueil ();
+                    fenAccueil.setSize(800, 600);
+                	fenAccueil.setVisible(true);
+                	
+
+                } 
+                else 
+                {
+                    JOptionPane.showMessageDialog 
+                    (fenetreAuthentificationLogiciel.this,
+                            "Nom d'utilisateur et/ou mot de passe invalide",
+                            "Authentification",
+                            JOptionPane.ERROR_MESSAGE);
+                    // reset username and password
+                    txtFldAuthLogicielNomUtilisateur.setText ("");
+                    pwdFldAuthLogicielMdp.setText ("");
+                    succeeded = false;
+ 
+                }
+            }
+        }
+        );
 		frameAuthLogiciel.getContentPane().add(btnAuthLogicielValider);
 		
 		JButton btnAuthLogicielAnnuler = new JButton("Annuler");
@@ -116,6 +175,12 @@ public class fenetreAuthentificationLogiciel {
 		btnAuthLogicielAnnuler.setName("Annuler");
 		btnAuthLogicielAnnuler.setMnemonic(KeyEvent.VK_CANCEL);
 		btnAuthLogicielAnnuler.setBounds(419, 503, 97, 25);
+		btnAuthLogicielAnnuler.addActionListener(new ActionListener() {
+			 
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+            }
+        });
 		frameAuthLogiciel.getContentPane().add(btnAuthLogicielAnnuler);
 		
 		JLabel lblRleprofil = new JLabel("Rôle(s)/profil(s) :");
@@ -130,7 +195,7 @@ public class fenetreAuthentificationLogiciel {
 		
 		JList list = new JList();
 		list.setSelectedIndices(new int[] {1});
-		list.setToolTipText("Choisissez le(s) rôle(s)/profil(s) pour le(s)quel(s) vous souhaitez utiliser le logiciel.\r\nCela peut être un/des rôle(s) dont vous relevez, dans le cas d'autorisation(s) dûment accordée(s) par une/des instance(s).\r\nLes menus disponibles dans le logiciel sont alors ceux correspondant au(x) rôle(s) sélectionné(s).\r\nLa sélection multiple se fait en maintenant la touche Ctrl + clic gauche de la souris.\r\nSi aucun rôle n'est sélectionné, vous aurez tous les menus disponibles pour le(s) rôle(s) correspondant à vos identifiants, enregistré(s) dans la base de données du logiciel.");
+		list.setToolTipText("Choisissez le(s) rôle(s)/profil(s) pour le(s)quel(s) vous souhaitez utiliser le logiciel.\r\nCela peut être un/des rôle(s) dont vous relevez, dans le cas d'autorisation(s) dûment accordée(s) par une/des instance(s).\r\nLes menus disponibles dans le logiciel sont alors ceux correspondant au(x) rôle(s) sélectionné(s).\r\nLa sélection multiple se fait en maintenant la touche Ctrl + clic gauche de la souris.\r\nSi aucun rôle n'est sélectionné, vous aurez tous les menus disponibles pour le(s) rôle(s) correspondant à vos identifiants, enregistré(s) dans la base de données du logiciel.\r\nQuelle que soit le compte auquel vous vous connectez (logiciel (\"en local\"), ou compte \"à distance\" (Poona, ICManager, BadNet, etc.), les rôles qui ne correspondent pas et/ou qui vous sont inaccessibles seront grisés lors de l'actualisation après la saisie de vos informations de connexion (utilisateur + mot de passe).");
 		list.setVisibleRowCount(12);
 		list.setModel(new AbstractListModel() {
 			String[] values = new String[] {"Arbitre/Juge de Service (JdS)", "Capitaine d'équipe IC", "Dirigeant d'instance", "Encadrant", "Formateur/évaluateur Arbitrage", "Formateur/évaluateur Juge-Arbitrage", "Formateur/évaluateur Juges de Ligne", "Juge-Arbitre (JA)", "Juge de Ligne (JdL)", "Organisateur de Compétitions (OC)", "Responsable/Coordinateur Juges de Ligne"};
@@ -170,9 +235,118 @@ public class fenetreAuthentificationLogiciel {
 		// TODO Stub de la méthode généré automatiquement
 		
 	}
+	
+//	public String getUsername () 
+//    {
+//        return tfUsername.getText ().trim ();
+//    }
+ 
+//	public String getPassword() {
+//		return new String(pfPassword.getPassword());
+//	}
 
-	public boolean isSucceeded() {
-		// TODO Stub de la méthode généré automatiquement
-		return false;
+	/**
+	 * @return le pwdFldAuthLogicielMdp (getPassword)
+	 */
+	public String getPassword() {
+		return new String (pwdFldAuthLogicielMdp.getPassword());
 	}
+
+	/**
+	 * @param pwdFldAuthLogicielMdp le pwdFldAuthLogicielMdp à définir
+	 */
+	public void setPwdFldAuthLogicielMdp(JPasswordField pwdFldAuthLogicielMdp) {
+		this.pwdFldAuthLogicielMdp = pwdFldAuthLogicielMdp;
+	}
+
+	/**
+	 * @return le txtFldAuthLogicielNomUtilisateur (getUsername)
+	 */
+	public String getUsername() {
+		return txtFldAuthLogicielNomUtilisateur.getText ().trim ();
+	}
+
+	/**
+	 * @param txtFldAuthLogicielNomUtilisateur le txtFldAuthLogicielNomUtilisateur à définir
+	 */
+	public void setTxtFldAuthLogicielNomUtilisateur(JTextField txtFldAuthLogicielNomUtilisateur) {
+		this.txtFldAuthLogicielNomUtilisateur = txtFldAuthLogicielNomUtilisateur;
+	}
+
+	/**
+	 * @return le succeeded
+	 */
+	public boolean isSucceeded() {
+		return succeeded;
+	}
+
+	/**
+	 * @param succeeded le succeeded à définir
+	 */
+	public void setSucceeded(boolean succeeded) {
+		this.succeeded = succeeded;
+	}
+
+	/**
+	 * @return le b
+	 */
+	public boolean isB() {
+		return b;
+	}
+
+	/**
+	 * @param b le b à définir
+	 */
+	public void setB(boolean b) {
+		this.b = b;
+	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#hashCode()
+	 */
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + (b ? 1231 : 1237);
+		result = prime * result + (succeeded ? 1231 : 1237);
+		return result;
+	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (obj == null) {
+			return false;
+		}
+		if (!(obj instanceof fenetreAuthentificationLogiciel)) {
+			return false;
+		}
+		fenetreAuthentificationLogiciel other = (fenetreAuthentificationLogiciel) obj;
+		if (b != other.b) {
+			return false;
+		}
+		if (succeeded != other.succeeded) {
+			return false;
+		}
+		return true;
+	}
+
+//	/* (non-Javadoc)
+//	 * @see java.lang.Object#toString()
+//	 */
+//	@Override
+//	public String toString() {
+//		return "fenetreAuthentificationLogiciel [succeeded=" + succeeded + ", b=" + b + ", getPwdFldAuthLogicielMdp()="
+//				+ getPassword() + ", getTxtFldAuthLogicielNomUtilisateur()="
+//				+ getUsername() + ", isSucceeded()=" + isSucceeded() + ", isB()=" + isB()
+//				+ ", hashCode()=" + hashCode() + ", getClass()=" + getClass() + ", toString()=" + super.toString()
+//				+ "]";
+//	}
+	
 }

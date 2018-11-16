@@ -2,10 +2,11 @@
 - gestion des formations à thème particulier (exple : entraînement > thème du service en double)
 - désigner capitaines d'équipes IC
 - désigner arbitres sur l'année
-- permettre ajout de comptes "particuliers" externes (exple : cptes sur sites web de ligues, CODEPs, etc.) dans la partie Gestionnaire de comptes
+- gestion de comptes logiciels/web/applicatifs/bases de données (dont permettre ajout de comptes "particuliers" externes (exple : cptes sur sites web de ligues, CODEPs, etc.))
 - interfaçage/rétrocompat' avec Badiste/BadNet/Tournament Planner/BadIC/ICManager/Poona
 - gestion des mutations (documentation et implémentation processus concret)
 - gestion de commissions de discipline et litiges/d'IC national/fédé, régions/Ligue et départements/CODEP
+- gestion des salariés/emploi/contractualisation comité
 
 Notes diverses :
 - lors rencontres : arbitres pouvant être différents d'arbitres désignés sur année, possibilité de mentionner un arbitre différent (cf feuilles BadNet)

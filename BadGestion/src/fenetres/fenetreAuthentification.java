@@ -162,11 +162,14 @@ public class fenetreAuthentification extends JDialog
 //      fenetreAuthentification.getContentPane().add(btnLogin);
 //      fenetreAuthentification.setVisible(true);
         
-        try {
+        try 
+        {
   		  UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
 
-  		} catch (Exception e) {
-  		  }
+  		}
+        catch (Exception e) 
+        {
+  		}
         
     }
  

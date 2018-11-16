@@ -16,6 +16,7 @@ package objets;
 // Région
 // Pays
 // Continent
+// éventualité : calculer des distances et temps de parcours mini/moyen/maxi entre lieux : d'un même département, entre deux départements, entre deux régions.
 
 public class objetLieux {
 

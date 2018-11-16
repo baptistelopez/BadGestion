@@ -18,10 +18,11 @@ package objets;
 // présence/absence local(ux) buvette(s)/cuisine et/ou espace(s) pour manger
 // type revêtement(s) aire(s)/plateau(x) de jeu
 // accessibilité handicapés/déficients physiques/sensoriels
-// autres fonctionnalités éventuelles (accueil enfants/garderie, etc.)
+// autres fonctionnalités para-sportives/sociales éventuelles (accueil enfants/garderie, etc.)
 // existence/absence de connexion à Internet et/ou possibilité de connexion à Internet
 // hauteur maxi/totale
 // hauteur sous plafond(s)/structure(s)
+// peut hériter de Gymnases
 
 public class objetSalles {
 
