@@ -15,6 +15,7 @@ import javax.swing.JLabel;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JTextField;
+import javax.swing.UIManager;
 import javax.swing.JSeparator;
 import javax.swing.JCheckBox;
 
@@ -29,7 +30,18 @@ public class fenetreGestionCompetitionsCreationEtape2Tournoi1 extends JFrame imp
 //  private JButton bouton = new JButton("Appel à la corpsFenetreGestionCompetitions");
 
 
-  public fenetreGestionCompetitionsCreationEtape2Tournoi1(){
+  public fenetreGestionCompetitionsCreationEtape2Tournoi1()
+  {
+	  
+	  try 
+      {
+		  UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
+
+		}
+      catch (Exception e) 
+      {
+		}
+	  
   	setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);      
 
     this.setTitle("GestionBad - Gestion compétition > Création compétition > Étape 2 : Caractéristiques générales Tournoi");

@@ -41,9 +41,10 @@ public class fenetreAuthentificationLogiciel extends JDialog {
 	private JFrame frameAuthLogiciel;
 	private JPasswordField pwdFldAuthLogicielMdp;
 	private JTextField txtFldAuthLogicielNomUtilisateur;
+	// à l'origine : private boolean succeeded
     private boolean succeeded;
     public boolean b;
-    private FenetreAccueil fenAccueil;
+    public FenetreAccueil fenAccueil;
 
 	/**
 	 * Launch the application.
@@ -138,19 +139,20 @@ public class fenetreAuthentificationLogiciel extends JDialog {
  
             public void actionPerformed(ActionEvent e) 
             {
-                if (authentification.authenticate (getUsername (), getPassword ())) 
+                if ( (authentification.authenticate (getUsername (), getPassword ()) )) 
                 {
 //                    JOptionPane.showMessageDialog(fenetreAuthentificationLogiciel.this,
 //                            "Bonjour/bonsoir " + getUsername () + "!",
 //                            "Authentification",
 //                            JOptionPane.INFORMATION_MESSAGE);
                 	succeeded = true;
-                	frameAuthLogiciel.dispose ();
-                    fenAccueil = new FenetreAccueil ();
+//                  if (isSucceeded())
+//                  {
+                    fenAccueil = new fenetres.FenetreAccueil();
+                    fenAccueil.setVisible(true);
                     fenAccueil.setSize(800, 600);
-                	fenAccueil.setVisible(true);
-                	
-
+                    frameAuthLogiciel.dispose ();
+//                }
                 } 
                 else 
                 {
@@ -165,6 +167,16 @@ public class fenetreAuthentificationLogiciel extends JDialog {
                     succeeded = false;
  
                 }
+             // if logon successfully
+//                if (isSucceeded())
+//                {
+//              btnLogin.setText ("Hi " + loginDlg.getUsername() + " !");
+//          	fenAccueil = new fenetres.FenetreAccueil ();
+//          	FenetreAccueil fenAccueil = new FenetreAccueil();
+          	// (sinon, dans le if "authentification.authentificate)
+          	
+
+//                }
             }
         }
         );
@@ -276,16 +288,17 @@ public class fenetreAuthentificationLogiciel extends JDialog {
 	/**
 	 * @return le succeeded
 	 */
+	// à l'origine : public boolean isSucceeded
 	public boolean isSucceeded() {
 		return succeeded;
 	}
 
-	/**
-	 * @param succeeded le succeeded à définir
-	 */
-	public void setSucceeded(boolean succeeded) {
-		this.succeeded = succeeded;
-	}
+//	/**
+//	 * @param succeeded le succeeded à définir
+//	 */
+//	public void setSucceeded(boolean succeeded) {
+//		this.succeeded = succeeded;
+//	}
 
 	/**
 	 * @return le b

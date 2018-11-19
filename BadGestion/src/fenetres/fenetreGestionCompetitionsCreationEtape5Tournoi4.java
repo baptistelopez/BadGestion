@@ -15,6 +15,7 @@ import javax.swing.JTextField;
 import javax.swing.JSeparator;
 import javax.swing.JCheckBox;
 import javax.swing.SwingConstants;
+import javax.swing.UIManager;
 
 public class fenetreGestionCompetitionsCreationEtape5Tournoi4 extends JFrame implements ActionListener {
 	private Fenetre2 fen;
@@ -23,7 +24,18 @@ public class fenetreGestionCompetitionsCreationEtape5Tournoi4 extends JFrame imp
 //  private JButton bouton = new JButton("Appel à la corpsFenetreGestionCompetitions");
 
 
-  public fenetreGestionCompetitionsCreationEtape5Tournoi4(){
+  public fenetreGestionCompetitionsCreationEtape5Tournoi4()
+  {
+	  
+	  try 
+      {
+		  UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
+
+		}
+      catch (Exception e) 
+      {
+		}
+	  
   	setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);      
 
     this.setTitle("GestionBad - Gestion compétition > Création compétition > Étape 5 : Composition tableaux - Poules");

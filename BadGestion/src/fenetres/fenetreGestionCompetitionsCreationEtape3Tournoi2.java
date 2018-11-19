@@ -12,6 +12,7 @@ import javax.swing.JLabel;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JTextField;
+import javax.swing.UIManager;
 import javax.swing.JSeparator;
 
 public class fenetreGestionCompetitionsCreationEtape3Tournoi2 extends JFrame implements ActionListener {
@@ -21,7 +22,18 @@ public class fenetreGestionCompetitionsCreationEtape3Tournoi2 extends JFrame imp
 //  private JButton bouton = new JButton("Appel à la corpsFenetreGestionCompetitions");
 
 
-  public fenetreGestionCompetitionsCreationEtape3Tournoi2(){
+  public fenetreGestionCompetitionsCreationEtape3Tournoi2()
+  {
+	  
+	  try 
+      {
+		  UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
+
+		}
+      catch (Exception e) 
+      {
+		}
+	  
   	setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);      
 
     this.setTitle("GestionBad - Gestion compétition > Création compétition > Étape 3 : Inscription de joueurs");
@@ -61,7 +73,7 @@ public class fenetreGestionCompetitionsCreationEtape3Tournoi2 extends JFrame imp
     comboBox_2.setBounds(265, 178, 296, 22);
     getContentPane().add(comboBox_2);
     
-    JLabel lblNumAutorisationCompetition = new JLabel("N° dossier d'autorisation : ");
+    JLabel lblNumAutorisationCompetition = new JLabel("N° de licence : ");
     lblNumAutorisationCompetition.setBounds(25, 49, 175, 34);
     getContentPane().add(lblNumAutorisationCompetition);
     

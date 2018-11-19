@@ -51,7 +51,7 @@ final FenetreAccueil fenAccueil = new FenetreAccueil();
 //        btnLogin.addActionListener(
 //                new ActionListener(){
 //                    public void actionPerformed(ActionEvent e) {
-                        fenetreAuthentificationLogiciel fenAuthentifLogiciel = new fenetres.fenetreAuthentificationLogiciel ();
+                        fenetreAuthentificationLogiciel fenAuthentifLogiciel = new fenetreAuthentificationLogiciel ();
                         fenAuthentifLogiciel.setVisible(true);  
                         fenAuthentifLogiciel.setSize(1280, 800);
                         fenAuthentifLogiciel.setLayout(new FlowLayout());

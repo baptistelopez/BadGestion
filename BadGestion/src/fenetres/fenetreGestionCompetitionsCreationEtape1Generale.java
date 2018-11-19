@@ -28,7 +28,18 @@ public class fenetreGestionCompetitionsCreationEtape1Generale extends JFrame imp
 //  private JButton bouton = new JButton("Appel à la corpsFenetreGestionCompetitions");
 
 
-  public fenetreGestionCompetitionsCreationEtape1Generale(){
+  public fenetreGestionCompetitionsCreationEtape1Generale()
+  {
+	  
+	  try 
+      {
+		  UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
+
+		}
+      catch (Exception e) 
+      {
+		}
+	  
   	setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);      
 
     this.setTitle("GestionBad - Gestion compétition > Création compétition > Étape 1 : Caractéristiques générales Compétition");
@@ -123,13 +134,13 @@ public class fenetreGestionCompetitionsCreationEtape1Generale extends JFrame imp
 //
 //      public void actionPerformed(ActionEvent arg0) {
 
-        corpsFenetreGestionCompetitions zd = new corpsFenetreGestionCompetitions(null, "Coucou les ZérOs", true);
-
-        objetCompetitions zInfo = zd.showcorpsFenetreGestionCompetitions(); 
-
-        JOptionPane jop = new JOptionPane();
-
-        jop.showMessageDialog(null, zInfo.toString(), "Informations personnage", JOptionPane.INFORMATION_MESSAGE);
+//        corpsFenetreGestionCompetitions zd = new corpsFenetreGestionCompetitions(null, "Coucou les ZérOs", true);
+//
+//        objetCompetitions zInfo = zd.showcorpsFenetreGestionCompetitions(); 
+//
+//        JOptionPane jop = new JOptionPane();
+//
+//        jop.showMessageDialog(null, zInfo.toString(), "Informations personnage", JOptionPane.INFORMATION_MESSAGE);
 
 //      }         
 

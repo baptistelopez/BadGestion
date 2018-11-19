@@ -10,8 +10,12 @@ import fenetres.corpsFenetreGestionCompetitions;
 import objets.objetCompetitions;
 import javax.swing.JLabel;
 import javax.swing.JComboBox;
+import javax.swing.InputVerifier;
+import javax.swing.plaf.basic.BasicComboBoxRenderer;
+import javax.swing.plaf.basic.BasicComboBoxEditor;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JTextField;
+import javax.swing.UIManager;
 import javax.swing.JSeparator;
 
 public class fenetreGestionCompetitionsCreationEtape4Tournoi3 extends JFrame implements ActionListener {
@@ -21,7 +25,18 @@ public class fenetreGestionCompetitionsCreationEtape4Tournoi3 extends JFrame imp
 //  private JButton bouton = new JButton("Appel à la corpsFenetreGestionCompetitions");
 
 
-  public fenetreGestionCompetitionsCreationEtape4Tournoi3(){
+  public fenetreGestionCompetitionsCreationEtape4Tournoi3()
+  {
+	  
+	  try 
+      {
+		  UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
+
+		}
+      catch (Exception e) 
+      {
+		}
+	  
   	setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);      
 
     this.setTitle("GestionBad - Gestion compétition > Création compétition > Étape 4 : Définition tableaux");
