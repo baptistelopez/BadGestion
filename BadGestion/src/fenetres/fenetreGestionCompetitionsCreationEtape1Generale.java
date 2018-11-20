@@ -84,8 +84,8 @@ public class fenetreGestionCompetitionsCreationEtape1Generale extends JFrame imp
     getContentPane().add(lblNatureDeComptition);
     
     JComboBox comboBox_3 = new JComboBox();
-    comboBox_3.setModel(new DefaultComboBoxModel(new String[] {"Amicale", "Officielle"}));
-    comboBox_3.setToolTipText("Amicale (non-officielle/officieuse)\r\nOfficielle (enregistrée dans un ou plusieurs logiciel(s) : BadNet/ICManager, et en base de données : Poona)");
+    comboBox_3.setModel(new DefaultComboBoxModel(new String[] {"Amicale", "Officielle (comptabilisée dans les CPPH)", "Officielle (non-comptabilisée dans les CPPH)"}));
+    comboBox_3.setToolTipText("Amicale (non-officielle/officieuse, pas de recueil ni comptabilisation des résultats pour les classements individuels)\r\nOfficielle - comptant pour les classements individuels (enregistrée dans un ou plusieurs logiciel(s) : BadNet/ICManager, et en base de données : Poona ; exemple : ICD3 CODEP45 Badminton Loiret, etc.)\r\nOfficielle - pas de prise en compte pour les classements individuels (pas enregistrée en base de données : Poona ; exemple : IC D-Loisirs CODEP45 Badminton Loiret)");
     comboBox_3.setBounds(229, 56, 296, 22);
     getContentPane().add(comboBox_3);
     

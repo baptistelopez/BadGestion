@@ -26,6 +26,8 @@ public class fenetreGestionCompetitionsCreationEtape2Tournoi1 extends JFrame imp
 	private JTextField textField_2;
 	private JTextField textField_3;
 	private JTextField textField_4;
+	private JTextField textField_5;
+	private JTextField textField_6;
 
 //  private JButton bouton = new JButton("Appel à la corpsFenetreGestionCompetitions");
 
@@ -81,12 +83,6 @@ public class fenetreGestionCompetitionsCreationEtape2Tournoi1 extends JFrame imp
     lblNumAutorisationCompetition.setBounds(25, 49, 175, 34);
     getContentPane().add(lblNumAutorisationCompetition);
     
-    JComboBox comboBox_3 = new JComboBox();
-    comboBox_3.setModel(new DefaultComboBoxModel(new String[] {"Amicale", "Officielle"}));
-    comboBox_3.setToolTipText("Amicale (non-officielle/officieuse)\r\nOfficielle (enregistrée dans un ou plusieurs logiciel(s) : BadNet/ICManager, et en base de données : Poona)");
-    comboBox_3.setBounds(265, 260, 296, 22);
-    getContentPane().add(comboBox_3);
-    
     JLabel lblFormeDeComptition = new JLabel("Forme de compétition : ");
     lblFormeDeComptition.setBounds(25, 213, 145, 34);
     getContentPane().add(lblFormeDeComptition);
@@ -97,7 +93,7 @@ public class fenetreGestionCompetitionsCreationEtape2Tournoi1 extends JFrame imp
     comboBox_4.setBounds(265, 219, 296, 22);
     getContentPane().add(comboBox_4);
     
-    JLabel lblNomDeComptition = new JLabel("Nom de compétition : ");
+    JLabel lblNomDeComptition = new JLabel("Organisateur(s) de compétition : ");
     lblNomDeComptition.setBounds(25, 254, 145, 34);
     getContentPane().add(lblNomDeComptition);
     
@@ -113,7 +109,7 @@ public class fenetreGestionCompetitionsCreationEtape2Tournoi1 extends JFrame imp
     
     JButton btnSuivant = new JButton("Suivant");
     btnSuivant.addActionListener(this);
-    btnSuivant.setBounds(464, 304, 97, 25);
+    btnSuivant.setBounds(464, 421, 97, 25);
     getContentPane().add(btnSuivant);
     
     textField_1 = new JTextField();
@@ -124,46 +120,56 @@ public class fenetreGestionCompetitionsCreationEtape2Tournoi1 extends JFrame imp
     getContentPane().add(textField_1);
     
     JCheckBox chckbxNewCheckBox = new JCheckBox("Différencié");
-chckbxNewCheckBox.addItemListener(new ItemListener() {
+chckbxNewCheckBox.addItemListener
+(new ItemListener () 
+{
 	@Override
-	public void itemStateChanged(ItemEvent item) {
+	public void itemStateChanged(ItemEvent item) 
+	{
 	int status = item.getStateChange();
 	if (status == ItemEvent.SELECTED) 
 	{
 //	showStatus("choix selectionne");
 		
+		textField_1.setVisible(false);
+		
+		JLabel lblSimples = new JLabel("Simples : ");
+	    lblSimples.setBounds(426, 131, 63, 34);
+	    lblSimples.setVisible(true);
+	    getContentPane().add(lblSimples);
+		
 		textField_2 = new JTextField();
 	    textField_2.setToolTipText("En minutes ; voir le RGC (onglet Divers > Documentation bad > Compétitions > RGC) pour plus de précisions règlementaires.");
-	    textField_2.setText("20");
+	    textField_2.setText("");
 	    textField_2.setColumns(10);
 	    textField_2.setBounds(501, 137, 45, 22);
 	    textField_2.setVisible(true);
 	    getContentPane().add(textField_2);
 	    
-	    JLabel lblSimples = new JLabel("Simples : ");
-	    lblSimples.setBounds(426, 131, 63, 34);
-	    getContentPane().add(lblSimples);
-	    
 	    JLabel lblDoubles = new JLabel("Doubles : ");
 	    lblDoubles.setBounds(558, 131, 63, 34);
+	    lblDoubles.setVisible(true);
 	    getContentPane().add(lblDoubles);
 	    
 	    textField_3 = new JTextField();
 	    textField_3.setToolTipText("En minutes ; voir le RGC (onglet Divers > Documentation bad > Compétitions > RGC) pour plus de précisions règlementaires.");
-	    textField_3.setText("20");
+	    textField_3.setText("");
 	    textField_3.setColumns(10);
 	    textField_3.setBounds(633, 137, 45, 22);
+	    textField_3.setVisible(true);
 	    getContentPane().add(textField_3);
 	    
 	    JLabel lblMixtes = new JLabel("Mixtes : ");
 	    lblMixtes.setBounds(690, 131, 63, 34);
+	    lblMixtes.setVisible(true);
 	    getContentPane().add(lblMixtes);
 	    
 	    textField_4 = new JTextField();
 	    textField_4.setToolTipText("En minutes ; voir le RGC (onglet Divers > Documentation bad > Compétitions > RGC) pour plus de précisions règlementaires.");
-	    textField_4.setText("20");
+	    textField_4.setText("");
 	    textField_4.setColumns(10);
 	    textField_4.setBounds(765, 137, 45, 22);
+	    textField_3.setVisible(true);
 	    getContentPane().add(textField_4);
 	}
 
@@ -175,12 +181,36 @@ chckbxNewCheckBox.addItemListener(new ItemListener() {
     		
 
 //	}
-    
+	
+	else
+	
+	{
+		textField_1.setVisible(true);
+		textField_2.setVisible(false);
+		textField_3.setVisible(false);
+		textField_4.setVisible(false);
 	}
-
-});
+	}
+}
+		);
     chckbxNewCheckBox.setBounds(318, 136, 99, 25);
     getContentPane().add(chckbxNewCheckBox);
+    
+    textField_5 = new JTextField();
+    textField_5.setToolTipText("S'il est déjà existant sous Poona mais pas encore répertorié dans le logiciel (première modification via le logiciel d'une compétition dont le dossier existe déjà sur Poona), vous pouvez le saisir, cela remplira automatiquement ceux des champs de formulaires restants qui sont partagés entre le logiciel et Poona.\r\nS'il est déjà existant et répertorié dans le logiciel, le champ sera rempli, grisé et inactif.\r\nSinon, s'il n'existe pas encore, le champ est vide. \r\nLe n° correspondant sera créé automatiquement à la fin du processus, lors de la transmission des informations saisies à Poona.");
+    textField_5.setColumns(10);
+    textField_5.setBounds(265, 260, 296, 22);
+    getContentPane().add(textField_5);
+    
+    JLabel lblJugesarbitresDeLa = new JLabel("Juge(s)-Arbitre(s) de la compétition : ");
+    lblJugesarbitresDeLa.setBounds(25, 295, 228, 34);
+    getContentPane().add(lblJugesarbitresDeLa);
+    
+    textField_6 = new JTextField();
+    textField_6.setToolTipText("S'il est déjà existant sous Poona mais pas encore répertorié dans le logiciel (première modification via le logiciel d'une compétition dont le dossier existe déjà sur Poona), vous pouvez le saisir, cela remplira automatiquement ceux des champs de formulaires restants qui sont partagés entre le logiciel et Poona.\r\nS'il est déjà existant et répertorié dans le logiciel, le champ sera rempli, grisé et inactif.\r\nSinon, s'il n'existe pas encore, le champ est vide. \r\nLe n° correspondant sera créé automatiquement à la fin du processus, lors de la transmission des informations saisies à Poona.");
+    textField_6.setColumns(10);
+    textField_6.setBounds(265, 301, 296, 22);
+    getContentPane().add(textField_6);
     
     
 
