@@ -16,6 +16,8 @@ import javax.swing.JPopupMenu;
 import javax.swing.JSeparator;
 import javax.swing.KeyStroke;
 import javax.swing.JCheckBoxMenuItem;
+import javax.swing.JScrollPane;
+import javax.swing.JInternalFrame;
 
 public class FenetreAccueil extends JFrame
 {
@@ -23,9 +25,12 @@ public class FenetreAccueil extends JFrame
 		setTitle("BadGestion - Accueil");
 		getContentPane().setLayout(null);
 		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(0, 0, 780, 139);
+		getContentPane().add(scrollPane);
+		
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
-		tabbedPane.setBounds(0, 0, 773, 78);
-		getContentPane().add(tabbedPane);
+		scrollPane.setViewportView(tabbedPane);
 		
 		JPanel panel = new JPanel();
 		tabbedPane.addTab("Accueil", null, panel, null);
@@ -165,16 +170,22 @@ public class FenetreAccueil extends JFrame
 		JMenu mnNewMenu_2 = new JMenu("Compétitions");
 		mnNewMenu_1.add(mnNewMenu_2);
 		
-		JSeparator separator_5 = new JSeparator();
-		mnNewMenu_2.add(separator_5);
+		JMenu mnNewMenu_29 = new JMenu("Individuelles");
+		mnNewMenu_2.add(mnNewMenu_29);
 		
 		JMenu mnNewMenu_21 = new JMenu("Organisateur(s)");
-		mnNewMenu_2.add(mnNewMenu_21);
+		mnNewMenu_29.add(mnNewMenu_21);
 		
 		JMenuItem mntmListe = new JMenuItem("Liste");
 		mnNewMenu_21.add(mntmListe);
 		
 		JMenuItem mntmNewMenuItem_4 = new JMenuItem("Créer");
+		mntmNewMenuItem_4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				fenetreGestionCompetitionsCreationEtape1Generale fenGestCompetsCreaEtp1Generale = new fenetreGestionCompetitionsCreationEtape1Generale();
+				fenGestCompetsCreaEtp1Generale.setVisible(true);
+			}
+		});
 		mnNewMenu_21.add(mntmNewMenuItem_4);
 		
 		JMenuItem mntmModifier = new JMenuItem("Modifier");
@@ -184,7 +195,7 @@ public class FenetreAccueil extends JFrame
 		mnNewMenu_21.add(mntmSupprimer);
 		
 		JMenu mnNewMenu_7 = new JMenu("Officiel(s) technique(s)");
-		mnNewMenu_2.add(mnNewMenu_7);
+		mnNewMenu_29.add(mnNewMenu_7);
 		
 		JMenu mnNewMenu_15 = new JMenu("Arbitres/Juges de Service (JdS)");
 		mnNewMenu_7.add(mnNewMenu_15);
@@ -214,7 +225,7 @@ public class FenetreAccueil extends JFrame
 		mnNewMenu_14.add(mntmNewMenuItem_27);
 		
 		JMenu mnNewMenu_26 = new JMenu("Joueur(s)");
-		mnNewMenu_2.add(mnNewMenu_26);
+		mnNewMenu_29.add(mnNewMenu_26);
 		
 		JMenuItem mntmListe_2 = new JMenuItem("Liste");
 		mnNewMenu_26.add(mntmListe_2);
@@ -227,6 +238,75 @@ public class FenetreAccueil extends JFrame
 		
 		JMenuItem mntmDsinscription = new JMenuItem("Désinscription");
 		mnNewMenu_26.add(mntmDsinscription);
+		
+		JSeparator separator_5 = new JSeparator();
+		mnNewMenu_2.add(separator_5);
+		
+		JMenu mnNewMenu_30 = new JMenu("Par équipes");
+		mnNewMenu_2.add(mnNewMenu_30);
+		
+		JMenu menu = new JMenu("Organisateur(s)");
+		mnNewMenu_30.add(menu);
+		
+		JMenuItem menuItem = new JMenuItem("Liste");
+		menu.add(menuItem);
+		
+		JMenuItem menuItem_2 = new JMenuItem("Créer");
+		menu.add(menuItem_2);
+		
+		JMenuItem menuItem_3 = new JMenuItem("Modifier");
+		menu.add(menuItem_3);
+		
+		JMenuItem menuItem_4 = new JMenuItem("Supprimer");
+		menu.add(menuItem_4);
+		
+		JMenu menu_1 = new JMenu("Officiel(s) technique(s)");
+		mnNewMenu_30.add(menu_1);
+		
+		JMenu menu_2 = new JMenu("Arbitres/Juges de Service (JdS)");
+		menu_1.add(menu_2);
+		
+		JMenuItem menuItem_5 = new JMenuItem("Feuilles de score vierges");
+		menu_2.add(menuItem_5);
+		
+		JMenuItem menuItem_6 = new JMenuItem("Feuilles de score pré-remplies");
+		menu_2.add(menuItem_6);
+		
+		JSeparator separator_27 = new JSeparator();
+		menu_1.add(separator_27);
+		
+		JMenu menu_3 = new JMenu("Juges-Arbitres (JA)");
+		menu_1.add(menu_3);
+		
+		JSeparator separator_28 = new JSeparator();
+		menu_1.add(separator_28);
+		
+		JMenu menu_4 = new JMenu("Juges de Ligne (JdL)");
+		menu_1.add(menu_4);
+		
+		JMenuItem menuItem_7 = new JMenuItem("Dispositions terrain");
+		menu_4.add(menuItem_7);
+		
+		JMenuItem menuItem_8 = new JMenuItem("Grilles de rotation");
+		menu_4.add(menuItem_8);
+		
+		JMenu mnCapitaines = new JMenu("Capitaine(s)");
+		mnNewMenu_30.add(mnCapitaines);
+		
+		JMenuItem mntmConstitutionquipes = new JMenuItem("Constitution et gestion équipe(s)");
+		mnCapitaines.add(mntmConstitutionquipes);
+		
+		JMenuItem mntmInscriptionquipes = new JMenuItem("Inscription d'équipe(s)");
+		mnCapitaines.add(mntmInscriptionquipes);
+		
+		JMenuItem mntmModifierUneInscription_1 = new JMenuItem("Modifier inscription(s) équipe(s)");
+		mnCapitaines.add(mntmModifierUneInscription_1);
+		
+		JMenuItem mntmDsinscriptionDquipe = new JMenuItem("Désinscription d'équipe(s)");
+		mnCapitaines.add(mntmDsinscriptionDquipe);
+		
+		JMenuItem mntmGestionRencontresEt = new JMenuItem("Gestion rencontres et matchs");
+		mnCapitaines.add(mntmGestionRencontresEt);
 		
 		JSeparator separator_3 = new JSeparator();
 		mnNewMenu_1.add(separator_3);
@@ -317,6 +397,9 @@ public class FenetreAccueil extends JFrame
 		
 		JMenuItem mntmNewMenuItem_46 = new JMenuItem("Juge de Ligne (JdL)");
 		mnNewMenu_25.add(mntmNewMenuItem_46);
+		
+		JSeparator separator_26 = new JSeparator();
+		mnNewMenu_1.add(separator_26);
 		
 		JMenu mnNewMenu_28 = new JMenu("Gestion formations");
 		mnNewMenu_1.add(mnNewMenu_28);
@@ -440,6 +523,9 @@ public class FenetreAccueil extends JFrame
 		JMenuItem mntmNewMenuItem_10 = new JMenuItem("Raccourcis clavier et souris");
 		mnDivers.add(mntmNewMenuItem_10);
 		
+		JSeparator separator_30 = new JSeparator();
+		mnDivers.add(separator_30);
+		
 		JMenuItem mntmNewMenuItem_3 = new JMenuItem("À propos");
 		mnDivers.add(mntmNewMenuItem_3);
 		
@@ -452,28 +538,76 @@ public class FenetreAccueil extends JFrame
 		JSeparator separator = new JSeparator();
 		mnDivers.add(separator);
 		
-		JMenu mnNewMenu_8 = new JMenu("Documentation bad");
+		JMenu menu_5 = new JMenu("Documentation bad");
+		mnDivers.add(menu_5);
+		
+		JMenu menu_6 = new JMenu("Compétitions");
+		menu_5.add(menu_6);
+		
+		JMenuItem menuItem_9 = new JMenuItem("Classements et fonctionnement classement");
+		menu_6.add(menuItem_9);
+		
+		JMenuItem menuItem_13 = new JMenuItem("Règlement Général des Compétitions (RGC)");
+		menu_6.add(menuItem_13);
+		
+		JMenuItem menuItem_14 = new JMenuItem("Dico/glossaire");
+		menu_5.add(menuItem_14);
+		
+		JMenu menu_7 = new JMenu("IC");
+		menu_5.add(menu_7);
+		
+		JMenuItem menuItem_15 = new JMenuItem("BadNet Team");
+		menu_7.add(menuItem_15);
+		
+		JMenuItem menuItem_16 = new JMenuItem("ICManager");
+		menu_7.add(menuItem_16);
+		
+		JMenuItem menuItem_17 = new JMenuItem("Règlements");
+		menu_7.add(menuItem_17);
+		
+		JMenu menu_8 = new JMenu("Règles du bad");
+		menu_5.add(menu_8);
+		
+		JMenuItem menuItem_18 = new JMenuItem("Règles simplifiées");
+		menu_8.add(menuItem_18);
+		
+		JMenuItem menuItem_19 = new JMenuItem("Règles complètes traduites");
+		menu_8.add(menuItem_19);
+		
+		JMenuItem menuItem_20 = new JMenuItem("Règles complètes originales");
+		menu_8.add(menuItem_20);
+		
+		JMenu mnNewMenu_8 = new JMenu("Documentation instance");
 		mnDivers.add(mnNewMenu_8);
 		
-		JMenu mnComptitions = new JMenu("Compétitions");
+		JMenu mnComptitions = new JMenu("Gestion associative");
 		mnNewMenu_8.add(mnComptitions);
 		
-		JMenuItem mntmClassementsEtFonctionnement = new JMenuItem("Classements et fonctionnement classement");
+		JMenuItem mntmClassementsEtFonctionnement = new JMenuItem("Déclaration association");
 		mnComptitions.add(mntmClassementsEtFonctionnement);
 		
-		JMenuItem mntmNewMenuItem_40 = new JMenuItem("Règlement Général des Compétitions (RGC)");
+		JMenuItem mntmNewMenuItem_40 = new JMenuItem("Statuts");
 		mnComptitions.add(mntmNewMenuItem_40);
 		
-		JMenuItem mntmDicoglossaire = new JMenuItem("Dico/glossaire");
+		JMenuItem mntmRglementIntrieur = new JMenuItem("Règlement intérieur");
+		mnComptitions.add(mntmRglementIntrieur);
+		
+		JMenuItem mntmDicoglossaire = new JMenuItem("Emploi");
 		mnNewMenu_8.add(mntmDicoglossaire);
 		
-		JMenu mnNewMenu_9 = new JMenu("IC");
+		JMenu mnNewMenu_9 = new JMenu("Contractualisation(s)");
 		mnNewMenu_8.add(mnNewMenu_9);
+		
+		JMenuItem mntmBadnetTeam = new JMenuItem("BadNet Team");
+		mnNewMenu_9.add(mntmBadnetTeam);
+		
+		JMenuItem mntmIcmanager = new JMenuItem("ICManager");
+		mnNewMenu_9.add(mntmIcmanager);
 		
 		JMenuItem mntmNewMenuItem_15 = new JMenuItem("Règlements");
 		mnNewMenu_9.add(mntmNewMenuItem_15);
 		
-		JMenu mnNewMenu_11 = new JMenu("Règles du bad");
+		JMenu mnNewMenu_11 = new JMenu("Partenariat(s)");
 		mnNewMenu_8.add(mnNewMenu_11);
 		
 		JMenuItem mntmRglesSimplifies = new JMenuItem("Règles simplifiées");
@@ -484,6 +618,12 @@ public class FenetreAccueil extends JFrame
 		
 		JMenuItem mntmNewMenuItem_41 = new JMenuItem("Règles complètes originales");
 		mnNewMenu_11.add(mntmNewMenuItem_41);
+		
+		JMenuItem mntmNewMenuItem_47 = new JMenuItem("Fournisseur(s)");
+		mnNewMenu_8.add(mntmNewMenuItem_47);
+		
+		JSeparator separator_29 = new JSeparator();
+		mnDivers.add(separator_29);
 		
 		JMenu mnNewMenu_12 = new JMenu("Contacter la FFBad");
 		mnDivers.add(mnNewMenu_12);

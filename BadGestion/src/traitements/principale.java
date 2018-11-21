@@ -44,7 +44,8 @@ public class principale
     public static void main (String [] args) 
     {
 //JFrame fenAccueil = new JFrame("Accueil");
-final FenetreAccueil fenAccueil = new FenetreAccueil();
+// final : va avec ligne ci-dessous
+
 //final JFrame fenAccueil = new JFrame("Accueil");
 //        final JButton btnLogin = new JButton("Click to login");
 // 
@@ -56,13 +57,33 @@ final FenetreAccueil fenAccueil = new FenetreAccueil();
                         fenAuthentifLogiciel.setSize(1280, 800);
                         fenAuthentifLogiciel.setLayout(new FlowLayout());
     
-                        // if logon successfully
-                        if(fenAuthentifLogiciel.isSucceeded())
+//                        // if logon successfully
+//                        if(fenAuthentifLogiciel.isSucceeded())
+//                        {
+////                            btnLogin.setText ("Hi " + loginDlg.getUsername() + " !");
+////                        	fenAccueil = new fenetres.FenetreAccueil ();
+////                        	FenetreAccueil fenAccueil = new FenetreAccueil();
+//                        	fenAccueil.setVisible(true);
+//                        }
+                        
+                        if ( (authentification.authenticate (fenAuthentifLogiciel.getUsername (), fenAuthentifLogiciel.getPassword ()) ) && (fenAuthentifLogiciel.isSucceeded()) ) 
                         {
-//                            btnLogin.setText ("Hi " + loginDlg.getUsername() + " !");
-//                        	fenAccueil = new fenetres.FenetreAccueil ();
-//                        	FenetreAccueil fenAccueil = new FenetreAccueil();
-                        	fenAccueil.setVisible(true);
+//                            JOptionPane.showMessageDialog(fenetreAuthentificationLogiciel.this,
+//                                    "Bonjour/bonsoir " + getUsername () + "!",
+//                                    "Authentification",
+//                                    JOptionPane.INFORMATION_MESSAGE);
+//                        	fenAuthentifLogiciel.succeeded = true;
+//                          if (isSucceeded())
+//                          {
+//                            fenAccueil = new fenetres.FenetreAccueil();
+                            
+                            
+                            fenetres.FenetreAccueil fenAccueil = new fenetres.FenetreAccueil();
+                            fenAccueil.setVisible(true);
+                            fenAccueil.setSize(800, 600);
+                            
+                            fenAuthentifLogiciel.dispose ();
+//                        }
                         }
                         
 //    );

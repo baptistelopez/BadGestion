@@ -42,7 +42,7 @@ public class fenetreAuthentificationLogiciel extends JDialog {
 	private JPasswordField pwdFldAuthLogicielMdp;
 	private JTextField txtFldAuthLogicielNomUtilisateur;
 	// à l'origine : private boolean succeeded
-    private boolean succeeded;
+    public boolean succeeded;
     public boolean b;
     public FenetreAccueil fenAccueil;
 
@@ -141,11 +141,12 @@ public class fenetreAuthentificationLogiciel extends JDialog {
             {
                 if ( (authentification.authenticate (getUsername (), getPassword ()) )) 
                 {
+//                	succeeded = true;
 //                    JOptionPane.showMessageDialog(fenetreAuthentificationLogiciel.this,
 //                            "Bonjour/bonsoir " + getUsername () + "!",
 //                            "Authentification",
 //                            JOptionPane.INFORMATION_MESSAGE);
-                	succeeded = true;
+
 //                  if (isSucceeded())
 //                  {
                     fenAccueil = new fenetres.FenetreAccueil();
@@ -256,6 +257,20 @@ public class fenetreAuthentificationLogiciel extends JDialog {
 //	public String getPassword() {
 //		return new String(pfPassword.getPassword());
 //	}
+	
+	/**
+	 * @return le txtFldAuthLogicielNomUtilisateur (getUsername)
+	 */
+	public String getUsername() {
+		return txtFldAuthLogicielNomUtilisateur.getText ().trim ();
+	}
+
+//	/**
+//	 * @param txtFldAuthLogicielNomUtilisateur le txtFldAuthLogicielNomUtilisateur à définir
+//	 */
+//	public void setTxtFldAuthLogicielNomUtilisateur(JTextField txtFldAuthLogicielNomUtilisateur) {
+//		this.txtFldAuthLogicielNomUtilisateur = txtFldAuthLogicielNomUtilisateur;
+//	}
 
 	/**
 	 * @return le pwdFldAuthLogicielMdp (getPassword)
@@ -264,26 +279,12 @@ public class fenetreAuthentificationLogiciel extends JDialog {
 		return new String (pwdFldAuthLogicielMdp.getPassword());
 	}
 
-	/**
-	 * @param pwdFldAuthLogicielMdp le pwdFldAuthLogicielMdp à définir
-	 */
-	public void setPwdFldAuthLogicielMdp(JPasswordField pwdFldAuthLogicielMdp) {
-		this.pwdFldAuthLogicielMdp = pwdFldAuthLogicielMdp;
-	}
-
-	/**
-	 * @return le txtFldAuthLogicielNomUtilisateur (getUsername)
-	 */
-	public String getUsername() {
-		return txtFldAuthLogicielNomUtilisateur.getText ().trim ();
-	}
-
-	/**
-	 * @param txtFldAuthLogicielNomUtilisateur le txtFldAuthLogicielNomUtilisateur à définir
-	 */
-	public void setTxtFldAuthLogicielNomUtilisateur(JTextField txtFldAuthLogicielNomUtilisateur) {
-		this.txtFldAuthLogicielNomUtilisateur = txtFldAuthLogicielNomUtilisateur;
-	}
+//	/**
+//	 * @param pwdFldAuthLogicielMdp le pwdFldAuthLogicielMdp à définir
+//	 */
+//	public void setPwdFldAuthLogicielMdp(JPasswordField pwdFldAuthLogicielMdp) {
+//		this.pwdFldAuthLogicielMdp = pwdFldAuthLogicielMdp;
+//	}
 
 	/**
 	 * @return le succeeded

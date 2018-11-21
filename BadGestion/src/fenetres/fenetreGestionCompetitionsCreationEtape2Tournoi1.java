@@ -18,6 +18,8 @@ import javax.swing.JTextField;
 import javax.swing.UIManager;
 import javax.swing.JSeparator;
 import javax.swing.JCheckBox;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class fenetreGestionCompetitionsCreationEtape2Tournoi1 extends JFrame implements ActionListener, ItemListener {
 	private Fenetre2 fen;
@@ -98,7 +100,12 @@ public class fenetreGestionCompetitionsCreationEtape2Tournoi1 extends JFrame imp
     getContentPane().add(lblNomDeComptition);
     
     textField = new JTextField();
-    textField.setToolTipText("S'il est déjà existant sous Poona mais pas encore répertorié dans le logiciel (première modification via le logiciel d'une compétition dont le dossier existe déjà sur Poona), vous pouvez le saisir, cela remplira automatiquement ceux des champs de formulaires restants qui sont partagés entre le logiciel et Poona.\r\nS'il est déjà existant et répertorié dans le logiciel, le champ sera rempli, grisé et inactif.\r\nSinon, s'il n'existe pas encore, le champ est vide. \r\nLe n° correspondant sera créé automatiquement à la fin du processus, lors de la transmission des informations saisies à Poona.");
+    textField.addKeyListener(new KeyAdapter() {
+    	@Override
+    	public void keyPressed(KeyEvent arg0) {
+    	}
+    });
+    textField.setToolTipText("S'il est déjà existant sous Poona mais pas encore répertorié dans le logiciel (première modification via le logiciel d'une compétition dont le dossier existe déjà sur Poona), vous pouvez le saisir puis valider avec Entrée pour le rechercher, si le n° est reconnu cela remplira automatiquement ceux des champs de formulaires restants qui sont partagés entre le logiciel et Poona.\r\nS'il est déjà existant et répertorié dans le logiciel, le champ sera rempli, grisé et inactif.\r\nSinon, s'il n'existe pas encore, le champ est vide. \r\nLe n° correspondant sera créé automatiquement à la fin du processus, lors de la transmission des informations saisies à Poona.");
     textField.setBounds(265, 55, 296, 22);
     getContentPane().add(textField);
     textField.setColumns(10);
@@ -119,8 +126,8 @@ public class fenetreGestionCompetitionsCreationEtape2Tournoi1 extends JFrame imp
     textField_1.setBounds(265, 137, 45, 22);
     getContentPane().add(textField_1);
     
-    JCheckBox chckbxNewCheckBox = new JCheckBox("Différencié");
-chckbxNewCheckBox.addItemListener
+    JCheckBox chckbxDiffTpsReposDisciplines = new JCheckBox("Différencié");
+chckbxDiffTpsReposDisciplines.addItemListener
 (new ItemListener () 
 {
 	@Override
@@ -193,8 +200,8 @@ chckbxNewCheckBox.addItemListener
 	}
 }
 		);
-    chckbxNewCheckBox.setBounds(318, 136, 99, 25);
-    getContentPane().add(chckbxNewCheckBox);
+    chckbxDiffTpsReposDisciplines.setBounds(318, 136, 99, 25);
+    getContentPane().add(chckbxDiffTpsReposDisciplines);
     
     textField_5 = new JTextField();
     textField_5.setToolTipText("S'il est déjà existant sous Poona mais pas encore répertorié dans le logiciel (première modification via le logiciel d'une compétition dont le dossier existe déjà sur Poona), vous pouvez le saisir, cela remplira automatiquement ceux des champs de formulaires restants qui sont partagés entre le logiciel et Poona.\r\nS'il est déjà existant et répertorié dans le logiciel, le champ sera rempli, grisé et inactif.\r\nSinon, s'il n'existe pas encore, le champ est vide. \r\nLe n° correspondant sera créé automatiquement à la fin du processus, lors de la transmission des informations saisies à Poona.");
@@ -207,10 +214,14 @@ chckbxNewCheckBox.addItemListener
     getContentPane().add(lblJugesarbitresDeLa);
     
     textField_6 = new JTextField();
-    textField_6.setToolTipText("S'il est déjà existant sous Poona mais pas encore répertorié dans le logiciel (première modification via le logiciel d'une compétition dont le dossier existe déjà sur Poona), vous pouvez le saisir, cela remplira automatiquement ceux des champs de formulaires restants qui sont partagés entre le logiciel et Poona.\r\nS'il est déjà existant et répertorié dans le logiciel, le champ sera rempli, grisé et inactif.\r\nSinon, s'il n'existe pas encore, le champ est vide. \r\nLe n° correspondant sera créé automatiquement à la fin du processus, lors de la transmission des informations saisies à Poona.");
+    textField_6.setToolTipText("S'il est déjà existant sous Poona mais pas encore répertorié dans le logiciel (première modification via le logiciel d'une compétition dont le dossier existe déjà sur Poona), vous pouvez le saisir.\r\nS'il est déjà existant et répertorié dans le logiciel, le champ sera rempli, grisé et inactif.\r\nSinon, s'il n'existe pas encore, le champ est vide.");
     textField_6.setColumns(10);
     textField_6.setBounds(265, 301, 296, 22);
     getContentPane().add(textField_6);
+    
+    JButton btnPrecedent = new JButton("Précédent");
+    btnPrecedent.setBounds(265, 421, 97, 25);
+    getContentPane().add(btnPrecedent);
     
     
 

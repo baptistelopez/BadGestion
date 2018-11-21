@@ -23,7 +23,7 @@ import javax.swing.border.BevelBorder;
 
 public class fenetreGestionCompetitionsCreationEtape1Generale extends JFrame implements ActionListener {
 	private Fenetre2 fen;
-	private JTextField textField;
+	private JTextField Etp1CreaCompet_NomCompet;
 
 //  private JButton bouton = new JButton("Appel à la corpsFenetreGestionCompetitions");
 
@@ -54,6 +54,7 @@ public class fenetreGestionCompetitionsCreationEtape1Generale extends JFrame imp
     getContentPane().add(lblNewLabel);
     
     JComboBox comboBox = new JComboBox();
+    comboBox.setToolTipText("- Individuelle : compétition dont les participations et résultats sont prises en compte indivuellement pour chaque joueur.\r\nexemple : \r\n- Par équipes : compétition dont les participations et résultats sont prises en compte au niveau de chaque équipe, de portées géographiques définies (clubs/départements-CODEPs/régions-Ligues/pays-fédérations, etc.).\r\nexemple : Championnats inter-clubs départementaux/régionaux/nationaux, inter-CODEPs, etc.\r\n\r\n/!\\ Sauf indication contraire appropriée (exemple : IC D-Loisirs CODEP45 Badminton Loiret), toutes les compétitions officielles sont susceptibles intrinsèquement d'être prises en compte pour les CPPH individuels des joueurs qui y participent.  /!\\\r\n/!\\ À ne pas confondre avec la forme de compétition \"par équipes\" /!\\.\r\n\r\nSi les données sont récupérées de Poona, ce champ est grisé et inactif.");
     comboBox.setModel(new DefaultComboBoxModel(new String[] {"Individuelle", "Par équipe"}));
     comboBox.setBounds(229, 97, 296, 22);
     getContentPane().add(comboBox);
@@ -85,7 +86,7 @@ public class fenetreGestionCompetitionsCreationEtape1Generale extends JFrame imp
     
     JComboBox comboBox_3 = new JComboBox();
     comboBox_3.setModel(new DefaultComboBoxModel(new String[] {"Amicale", "Officielle (comptabilisée dans les CPPH)", "Officielle (non-comptabilisée dans les CPPH)"}));
-    comboBox_3.setToolTipText("Amicale (non-officielle/officieuse, pas de recueil ni comptabilisation des résultats pour les classements individuels)\r\nOfficielle - comptant pour les classements individuels (enregistrée dans un ou plusieurs logiciel(s) : BadNet/ICManager, et en base de données : Poona ; exemple : ICD3 CODEP45 Badminton Loiret, etc.)\r\nOfficielle - pas de prise en compte pour les classements individuels (pas enregistrée en base de données : Poona ; exemple : IC D-Loisirs CODEP45 Badminton Loiret)");
+    comboBox_3.setToolTipText("Amicale (non-officielle/officieuse, pas de recueil ni comptabilisation des résultats pour les classements individuels)\r\nOfficielle - comptant pour les classements individuels (enregistrée dans un ou plusieurs logiciel(s) : BadNet/ICManager, et en base de données : Poona ; exemple : ICD3 CODEP45 Badminton Loiret, etc.)\r\nOfficielle - pas de prise en compte pour les classements individuels (pas enregistrée en base de données : Poona ; exemple : IC D-Loisirs CODEP45 Badminton Loiret)\r\n\r\nSi les données sont récupérées de Poona, ce champ est grisé et inactif.");
     comboBox_3.setBounds(229, 56, 296, 22);
     getContentPane().add(comboBox_3);
     
@@ -93,40 +94,40 @@ public class fenetreGestionCompetitionsCreationEtape1Generale extends JFrame imp
     lblFormeDeComptition.setBounds(25, 213, 145, 34);
     getContentPane().add(lblFormeDeComptition);
     
-    JComboBox comboBox_4 = new JComboBox();
-    comboBox_4.setModel(new DefaultComboBoxModel(new String[] {"Ronde suisse", "Ronde italienne", "Poules", "Poules puis élimination directe", "Élimination directe uniquement", "Poule(s) unique(s)"}));
-    comboBox_4.setToolTipText("Tournoi\r\nChampionnat");
-    comboBox_4.setBounds(229, 220, 296, 22);
-    getContentPane().add(comboBox_4);
+    JComboBox cmboBox_FormeCompet = new JComboBox();
+    cmboBox_FormeCompet.setModel(new DefaultComboBoxModel(new String[] {"Ronde suisse", "Ronde italienne", "Poules", "Poules puis élimination directe", "Élimination directe uniquement", "Poule(s) unique(s)"}));
+    cmboBox_FormeCompet.setToolTipText("Tournoi\r\nChampionnat");
+    cmboBox_FormeCompet.setBounds(229, 220, 296, 22);
+    getContentPane().add(cmboBox_FormeCompet);
     
     JLabel lblNomDeComptition = new JLabel("Nom de compétition : ");
     lblNomDeComptition.setBounds(25, 295, 145, 34);
     getContentPane().add(lblNomDeComptition);
     
-    textField = new JTextField();
-    textField.setToolTipText("Nom de la compétition, exemples :\r\n- Xer tournoi BadGestion (pour un 1er tournoi privé)\r\n- Xè tournoi GestionBad (pour un tournoi privé)\r\n- etc.\r\n- tournoi amical Badminton Club Duvillage (pour un tournoi amical interne à un club)\r\n- IC45 D1 2018-2019 (pour un InterClub Départemental)\r\n- etc.\r\n- Championnat Départemental Senior Deteldépartement (pour un championnat fédéral départemental)\r\n- etc.");
-    textField.setBounds(229, 302, 296, 22);
-    getContentPane().add(textField);
-    textField.setColumns(10);
-    
-    JSeparator separator = new JSeparator();
-    separator.setBounds(180, 389, 1, 2);
-    getContentPane().add(separator);
+    Etp1CreaCompet_NomCompet = new JTextField();
+    Etp1CreaCompet_NomCompet.setToolTipText("Nom de la compétition, exemples :\r\n- Xer tournoi BadGestion (pour un 1er tournoi privé)\r\n- Xè tournoi GestionBad (pour un tournoi privé)\r\n- etc.\r\n- tournoi amical Badminton Club Duvillage (pour un tournoi amical interne à un club)\r\n- IC45 D1 2018-2019 (pour un InterClub Départemental)\r\n- etc.\r\n- Championnat Départemental Senior Deteldépartement (pour un championnat fédéral départemental)\r\n- etc.");
+    Etp1CreaCompet_NomCompet.setBounds(229, 302, 296, 22);
+    getContentPane().add(Etp1CreaCompet_NomCompet);
+    Etp1CreaCompet_NomCompet.setColumns(10);
     
     JButton btnSuivant = new JButton("Suivant");
     btnSuivant.addActionListener(this);
-    btnSuivant.setBounds(428, 352, 97, 25);
+    btnSuivant.setBounds(412, 352, 113, 25);
     getContentPane().add(btnSuivant);
     
     JLabel lblPublics = new JLabel("Catégorie(s) d'âge autorisée(s) : ");
     lblPublics.setBounds(25, 254, 192, 34);
     getContentPane().add(lblPublics);
     
-    JComboBox comboBox_5 = new JComboBox();
-    comboBox_5.setModel(new DefaultComboBoxModel(new String[] {"Minibad et Poussins", "Jeunes (Benjamins à Minimes inclus)", "Jeunes (Cadets à Juniors inclus)", "Seniors", "Vétérans"}));
-    comboBox_5.setToolTipText("Il est possible de sélectionner plusieurs catégories d'âge avec Ctrl + clic gauche.");
-    comboBox_5.setBounds(229, 261, 296, 22);
-    getContentPane().add(comboBox_5);
+    JComboBox cmboBox_5 = new JComboBox();
+    cmboBox_5.setModel(new DefaultComboBoxModel(new String[] {"Minibad et Poussins", "Jeunes (Benjamins à Minimes inclus)", "Jeunes (Cadets à Juniors inclus)", "Seniors", "Vétérans"}));
+    cmboBox_5.setToolTipText("Il est possible de sélectionner plusieurs catégories d'âge avec Ctrl + clic gauche.");
+    cmboBox_5.setBounds(229, 261, 296, 22);
+    getContentPane().add(cmboBox_5);
+    
+    JButton btnRetourAccueil = new JButton("Retour accueil");
+    btnRetourAccueil.setBounds(229, 352, 113, 25);
+    getContentPane().add(btnRetourAccueil);
 
 //    this.getContentPane().add(bouton);
 //
