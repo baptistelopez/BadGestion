@@ -36,7 +36,7 @@ import java.awt.SystemColor;
 import javax.swing.UIManager;
 import javax.swing.JCheckBox;
 
-public class fenetreAuthentificationLogiciel extends JDialog {
+public class fenetreAuthentificationLogiciel extends JFrame {
 
 	private JFrame frameAuthLogiciel;
 	private JPasswordField pwdFldAuthLogicielMdp;
@@ -139,16 +139,16 @@ public class fenetreAuthentificationLogiciel extends JDialog {
  
             public void actionPerformed(ActionEvent e) 
             {
-                if ( (authentification.authenticate (getUsername (), getPassword ()) )) 
+                if ( authentification.authenticate (getUsername (), getPassword ()) )
                 {
-//                	succeeded = true;
+                	succeeded = true;
 //                    JOptionPane.showMessageDialog(fenetreAuthentificationLogiciel.this,
 //                            "Bonjour/bonsoir " + getUsername () + "!",
 //                            "Authentification",
 //                            JOptionPane.INFORMATION_MESSAGE);
-
-//                  if (isSucceeded())
-//                  {
+                }
+                  if (isSucceeded())
+                  {
                     fenAccueil = new fenetres.FenetreAccueil();
                     fenAccueil.setVisible(true);
                     fenAccueil.setSize(800, 600);

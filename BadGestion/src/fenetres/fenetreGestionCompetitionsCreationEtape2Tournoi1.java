@@ -21,6 +21,10 @@ import javax.swing.JCheckBox;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
+import org.jdatepicker.JDatePanel;
+import org.jdatepicker.JDatePicker;
+import org.jdatepicker.UtilDateModel;
+
 public class fenetreGestionCompetitionsCreationEtape2Tournoi1 extends JFrame implements ActionListener, ItemListener {
 	private Fenetre2 fen;
 	private JTextField textField;
@@ -30,6 +34,7 @@ public class fenetreGestionCompetitionsCreationEtape2Tournoi1 extends JFrame imp
 	private JTextField textField_4;
 	private JTextField textField_5;
 	private JTextField textField_6;
+	private JDatePicker textField_7;
 
 //  private JButton bouton = new JButton("Appel à la corpsFenetreGestionCompetitions");
 
@@ -70,33 +75,22 @@ public class fenetreGestionCompetitionsCreationEtape2Tournoi1 extends JFrame imp
     lblModeDeComptition.setBounds(25, 131, 145, 34);
     getContentPane().add(lblModeDeComptition);
     
-    JLabel lblNiveauGographique = new JLabel("Portée géographique : ");
-    lblNiveauGographique.setBounds(25, 172, 145, 34);
-    getContentPane().add(lblNiveauGographique);
-    
-    JComboBox comboBox_2 = new JComboBox();
-    // à passer en énum lorsque l'énum correspondante sera créée dans la bonne classe d'objets
-    comboBox_2.setModel(new DefaultComboBoxModel(new String[] {"Interne", "Locale", "Départementale", "Régionale", "Nationale", "Continentale", "Internationale"}));
-    comboBox_2.setToolTipText("La portée correspond à l'étendue d'influence voulue pour la compétition.\r\n\r\nChoisissez entre :\r\n- Interne (au sein d'un seul club)\r\n- Locale (en France : niveau d'une ou deux ville(s)/club(s))\r\n- Départementale (en France : niveau d'un département/CODEP)\r\n- Régionale (en France : niveau d'une région/Ligue)\r\n- Nationale (en France : niveau du pays/Fédération Française de Badminton (FFBad) ; à l'étranger : niveau d'un pays/d'une fédération nationale)\r\n- Continentale (en France : niveau du continent/Badminton Europe (BE) ; à l'étranger : niveau d'un continent/d'une fédération continentale)\r\n- Internationale (niveau mondial/Badminton World Federation (BWF))");
-    comboBox_2.setBounds(265, 178, 296, 22);
-    getContentPane().add(comboBox_2);
-    
     JLabel lblNumAutorisationCompetition = new JLabel("N° dossier d'autorisation : ");
     lblNumAutorisationCompetition.setBounds(25, 49, 175, 34);
     getContentPane().add(lblNumAutorisationCompetition);
     
-    JLabel lblFormeDeComptition = new JLabel("Forme de compétition : ");
-    lblFormeDeComptition.setBounds(25, 213, 145, 34);
+    JLabel lblFormeDeComptition = new JLabel("Forme de la compétition : ");
+    lblFormeDeComptition.setBounds(25, 172, 156, 34);
     getContentPane().add(lblFormeDeComptition);
     
     JComboBox comboBox_4 = new JComboBox();
     comboBox_4.setModel(new DefaultComboBoxModel(new String[] {"Ronde suisse", "Ronde italienne", "Poules", "Poules puis élimination directe", "Élimination directe uniquement", "Poule(s) unique(s)", "Rencontres entre équipes"}));
     comboBox_4.setToolTipText("Tournoi\r\nChampionnat");
-    comboBox_4.setBounds(265, 219, 296, 22);
+    comboBox_4.setBounds(265, 178, 296, 22);
     getContentPane().add(comboBox_4);
     
-    JLabel lblNomDeComptition = new JLabel("Organisateur(s) de compétition : ");
-    lblNomDeComptition.setBounds(25, 254, 145, 34);
+    JLabel lblNomDeComptition = new JLabel("Organisateur(s) de la compétition : ");
+    lblNomDeComptition.setBounds(25, 213, 206, 34);
     getContentPane().add(lblNomDeComptition);
     
     textField = new JTextField();
@@ -206,22 +200,40 @@ chckbxDiffTpsReposDisciplines.addItemListener
     textField_5 = new JTextField();
     textField_5.setToolTipText("S'il est déjà existant sous Poona mais pas encore répertorié dans le logiciel (première modification via le logiciel d'une compétition dont le dossier existe déjà sur Poona), vous pouvez le saisir, cela remplira automatiquement ceux des champs de formulaires restants qui sont partagés entre le logiciel et Poona.\r\nS'il est déjà existant et répertorié dans le logiciel, le champ sera rempli, grisé et inactif.\r\nSinon, s'il n'existe pas encore, le champ est vide. \r\nLe n° correspondant sera créé automatiquement à la fin du processus, lors de la transmission des informations saisies à Poona.");
     textField_5.setColumns(10);
-    textField_5.setBounds(265, 260, 296, 22);
+    textField_5.setBounds(265, 219, 296, 22);
     getContentPane().add(textField_5);
     
     JLabel lblJugesarbitresDeLa = new JLabel("Juge(s)-Arbitre(s) de la compétition : ");
-    lblJugesarbitresDeLa.setBounds(25, 295, 228, 34);
+    lblJugesarbitresDeLa.setBounds(25, 254, 228, 34);
     getContentPane().add(lblJugesarbitresDeLa);
     
     textField_6 = new JTextField();
     textField_6.setToolTipText("S'il est déjà existant sous Poona mais pas encore répertorié dans le logiciel (première modification via le logiciel d'une compétition dont le dossier existe déjà sur Poona), vous pouvez le saisir.\r\nS'il est déjà existant et répertorié dans le logiciel, le champ sera rempli, grisé et inactif.\r\nSinon, s'il n'existe pas encore, le champ est vide.");
     textField_6.setColumns(10);
-    textField_6.setBounds(265, 301, 296, 22);
+    textField_6.setBounds(265, 260, 296, 22);
     getContentPane().add(textField_6);
     
     JButton btnPrecedent = new JButton("Précédent");
     btnPrecedent.setBounds(265, 421, 97, 25);
     getContentPane().add(btnPrecedent);
+    
+    JLabel lblDatesDeLa = new JLabel("Date(s) de la compétition : ");
+    lblDatesDeLa.setBounds(25, 295, 228, 34);
+    getContentPane().add(lblDatesDeLa);
+    
+//    textField_7 = new JDatePicker();
+//    textField_7.getButton().addActionListener(new ActionListener() {
+//    	public void actionPerformed(ActionEvent arg0) {
+//    	}
+//    });
+//    textField_7.setToolTipText("S'il est déjà existant sous Poona mais pas encore répertorié dans le logiciel (première modification via le logiciel d'une compétition dont le dossier existe déjà sur Poona), vous pouvez le saisir.\r\nS'il est déjà existant et répertorié dans le logiciel, le champ sera rempli, grisé et inactif.\r\nSinon, s'il n'existe pas encore, le champ est vide.");
+//    textField_7.setBounds(265, 301, 296, 22);
+//    UtilDateModel model = new UtilDateModel();
+//    JDatePanel datePanel = new JDatePanel(model);
+//    JDatePicker datePicker = new JDatePicker(datePanel);
+//     
+//    frame.add(datePicker);
+    getContentPane().add(textField_7);
     
     
 
