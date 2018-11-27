@@ -1,9 +1,0 @@
-/**
- * 
- */
-/**
- * @author blopez
- *
- */
-//module GestionBadminton {
-//}
