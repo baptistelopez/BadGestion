@@ -1,16 +1,39 @@
 package fenetres;
 
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.HeadlessException;
+import java.awt.EventQueue;
 import java.awt.FlowLayout;
+import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+import java.text.DateFormat; 
+import java.text.SimpleDateFormat;
+import java.text.ParseException;
+
+import java.util.Calendar; 
+import java.util.Date;
+import java.util.Properties;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import fenetres.corpsFenetreGestionCompetitions;
-import objets.objetCompetitions;
 import javax.swing.JLabel;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
@@ -18,15 +41,27 @@ import javax.swing.JTextField;
 import javax.swing.UIManager;
 import javax.swing.JSeparator;
 import javax.swing.JCheckBox;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
+import javax.swing.UnsupportedLookAndFeelException;
+import javax.swing.JFormattedTextField.AbstractFormatter;
 
 import org.jdatepicker.JDatePanel;
 import org.jdatepicker.JDatePicker;
-import org.jdatepicker.UtilDateModel;
+//import org.jdatepicker.UtilDateModel;
+import org.jdatepicker.impl.JDatePanelImpl;
+import org.jdatepicker.impl.JDatePickerImpl;
+import org.jdatepicker.impl.UtilDateModel;
+
+//import net.sourceforge.jdatepicker.*; 
+//import net.sourceforge.jdatepicker.graphics.*; 
+//import net.sourceforge.jdatepicker.impl.*; 
+//import net.sourceforge.jdatepicker.util.*;
+
+//import fenetres.corpsFenetreGestionCompetitions;
+import objets.objetCompetitions;
+import javax.swing.ImageIcon;
 
 public class fenetreGestionCompetitionsCreationEtape2Tournoi1 extends JFrame implements ActionListener, ItemListener {
-	private Fenetre2 fen;
+//	private Fenetre2 fen;
 	private JTextField textField;
 	private JTextField textField_1;
 	private JTextField textField_2;
@@ -34,7 +69,12 @@ public class fenetreGestionCompetitionsCreationEtape2Tournoi1 extends JFrame imp
 	private JTextField textField_4;
 	private JTextField textField_5;
 	private JTextField textField_6;
-	private JDatePicker textField_7;
+//	private JDatePicker textField_7;
+	private JDatePicker textField_8;
+  JLabel CheckDate; JButton check;
+  public UtilDateModel model;
+  public JDatePanelImpl datePanel;
+  public JDatePickerImpl datePicker;
 
 //  private JButton bouton = new JButton("Appel à la corpsFenetreGestionCompetitions");
 
@@ -42,14 +82,177 @@ public class fenetreGestionCompetitionsCreationEtape2Tournoi1 extends JFrame imp
   public fenetreGestionCompetitionsCreationEtape2Tournoi1()
   {
 	  
-	  try 
-      {
-		  UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
+//	  try 
+//      {
+//		  UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
+//
+//		}
+//      catch (Exception e) 
+//      {
+//		}
+	  
+	  // début https://stackoverflow.com/questions/48915874/how-do-i-insert-date-from-jdatepicker-to-mysql-database-am-using-java-swing
+	  
+//	  import java.awt.Dimension;
+//	  import java.awt.EventQueue;
+//	  import java.awt.Graphics;
+//	  import java.awt.Graphics2D;
+//	  import java.awt.GridBagLayout;
+//	  import java.text.ParseException;
+//	  import java.text.SimpleDateFormat;
+//	  import java.util.Calendar;
+//	  import java.util.Properties;
+//	  import javax.swing.JFormattedTextField.AbstractFormatter;
+//	  import javax.swing.JFrame;
+//	  import javax.swing.JPanel;
+//	  import javax.swing.UIManager;
+//	  import javax.swing.UnsupportedLookAndFeelException;
+//	  import org.jdatepicker.impl.JDatePanelImpl;
+//	  import org.jdatepicker.impl.JDatePickerImpl;
+//	  import org.jdatepicker.impl.UtilDateModel;
+	  
+//	  public Test() {
+	        EventQueue.invokeLater(new Runnable() {
+	            @Override
+	            public void run() {
+	                try {
+	                    UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+	                } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException ex) {
+	                    ex.printStackTrace();
+	                }
 
-		}
-      catch (Exception e) 
-      {
-		}
+//	                JFrame frame = new JFrame("Testing");
+//	                frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//	                frame.add(new TestPane());
+//	                frame.pack();
+//	                frame.setLocationRelativeTo(null);
+//	                frame.setVisible(true);
+	            }
+	        });
+//	    }
+	        
+//	        public class TestPane extends JPanel {
+//
+//	            private Connection con;
+//
+//	            public TestPane() throws SQLException {
+//	                make();
+//
+//	                setLayout(new GridBagLayout());
+//	                GridBagConstraints gbc = new GridBagConstraints();
+//	                gbc.gridx = 0;
+//	                gbc.gridy = 0;
+//
+//	                btn = new JButton("Add");
+//
+//	                UtilDateModel model = new UtilDateModel();
+//	                Properties p = new Properties();
+//	                p.put("text.today", "Today");
+//	                p.put("text.month", "Month");
+//	                p.put("text.year", "Year");
+//	                JDatePanelImpl datePanel = new JDatePanelImpl(model, p);
+//	                JDatePickerImpl datePicker = new JDatePickerImpl(datePanel, new DateLabelFormatter());
+//
+//	                JPanel top = new JPanel();
+//
+//	                top.add(datePicker);
+//	                top.add(btn);
+//
+//	                add(top, gbc);
+//
+//	                input = new JLabel("---");
+//	                output = new JLabel("---");
+//
+//	                JPanel bottom = new JPanel();
+//	                bottom.add(input);
+//	                bottom.add(output);
+//
+//	                gbc.gridx = 0;
+//	                gbc.gridy = 1;
+//	                add(bottom, gbc);
+//
+//	                btn.addActionListener(new ActionListener() {
+//	                    public void actionPerformed(ActionEvent evt) {
+//	                        try {
+//	                            // String text = datee;
+//	                            // DateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
+//	                            // Date myDate = formatter.parse(text);
+//	                            java.util.Date datee = (java.util.Date) datePicker.getModel().getValue();
+//	                            if (datee != null) {
+//	                                java.sql.Date sqlDate = new java.sql.Date(datee.getTime());
+//
+//	                                String sql = "INSERT INTO Invoice"
+//	                                                + "(Issuedate)"
+//	                                                + "VALUES (?)";
+//
+//	                                input.setText(sqlDate.toString());
+//
+//	                                try (PreparedStatement stmt = con.prepareStatement(sql)) {
+//	                                    stmt.setDate(1, sqlDate);
+//	                                    int rowCount = stmt.executeUpdate();
+//	                                    System.out.println(rowCount);
+//	                                    con.commit();
+//	                                }
+//
+//	                                select();
+//
+//	                            } else {
+//	                                JOptionPane.showMessageDialog(TestPane.this, "You need to select a date");
+//	                            }
+//	                        } catch (SQLException | HeadlessException ex) {
+//	                            ex.printStackTrace();
+//	                            JOptionPane.showMessageDialog(TestPane.this, ex);
+//
+//	                        }
+//	                    }
+//	                });
+//	            }
+//
+//	            protected void select() throws SQLException {
+//	                try (PreparedStatement stmt = con.prepareStatement("select * from Invoice")) {
+//	                    try (ResultSet rs = stmt.executeQuery()) {
+//	                        while (rs.next()) {
+//	                            java.sql.Date date = rs.getDate(1);
+//	                            output.setText(date.toString());
+//	                        }
+//	                    }
+//	                }
+//	            }
+//
+//	            protected void make() throws SQLException {
+//	                con = DriverManager.getConnection("jdbc:h2:mem:");
+//	                try (Statement stmt = con.createStatement()) {
+//	                    boolean result = stmt.execute("create table Invoice( Issuedate date not null )");
+//	                    System.out.println(result);
+//	                    con.commit();
+//	                    select();
+//	                }
+//	            }
+//	        }
+//
+//	        public class DateLabelFormatter extends AbstractFormatter {
+//
+//	            private String datePattern = "yyyy-MM-dd";
+//	            private SimpleDateFormat dateFormatter = new SimpleDateFormat(datePattern);
+//
+//	            @Override
+//	            public Object stringToValue(String text) throws ParseException {
+//	                return dateFormatter.parseObject(text);
+//	            }
+//
+//	            @Override
+//	            public String valueToString(Object value) throws ParseException {
+//	                if (value != null) {
+//	                    Calendar cal = (Calendar) value;
+//	                    return dateFormatter.format(cal.getTime());
+//	                }
+//
+//	                return "";
+//	            }
+//
+//	        }
+//	    }
+	        // fin https://stackoverflow.com/questions/48915874/how-do-i-insert-date-from-jdatepicker-to-mysql-database-am-using-java-swing
 	  
   	setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);      
 
@@ -228,12 +431,88 @@ chckbxDiffTpsReposDisciplines.addItemListener
 //    });
 //    textField_7.setToolTipText("S'il est déjà existant sous Poona mais pas encore répertorié dans le logiciel (première modification via le logiciel d'une compétition dont le dossier existe déjà sur Poona), vous pouvez le saisir.\r\nS'il est déjà existant et répertorié dans le logiciel, le champ sera rempli, grisé et inactif.\r\nSinon, s'il n'existe pas encore, le champ est vide.");
 //    textField_7.setBounds(265, 301, 296, 22);
-//    UtilDateModel model = new UtilDateModel();
-//    JDatePanel datePanel = new JDatePanel(model);
-//    JDatePicker datePicker = new JDatePicker(datePanel);
-//     
-//    frame.add(datePicker);
-    getContentPane().add(textField_7);
+    UtilDateModel model = new UtilDateModel();
+    JDatePanelImpl datePanel = new JDatePanelImpl(model, null);
+    JDatePickerImpl datePicker = new JDatePickerImpl(datePanel, null);
+     
+    getContentPane().add(datePicker);
+    
+//    import javax.swing.*; 
+//    import java.awt.*; 
+//    import java.awt.event.*; 
+//    import net.sourceforge.jdatepicker.*; 
+//    import net.sourceforge.jdatepicker.graphics.*; 
+//    import net.sourceforge.jdatepicker.impl.*; 
+//    import net.sourceforge.jdatepicker.util.*;
+//    import java.text.DateFormat; 
+//    import java.text.SimpleDateFormat;
+//    import java.util.Calendar; 
+//    import java.util.Date;
+    
+//    public class selectDate extends JFrame implements ActionListener
+//    {
+//    JLabel CheckDate; JButton check;
+//    public UtilDateModel model;
+//    public JDatePanelImpl datePanel;
+//    public JDatePickerImpl datePicker;
+    
+//    public selectDate()
+//        {
+//        UtilDateModel model = new UtilDateModel();  
+//        JDatePanelImpl datePanel = new JDatePanelImpl(model);  
+//        JDatePickerImpl datePicker = new JDatePickerImpl(datePanel);
+//        JPanel panel=new JPanel();
+//        CheckDate=new JLabel("Date:");
+//        check=new JButton("CHECK"); 
+//        check.addActionListener(this);
+//        panel.add(CheckDate);
+//        panel.add(datePicker);
+//        panel.add(check);
+//        add(panel);
+//        setBounds(200,150,400,300);
+//        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//        setResizable(false);
+//        setVisible(true); 
+//        }
+//    public void actionPerformed(ActionEvent e) 
+//        {if(check==e.getSource())
+//        {
+//        Date selectedDate = (Date) datePicker.getModel().getValue();
+//        DateFormat df = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
+//        String reportDate = df.format(selectedDate);
+//        JOptionPane.showMessageDialog(null,reportDate);
+//        }}
+//    public static void main(String args[])
+//    {new selectDate();}
+//    }
+    
+//    textField_8 = new JDatePicker();
+//    textField_8.getButton().setText("");
+//    textField_8.getButton().setIcon(new ImageIcon(fenetreGestionCompetitionsCreationEtape2Tournoi1.class.getResource("/ressources/icons8-planner-15.png")));
+//    textField_8.setToolTipText("S'il est déjà existant sous Poona mais pas encore répertorié dans le logiciel (première modification via le logiciel d'une compétition dont le dossier existe déjà sur Poona), vous pouvez le saisir.\r\nS'il est déjà existant et répertorié dans le logiciel, le champ sera rempli, grisé et inactif.\r\nSinon, s'il n'existe pas encore, le champ est vide.");
+//    textField_8.setBounds(265, 301, 206, 22);
+//    getContentPane().add(textField_8);
+//    
+//    JDatePicker datePicker = new JDatePicker();
+//    datePicker.getButton().setIcon(new ImageIcon(fenetreGestionCompetitionsCreationEtape2Tournoi1.class.getResource("/ressources/icons8-planner-15.png")));
+//    datePicker.getButton().setText("");
+//    datePicker.getButton().addActionListener(new ActionListener() {
+//    	public void actionPerformed(ActionEvent arg0) {
+//    	}
+//    });
+//    datePicker.setToolTipText("S'il est déjà existant sous Poona mais pas encore répertorié dans le logiciel (première modification via le logiciel d'une compétition dont le dossier existe déjà sur Poona), vous pouvez le saisir.\r\nS'il est déjà existant et répertorié dans le logiciel, le champ sera rempli, grisé et inactif.\r\nSinon, s'il n'existe pas encore, le champ est vide.");
+//    datePicker.setBounds(265, 344, 206, 22);
+//    getContentPane().add(datePicker);
+    
+    JLabel lblinclus = new JLabel("(inclus)");
+    lblinclus.setBounds(483, 295, 78, 34);
+    getContentPane().add(lblinclus);
+    
+    JLabel label = new JLabel("(inclus)");
+    label.setBounds(483, 338, 78, 34);
+    getContentPane().add(label);
+    
+//    getContentPane().add(textField_7);
     
     
 
@@ -243,13 +522,13 @@ chckbxDiffTpsReposDisciplines.addItemListener
 //
 //      public void actionPerformed(ActionEvent arg0) {
 
-        corpsFenetreGestionCompetitions zd = new corpsFenetreGestionCompetitions(null, "Coucou les ZérOs", true);
-
-        objetCompetitions zInfo = zd.showcorpsFenetreGestionCompetitions(); 
-
-        JOptionPane jop = new JOptionPane();
-
-        jop.showMessageDialog(null, zInfo.toString(), "Informations personnage", JOptionPane.INFORMATION_MESSAGE);
+//        corpsFenetreGestionCompetitions zd = new corpsFenetreGestionCompetitions(null, "Coucou les ZérOs", true);
+//
+//        objetCompetitions zInfo = zd.showcorpsFenetreGestionCompetitions(); 
+//
+//        JOptionPane jop = new JOptionPane();
+//
+//        jop.showMessageDialog(null, zInfo.toString(), "Informations personnage", JOptionPane.INFORMATION_MESSAGE);
 
 //      }         
 
@@ -264,7 +543,7 @@ public void actionPerformed(ActionEvent e) {
 	// TODO Stub de la méthode généré automatiquement
     //Lorsque nous cliquons sur notre bouton, on passe a l'autre fenétre
     this.dispose();
-    fen = new Fenetre2();
+//    fen = new Fenetre2();
 }
 
 public static void main(String[] args) {
