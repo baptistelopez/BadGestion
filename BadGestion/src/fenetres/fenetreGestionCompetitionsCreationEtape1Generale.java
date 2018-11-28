@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import fenetres.corpsFenetreGestionCompetitions;
+//import fenetres.corpsFenetreGestionCompetitions;
 import objets.objetCompetitions;
 import javax.swing.JLabel;
 import javax.swing.JComboBox;
@@ -22,7 +22,7 @@ import javax.swing.UIManager;
 import javax.swing.border.BevelBorder;
 
 public class fenetreGestionCompetitionsCreationEtape1Generale extends JFrame implements ActionListener {
-	private Fenetre2 fen;
+//	private Fenetre2 fen;
 	private JTextField Etp1CreaCompet_NomCompet;
 	private JTextField textField;
 	private JComboBox textField_1;
@@ -187,9 +187,9 @@ public class fenetreGestionCompetitionsCreationEtape1Generale extends JFrame imp
 @Override
 public void actionPerformed(ActionEvent e) {
 	// TODO Stub de la méthode généré automatiquement
-    //Lorsque nous cliquons sur notre bouton, on passe a l'autre fenétre
+//    //Lorsque nous cliquons sur notre bouton, on passe a l'autre fenétre
     this.dispose();
-    fen = new Fenetre2();
+//    fen = new Fenetre2();
 }
 
 public static void main(String[] args) {
