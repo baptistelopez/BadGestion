@@ -58,7 +58,11 @@ import org.jdatepicker.impl.UtilDateModel;
 
 //import fenetres.corpsFenetreGestionCompetitions;
 import objets.objetCompetitions;
+import ressources.DatePicker;
+import ressources.ObservingTextField;
+
 import javax.swing.ImageIcon;
+import org.jdatepicker.util.JDatePickerUtil;
 
 public class fenetreGestionCompetitionsCreationEtape2Tournoi1 extends JFrame implements ActionListener, ItemListener {
 //	private Fenetre2 fen;
@@ -75,6 +79,9 @@ public class fenetreGestionCompetitionsCreationEtape2Tournoi1 extends JFrame imp
   public UtilDateModel model;
   public JDatePanelImpl datePanel;
   public JDatePickerImpl datePicker;
+  private JTextField textField_7;
+//  private JTextField textField_9;
+  private ObservingTextField textField_9;
 
 //  private JButton bouton = new JButton("Appel à la corpsFenetreGestionCompetitions");
 
@@ -431,11 +438,11 @@ chckbxDiffTpsReposDisciplines.addItemListener
 //    });
 //    textField_7.setToolTipText("S'il est déjà existant sous Poona mais pas encore répertorié dans le logiciel (première modification via le logiciel d'une compétition dont le dossier existe déjà sur Poona), vous pouvez le saisir.\r\nS'il est déjà existant et répertorié dans le logiciel, le champ sera rempli, grisé et inactif.\r\nSinon, s'il n'existe pas encore, le champ est vide.");
 //    textField_7.setBounds(265, 301, 296, 22);
-    UtilDateModel model = new UtilDateModel();
-    JDatePanelImpl datePanel = new JDatePanelImpl(model, null);
-    JDatePickerImpl datePicker = new JDatePickerImpl(datePanel, null);
-     
-    getContentPane().add(datePicker);
+    //    UtilDateModel model = new UtilDateModel();
+    //    JDatePanelImpl datePanel = new JDatePanelImpl(model, null);
+    //    JDatePickerImpl datePicker = new JDatePickerImpl(datePanel, null);
+//     
+//    getContentPane().add(datePicker);
     
 //    import javax.swing.*; 
 //    import java.awt.*; 
@@ -505,12 +512,42 @@ chckbxDiffTpsReposDisciplines.addItemListener
 //    getContentPane().add(datePicker);
     
     JLabel lblinclus = new JLabel("(inclus)");
-    lblinclus.setBounds(483, 295, 78, 34);
+    lblinclus.setBounds(509, 295, 52, 34);
     getContentPane().add(lblinclus);
     
     JLabel label = new JLabel("(inclus)");
-    label.setBounds(483, 338, 78, 34);
+    label.setBounds(509, 338, 52, 34);
     getContentPane().add(label);
+    
+    textField_7 = new JTextField();
+    textField_7.setToolTipText("S'il est déjà existant sous Poona mais pas encore répertorié dans le logiciel (première modification via le logiciel d'une compétition dont le dossier existe déjà sur Poona), vous pouvez le saisir.\r\nS'il est déjà existant et répertorié dans le logiciel, le champ sera rempli, grisé et inactif.\r\nSinon, s'il n'existe pas encore, le champ est vide.");
+    textField_7.setColumns(10);
+    textField_7.setBounds(265, 301, 194, 22);
+    getContentPane().add(textField_7);
+    
+//    JDatePickerImpl datePickerImpl = new JDatePickerImpl((JDatePanelImpl) null, (AbstractFormatter) null);
+//    datePickerImpl.setBounds(219, 500, 342, 124);
+//    getContentPane().add(datePickerImpl);
+    
+    textField_9 = new ObservingTextField();
+    textField_9.setToolTipText("S'il est déjà existant sous Poona mais pas encore répertorié dans le logiciel (première modification via le logiciel d'une compétition dont le dossier existe déjà sur Poona), vous pouvez le saisir.\r\nS'il est déjà existant et répertorié dans le logiciel, le champ sera rempli, grisé et inactif.\r\nSinon, s'il n'existe pas encore, le champ est vide.");
+    textField_9.setColumns(10);
+    textField_9.setBounds(265, 344, 194, 22);
+    getContentPane().add(textField_9);
+    
+    JButton button = new JButton("");
+    button.setIcon(new ImageIcon(fenetreGestionCompetitionsCreationEtape2Tournoi1.class.getResource("/ressources/icons8-planner-15.png")));
+    button.addActionListener(new ActionListener() {
+    	public void actionPerformed(ActionEvent arg0) {
+    	}
+    });
+    button.setBounds(464, 300, 31, 25);
+    getContentPane().add(button);
+    
+    JButton button_1 = new JButton("");
+    button_1.setIcon(new ImageIcon(fenetreGestionCompetitionsCreationEtape2Tournoi1.class.getResource("/ressources/icons8-planner-15.png")));
+    button_1.setBounds(464, 343, 31, 25);
+    getContentPane().add(button_1);
     
 //    getContentPane().add(textField_7);
     

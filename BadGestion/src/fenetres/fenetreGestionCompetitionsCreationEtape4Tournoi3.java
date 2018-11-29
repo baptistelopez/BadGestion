@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import fenetres.corpsFenetreGestionCompetitions;
+//import fenetres.corpsFenetreGestionCompetitions;
 import objets.objetCompetitions;
 import javax.swing.JLabel;
 import javax.swing.JComboBox;
@@ -19,7 +19,7 @@ import javax.swing.UIManager;
 import javax.swing.JSeparator;
 
 public class fenetreGestionCompetitionsCreationEtape4Tournoi3 extends JFrame implements ActionListener {
-	private Fenetre2 fen;
+//	private Fenetre2 fen;
 	private JTextField textField;
 
 //  private JButton bouton = new JButton("Appel à la corpsFenetreGestionCompetitions");
@@ -113,13 +113,13 @@ public class fenetreGestionCompetitionsCreationEtape4Tournoi3 extends JFrame imp
 //
 //      public void actionPerformed(ActionEvent arg0) {
 
-        corpsFenetreGestionCompetitions zd = new corpsFenetreGestionCompetitions(null, "Coucou les ZérOs", true);
-
-        objetCompetitions zInfo = zd.showcorpsFenetreGestionCompetitions(); 
-
-        JOptionPane jop = new JOptionPane();
-
-        jop.showMessageDialog(null, zInfo.toString(), "Informations personnage", JOptionPane.INFORMATION_MESSAGE);
+//        corpsFenetreGestionCompetitions zd = new corpsFenetreGestionCompetitions(null, "Coucou les ZérOs", true);
+//
+//        objetCompetitions zInfo = zd.showcorpsFenetreGestionCompetitions(); 
+//
+//        JOptionPane jop = new JOptionPane();
+//
+//        jop.showMessageDialog(null, zInfo.toString(), "Informations personnage", JOptionPane.INFORMATION_MESSAGE);
 
 //      }         
 
@@ -134,7 +134,7 @@ public void actionPerformed(ActionEvent e) {
 	// TODO Stub de la méthode généré automatiquement
     //Lorsque nous cliquons sur notre bouton, on passe a l'autre fenétre
     this.dispose();
-    fen = new Fenetre2();
+//    fen = new Fenetre2();
 }
 
 public static void main(String[] args) {
