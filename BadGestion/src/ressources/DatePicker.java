@@ -41,17 +41,37 @@ import javax.swing.JPanel;
 import javax.swing.JRootPane;
 import javax.swing.SwingConstants;
 import javax.swing.SwingUtilities;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.border.Border;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.event.MouseInputListener;
 
 public class DatePicker extends Observable implements Runnable, WindowFocusListener {
+	
+	public void setLocale(Locale l) {
+        this.locale = l;
+    }
+
+//    public Locale getLocale() {
+////        return this.locale == null ? Locale.US : locale;
+//        return this.locale == null ? Locale.FRANCE : locale;
+//    }
+    
+    public Locale getLocale() {
+        if (this.locale == null) {
+            this.locale = new Locale(System.getProperty("user.language"), System.getProperty("user.country"));
+        }
+        return this.locale;
+    }
+	
     protected static Font plain = new Font("Arial", Font.PLAIN, 10);
     protected static Font bold = new Font("Arial", Font.BOLD, 10);
 
     public static class DayLabel extends JLabel implements MouseInputListener,
             MouseMotionListener {
+    	
         private DatePicker parent;
 
         
@@ -238,6 +258,9 @@ public class DatePicker extends Observable implements Runnable, WindowFocusListe
             premon.setIcon(icon);
             premon.addActionListener(this);
             premon.setPreferredSize(d);
+            // ajout
+            premon.setDefaultLocale(Locale.FRENCH);
+            // fin ajout
             box.add(premon);
 
             add(box, BorderLayout.WEST);
@@ -249,6 +272,9 @@ public class DatePicker extends Observable implements Runnable, WindowFocusListe
             nextmon.setIcon(icon);
             nextmon.setPreferredSize(d);
             nextmon.addActionListener(this);
+            // ajout
+            nextmon.setDefaultLocale(Locale.FRENCH);
+            // fin ajout
             box.add(nextmon);
 
             box.add(Box.createHorizontalStrut(3));
@@ -383,7 +409,8 @@ public class DatePicker extends Observable implements Runnable, WindowFocusListe
 
     private boolean closeOnSelect = true;
 
-    private Locale locale = Locale.US;
+//    private Locale locale = Locale.US;
+    private Locale locale = Locale.FRANCE;
 
     private DateFormat sdf;
 
@@ -394,7 +421,9 @@ public class DatePicker extends Observable implements Runnable, WindowFocusListe
     }
 
     public DatePicker(Observer observer, Date selecteddate) {
-        this(observer, selecteddate, Locale.US);
+//        this(observer, selecteddate, Locale.US);
+//        this(observer, selecteddate, Locale.FRANCE);
+        this(observer, selecteddate, Locale.FRENCH);
     }
 
     public DatePicker(Observer observer, Locale locale) {
@@ -454,7 +483,8 @@ public class DatePicker extends Observable implements Runnable, WindowFocusListe
 
     public Date parseDate(String date) {
         if (sdf == null)
-            sdf = SimpleDateFormat.getDateInstance(SimpleDateFormat.SHORT,
+//            sdf = SimpleDateFormat.getDateInstance(SimpleDateFormat.SHORT,
+            sdf = SimpleDateFormat.getDateInstance(SimpleDateFormat.FULL,
                     locale);
         try {
             return sdf.parse(date);
@@ -467,7 +497,8 @@ public class DatePicker extends Observable implements Runnable, WindowFocusListe
         if (date == null)
             return "";
         if (sdf == null)
-            sdf = SimpleDateFormat.getDateInstance(SimpleDateFormat.SHORT,
+//            sdf = SimpleDateFormat.getDateInstance(SimpleDateFormat.SHORT,
+            sdf = SimpleDateFormat.getDateInstance(SimpleDateFormat.FULL,
                     locale);
         return sdf.format(date);
     }
@@ -490,13 +521,7 @@ public class DatePicker extends Observable implements Runnable, WindowFocusListe
         return new SimpleDateFormat(pattern).format(date.getTime());
     }
 
-    public void setLocale(Locale l) {
-        this.locale = l;
-    }
-
-    public Locale getLocale() {
-        return this.locale == null ? Locale.US : locale;
-    }
+    // ancien emplacement set et get Locale
 
     public void register(Observer observer) {
         if (observer != null)
@@ -588,6 +613,23 @@ public class DatePicker extends Observable implements Runnable, WindowFocusListe
     }
 
     public static void main(String[] argv) {
+    	try {
+            // Set System L&F
+        UIManager.setLookAndFeel(
+            UIManager.getSystemLookAndFeelClassName());
+    } 
+    catch (UnsupportedLookAndFeelException e) {
+       // handle exception
+    }
+    catch (ClassNotFoundException e) {
+       // handle exception
+    }
+    catch (InstantiationException e) {
+       // handle exception
+    }
+    catch (IllegalAccessException e) {
+       // handle exception
+    }
         DatePicker dp = new DatePicker(null);
 
         dp.start(null);

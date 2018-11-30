@@ -29,6 +29,7 @@ import java.text.ParseException;
 
 import java.util.Calendar; 
 import java.util.Date;
+import java.util.Locale;
 import java.util.Properties;
 
 import javax.swing.JButton;
@@ -79,7 +80,8 @@ public class fenetreGestionCompetitionsCreationEtape2Tournoi1 extends JFrame imp
   public UtilDateModel model;
   public JDatePanelImpl datePanel;
   public JDatePickerImpl datePicker;
-  private JTextField textField_7;
+//  private JTextField textField_7;
+  private ObservingTextField textField_7;
 //  private JTextField textField_9;
   private ObservingTextField textField_9;
 
@@ -519,11 +521,44 @@ chckbxDiffTpsReposDisciplines.addItemListener
     label.setBounds(509, 338, 52, 34);
     getContentPane().add(label);
     
-    textField_7 = new JTextField();
+    textField_7 = new ObservingTextField();
     textField_7.setToolTipText("S'il est déjà existant sous Poona mais pas encore répertorié dans le logiciel (première modification via le logiciel d'une compétition dont le dossier existe déjà sur Poona), vous pouvez le saisir.\r\nS'il est déjà existant et répertorié dans le logiciel, le champ sera rempli, grisé et inactif.\r\nSinon, s'il n'existe pas encore, le champ est vide.");
     textField_7.setColumns(10);
     textField_7.setBounds(265, 301, 194, 22);
     getContentPane().add(textField_7);
+    
+    JButton button_datedebutcompet = new JButton("");
+    button_datedebutcompet.addActionListener(new ActionListener() {
+    	public void actionPerformed(ActionEvent arg0) {
+    		String lang = null;
+//    		final Locale locale = getLocale(lang);
+    		final Locale locale = getLocale();
+    		DatePicker dp = new DatePicker(textField_7, locale);
+    		// previously selected date
+    		Date selectedDate = dp.parseDate(textField_7.getText());
+    		dp.setSelectedDate(selectedDate);
+//    		dp.setDefaultLocale(Locale.FRENCH);
+    		dp.start(textField_7);
+    	}
+//    	private Locale getLocale(String loc) {
+//    		if (loc != null && loc.length() > 0)
+//    			return new Locale(loc);
+//    		else
+////    			return Locale.FRANCE;
+//    			return Locale.FRENCH;
+//    		}
+    	
+//        public Locale getLocale() {
+//            if (this.locale == null) {
+//                this.locale = new Locale(System.getProperty("user.language"), System.getProperty("user.country"));
+//            }
+//            return this.locale;
+//        }
+        ;
+    });
+    button_datedebutcompet.setIcon(new ImageIcon(fenetreGestionCompetitionsCreationEtape2Tournoi1.class.getResource("/ressources/icons8-planner-15.png")));
+    button_datedebutcompet.setBounds(464, 300, 31, 25);
+    getContentPane().add(button_datedebutcompet);
     
 //    JDatePickerImpl datePickerImpl = new JDatePickerImpl((JDatePanelImpl) null, (AbstractFormatter) null);
 //    datePickerImpl.setBounds(219, 500, 342, 124);
@@ -535,19 +570,27 @@ chckbxDiffTpsReposDisciplines.addItemListener
     textField_9.setBounds(265, 344, 194, 22);
     getContentPane().add(textField_9);
     
-    JButton button = new JButton("");
-    button.setIcon(new ImageIcon(fenetreGestionCompetitionsCreationEtape2Tournoi1.class.getResource("/ressources/icons8-planner-15.png")));
-    button.addActionListener(new ActionListener() {
+    JButton button_datefincompet = new JButton("");
+    button_datefincompet.setIcon(new ImageIcon(fenetreGestionCompetitionsCreationEtape2Tournoi1.class.getResource("/ressources/icons8-planner-15.png")));
+    button_datefincompet.addActionListener(new ActionListener() {
     	public void actionPerformed(ActionEvent arg0) {
+    		String lang = null;
+    		final Locale locale = getLocale(lang);
+    		DatePicker dp = new DatePicker(textField_9, locale);
+    		// previously selected date
+    		Date selectedDate = dp.parseDate(textField_9.getText());
+    		dp.setSelectedDate(selectedDate);
+    		dp.start(textField_9);
     	}
+    	private Locale getLocale(String loc) {
+    		if (loc != null && loc.length() > 0)
+    			return new Locale(loc);
+    		else
+    			return Locale.FRANCE;
+    		};
     });
-    button.setBounds(464, 300, 31, 25);
-    getContentPane().add(button);
-    
-    JButton button_1 = new JButton("");
-    button_1.setIcon(new ImageIcon(fenetreGestionCompetitionsCreationEtape2Tournoi1.class.getResource("/ressources/icons8-planner-15.png")));
-    button_1.setBounds(464, 343, 31, 25);
-    getContentPane().add(button_1);
+    button_datefincompet.setBounds(464, 343, 31, 25);
+    getContentPane().add(button_datefincompet);
     
 //    getContentPane().add(textField_7);
     
@@ -585,6 +628,8 @@ public void actionPerformed(ActionEvent e) {
 
 public static void main(String[] args) {
     // TODO Auto-generated method stub
+	
+	Locale locale = Locale.getDefault();
       
 	fenetreGestionCompetitionsCreationEtape2Tournoi1 fen= new fenetreGestionCompetitionsCreationEtape2Tournoi1();
 }

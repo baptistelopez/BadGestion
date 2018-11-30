@@ -20,9 +20,21 @@ public class ObservingTextField extends JTextField implements Observer {
     public void update(Observable o, Object arg) {
         Calendar calendar = (Calendar) arg;
         DatePicker dp = (DatePicker) o;
-        System.out.println("picked=" + dp.formatDate(calendar));
+//        System.out.println("picked=" + dp.formatDate(calendar));
+        System.out.println("sélectionnée = " + dp.formatDate(calendar));
         setText(dp.formatDate(calendar));
     }
+    
+    private static Locale getLocale(String loc)
+    {
+        if(loc!=null && loc.length()>0)
+            return new Locale(loc);
+        else
+//            return Locale.US;
+//            return Locale.FRANCE;
+            return Locale.FRENCH;
+    }
+    
 }
 
 //    public static void main(String argv[]) {
@@ -39,7 +51,7 @@ public class ObservingTextField extends JTextField implements Observer {
 //        final ObservingTextField textField = new ObservingTextField();
 //        textField.setColumns(10);
 //        textField.setText("");
-//        textField.setToolTipText("This is a text field that implments Observer interface.");
+//        textField.setToolTipText("This is a text field that implements Observer interface.");
 //        frame.getContentPane().add(textField);
 //
 //        // create a button
@@ -61,15 +73,9 @@ public class ObservingTextField extends JTextField implements Observer {
 //        });
 //        frame.setVisible(true);
 //    }
-//    private static Locale getLocale(String loc)
-//    {
-//        if(loc!=null && loc.length()>0)
-//            return new Locale(loc);
-//        else
-//            return Locale.US;
-//    }
+
+// ancien emplacement getLocale
+
 //}
-
-
 // }
 
