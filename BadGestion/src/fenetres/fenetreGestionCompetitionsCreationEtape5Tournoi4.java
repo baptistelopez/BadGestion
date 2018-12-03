@@ -110,6 +110,10 @@ public class fenetreGestionCompetitionsCreationEtape5Tournoi4 extends JFrame imp
     comboBox_5.setToolTipText("Phase de définition des sorties de poule vers les tableaux finaux (à l'issue du dernier match de la poule).\r\nRappels RGC :\r\n- Le tirage intégral correspond à un tirage au sort total du placement dans les tableaux finaux des joueurs/paires non-TdS à l'origine et/ou non-TdS en sortie de poules, les TdS étant placées ordinalement de haut en bas dans les tableaux finaux (système actuellement utilisé).\r\n- 1er(s)/1ère(s) de poule contre 2ème(s) de poule : le(s) joueurs/paires arrivé(e)(s) 1er(s)/1ère(s)  de poule rencontrent les joueurs/paires arrivé(e)(s) 2ème(s) d'une autre poule (ancien système).");
     comboBox_5.setBounds(370, 176, 296, 22);
     getContentPane().add(comboBox_5);
+    
+    JButton button = new JButton("Précédent");
+    button.setBounds(265, 392, 97, 25);
+    getContentPane().add(button);
 
 //    this.getContentPane().add(bouton);
 //

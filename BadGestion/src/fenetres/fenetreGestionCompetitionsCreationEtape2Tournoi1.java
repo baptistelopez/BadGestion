@@ -67,6 +67,7 @@ import org.jdatepicker.util.JDatePickerUtil;
 
 public class fenetreGestionCompetitionsCreationEtape2Tournoi1 extends JFrame implements ActionListener, ItemListener {
 //	private Fenetre2 fen;
+	private fenetreGestionCompetitionsCreationEtape3Tournoi2 etapeSuivante;
 	private JTextField textField;
 	private JTextField textField_1;
 	private JTextField textField_2;
@@ -624,6 +625,7 @@ public void actionPerformed(ActionEvent e) {
     //Lorsque nous cliquons sur notre bouton, on passe a l'autre fenétre
     this.dispose();
 //    fen = new Fenetre2();
+    etapeSuivante = new fenetreGestionCompetitionsCreationEtape3Tournoi2();
 }
 
 public static void main(String[] args) {

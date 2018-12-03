@@ -17,6 +17,8 @@ import javax.swing.JSeparator;
 
 public class fenetreGestionCompetitionsCreationEtape3Tournoi2 extends JFrame implements ActionListener {
 //	private Fenetre2 fen;
+	private fenetreGestionCompetitionsCreationEtape2Tournoi1 etapePrecedente;
+	private fenetreGestionCompetitionsCreationEtape4Tournoi3 etapeSuivante;
 	private JTextField textField;
 
 //  private JButton bouton = new JButton("Appel à la corpsFenetreGestionCompetitions");
@@ -108,7 +110,21 @@ public class fenetreGestionCompetitionsCreationEtape3Tournoi2 extends JFrame imp
     getContentPane().add(separator);
     
     JButton btnSuivant = new JButton("Suivant");
-    btnSuivant.addActionListener(this);
+//    btnSuivant.addActionListener(this);
+    btnSuivant.addActionListener(new ActionListener() 
+    {
+    	@Override
+    public void actionPerformed(ActionEvent e) 
+    	{
+    	// TODO Stub de la méthode généré automatiquement
+        //Lorsque nous cliquons sur notre bouton, on passe a l'autre fenétre
+//        this.dispose();
+    		dispose();
+//        fen = new Fenetre2();
+        etapeSuivante = new fenetreGestionCompetitionsCreationEtape4Tournoi3();
+    }
+    }
+    		);
     btnSuivant.setBounds(464, 304, 97, 25);
     getContentPane().add(btnSuivant);
 
@@ -140,6 +156,8 @@ public void actionPerformed(ActionEvent e) {
     //Lorsque nous cliquons sur notre bouton, on passe a l'autre fenétre
     this.dispose();
 //    fen = new Fenetre2();
+    etapePrecedente = new fenetreGestionCompetitionsCreationEtape2Tournoi1();
+    etapeSuivante = new fenetreGestionCompetitionsCreationEtape4Tournoi3();
 }
 
 public static void main(String[] args) {

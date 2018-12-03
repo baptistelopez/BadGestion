@@ -23,6 +23,7 @@ import javax.swing.border.BevelBorder;
 
 public class fenetreGestionCompetitionsCreationEtape1Generale extends JFrame implements ActionListener {
 //	private Fenetre2 fen;
+//	private fenetreGestionCompetitionsCreationEtape fenSuivante;
 	private JTextField Etp1CreaCompet_NomCompet;
 	private JTextField textField;
 	private JComboBox textField_1;
@@ -190,6 +191,8 @@ public void actionPerformed(ActionEvent e) {
 //    //Lorsque nous cliquons sur notre bouton, on passe a l'autre fenétre
     this.dispose();
 //    fen = new Fenetre2();
+    // dépend des paramètres et en particulier du type de compét' souhaité par l'utilisateur
+//    fenSuivante
 }
 
 public static void main(String[] args) {
