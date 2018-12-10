@@ -4,6 +4,7 @@
 - désigner arbitres sur l'année
 - gestion de comptes logiciels/web/applicatifs/bases de données (dont permettre ajout de comptes "particuliers" externes (exple : cptes sur sites web de ligues, CODEPs, etc.))
 - interfaçage/rétrocompat' avec Badiste/BadNet/Tournament Planner/BadIC/ICManager/Poona
+- possibilité de déclarer inscription à une compét' publique (y compris différenciée par tableau)
 - gestion des mutations (documentation et implémentation processus concret)
 - gestion de commissions de discipline et litiges/d'IC national/fédé, régions/Ligue et départements/CODEP
 - gestion des salariés/emploi/contractualisation comité
@@ -16,6 +17,7 @@ Notes diverses :
 - dirigeant (président/secrétaire) : documents/processus à prendre en compte : convention sécurité/occupation gymnase - assurances
 - joueurs/dirigeants : tout ce qui tourne autour des assurances et gestion décla blessures au cours de la pratique
 - présence de scoreurs (IC notamment) avec/à la place/parmi JdL
+- possibilité de déclarer inscription à une compét' publique (y compris différenciée par tableau) ==> case à cocher lors de l'inscription en tant que joueur
 
 Notes diverses infobulles champs et étiquettes
 			|
