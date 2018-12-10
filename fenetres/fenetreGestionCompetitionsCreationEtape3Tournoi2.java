@@ -45,26 +45,24 @@ public class fenetreGestionCompetitionsCreationEtape3Tournoi2 extends JFrame imp
     this.setLocationRelativeTo(null);
     getContentPane().setLayout(null);
     
-    JLabel lblNewLabel = new JLabel(" :");
+    JLabel lblNewLabel = new JLabel("Nom :");
     lblNewLabel.setBounds(25, 90, 145, 34);
     getContentPane().add(lblNewLabel);
     
-    JComboBox comboBox = new JComboBox();
-    comboBox.setModel(new DefaultComboBoxModel(new String[] {"1 set de 11 points (1x11)", "1 set de 21 points (1x21)", "3 sets de 15 points (3x15)", "3 sets de 21 points (3x21)", "5 sets de 11 points (5x11) - sans tie break", "5 sets de 11 points (5x11) - avec tie break"}));
+    JTextField comboBox = new JTextField();
     comboBox.setBounds(265, 96, 296, 22);
     getContentPane().add(comboBox);
     
-    JLabel lblModeDeComptition = new JLabel(" : ");
+    JLabel lblModeDeComptition = new JLabel("Prénom : ");
     lblModeDeComptition.setBounds(25, 131, 145, 34);
     getContentPane().add(lblModeDeComptition);
     
-    JComboBox comboBox_1 = new JComboBox();
-    comboBox_1.setModel(new DefaultComboBoxModel(new String[] {"Priorité au vainqueur de la confrontation entre ex-aequo (règles BWF)", "Priorité au meilleur : 1°) au nombre de sets 2°) au nombre de points, 3°) à l'âge"}));
+    JTextField comboBox_1 = new JTextField();
     comboBox_1.setToolTipText("Rappel (cf Documentation bad > Compétitions > Règlement Général des Compétitions (RGC) pour plus de précisions) : en France, le RGC définit le départage des joueurs ou paires en dernier recours à l'âge ; dans le cas d'un tournoi hors vétérans, c'est au bénéfice du joueur le plus jeune, dans le cas d'un tournoi vétérans, c'est au bénéfice du joueur le plus âgé. ");
     comboBox_1.setBounds(265, 137, 296, 22);
     getContentPane().add(comboBox_1);
     
-    JLabel lblNiveauGographique = new JLabel("Portée géographique : ");
+    JLabel lblNiveauGographique = new JLabel(" : ");
     lblNiveauGographique.setBounds(25, 172, 145, 34);
     getContentPane().add(lblNiveauGographique);
     
@@ -85,7 +83,7 @@ public class fenetreGestionCompetitionsCreationEtape3Tournoi2 extends JFrame imp
     comboBox_3.setBounds(265, 260, 296, 22);
     getContentPane().add(comboBox_3);
     
-    JLabel lblFormeDeComptition = new JLabel("Forme de compétition : ");
+    JLabel lblFormeDeComptition = new JLabel(" : ");
     lblFormeDeComptition.setBounds(25, 213, 145, 34);
     getContentPane().add(lblFormeDeComptition);
     

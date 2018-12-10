@@ -27,40 +27,69 @@ package traitements;
 //import javax.swing.border.*;
 //import traitements.authentification;
 import fenetres.fenetreAuthentification;
-import fenetres.fenetreGestionCompetitions;
+import fenetres.FenetreAuthentificationLogiciel;
+import fenetres.fenetreGestionCompetitionsCreationEtape1Generale;
+import fenetres.FenetreAccueil;
 
 import java.awt.FlowLayout;
 
-//import javax.swing.JFrame;
+import javax.swing.JFrame;
 
-import fenetres.corpsFenetreAccueil;
+//import javax.swing.JFrame;
  
 public class principale 
 {
     public static void main (String [] args) 
     {
-//final JFrame fnAccueil = new JFrame("Accueil");
+//JFrame fenAccueil = new JFrame("Accueil");
+FenetreAuthentificationLogiciel fenAuthentifLogiciel = new FenetreAuthentificationLogiciel();
+FenetreAccueil fenAccueil = new FenetreAccueil();
+// final : va avec ligne ci-dessous
+
+//final JFrame fenAccueil = new JFrame("Accueil");
 //        final JButton btnLogin = new JButton("Click to login");
 // 
 //        btnLogin.addActionListener(
 //                new ActionListener(){
 //                    public void actionPerformed(ActionEvent e) {
-                        fenetreAuthentification fenAuthentif = new fenetres.fenetreAuthentification (null);
-                        fenAuthentif.setVisible(true);  
-                        fenAuthentif.setSize(300, 100);
-                        fenAuthentif.setLayout(new FlowLayout());
+                        //FenetreAuthentificationLogiciel fenAuthentifLogiciel = new FenetreAuthentificationLogiciel ();
+                        fenAuthentifLogiciel.setVisible(true);  
+                        fenAuthentifLogiciel.setSize(1280, 800);
+                        fenAuthentifLogiciel.setLayout(new FlowLayout());
     
-                        // if logon successfully
-                        if(fenAuthentif.isSucceeded())
+//                        // if logon successfully
+//                        if(fenAuthentifLogiciel.isSucceeded())
+//                        {
+////                            btnLogin.setText ("Hi " + loginDlg.getUsername() + " !");
+////                        	fenAccueil = new fenetres.FenetreAccueil ();
+////                        	FenetreAccueil fenAccueil = new FenetreAccueil();
+//                        	fenAccueil.setVisible(true);
+//                        }
+                        
+                        if ( (authentification.authenticate (fenAuthentifLogiciel.getUsername (), fenAuthentifLogiciel.getPassword ()) ) && (fenAuthentifLogiciel.isSucceeded()) ) 
                         {
-//                            btnLogin.setText ("Hi " + loginDlg.getUsername() + " !");
-                        	fenetres.corpsFenetreAccueil fenAccueil = new fenetres.corpsFenetreAccueil ();
-                        	fenAccueil.setVisible(true);
+//                            JOptionPane.showMessageDialog(FenetreAuthentificationLogiciel.this,
+//                                    "Bonjour/bonsoir " + getUsername () + "!",
+//                                    "Authentification",
+//                                    JOptionPane.INFORMATION_MESSAGE);
+//                        	fenAuthentifLogiciel.succeeded = true;
+//                          if (isSucceeded())
+//                          {
+//                            fenAccueil = new fenetres.FenetreAccueil();
+                            
+                            
+                            //fenetres.FenetreAccueil fenAccueil = new fenetres.FenetreAccueil();
+                            fenAccueil.setVisible(true);
+                            fenAccueil.setSize(800, 600);
+                            
+                            fenAuthentifLogiciel.dispose ();
+                            //frameAuthLogiciel.dispose ();
+//                        }
                         }
                         
 //    );
                         
-                        fenetreGestionCompetitions fen = new fenetreGestionCompetitions();
+//                        fenetreGestionCompetitionsCreationEtape1Generale fen = new fenetreGestionCompetitionsCreationEtape1Generale();
  
     }
     

@@ -17,10 +17,12 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.JTextField;
 import javax.swing.UIManager;
 import javax.swing.JSeparator;
+import javax.swing.JCheckBox;
 
 public class fenetreGestionCompetitionsCreationEtape4Tournoi3 extends JFrame implements ActionListener {
 //	private Fenetre2 fen;
 	private JTextField textField;
+	private JTextField textField_1;
 
 //  private JButton bouton = new JButton("Appel à la corpsFenetreGestionCompetitions");
 
@@ -41,22 +43,22 @@ public class fenetreGestionCompetitionsCreationEtape4Tournoi3 extends JFrame imp
 
     this.setTitle("GestionBad - Gestion compétition > Création compétition > Étape 4 : Définition tableaux");
 
-    this.setSize(881, 684);
+    this.setSize(1327, 684);
 
     this.setLocationRelativeTo(null);
     getContentPane().setLayout(null);
     
     JLabel lblNewLabel = new JLabel("Niveaux :");
-    lblNewLabel.setBounds(25, 90, 145, 34);
+    lblNewLabel.setBounds(25, 175, 145, 34);
     getContentPane().add(lblNewLabel);
     
     JComboBox comboBox = new JComboBox();
     comboBox.setModel(new DefaultComboBoxModel(new String[] {"NC", "P12", "P11", "P10", "P", "D9", "D8", "D7", "D", "R6", "R5", "R4", "R", "N3", "N2", "N1", "N"}));
-    comboBox.setBounds(521, 96, 145, 22);
+    comboBox.setBounds(521, 181, 145, 22);
     getContentPane().add(comboBox);
     
     JLabel lblNumAutorisationCompetition = new JLabel("Intitulé tableau : ");
-    lblNumAutorisationCompetition.setBounds(25, 49, 175, 34);
+    lblNumAutorisationCompetition.setBounds(25, 13, 175, 34);
     getContentPane().add(lblNumAutorisationCompetition);
     
     JComboBox comboBox_3 = new JComboBox();
@@ -65,14 +67,13 @@ public class fenetreGestionCompetitionsCreationEtape4Tournoi3 extends JFrame imp
     comboBox_3.setBounds(370, 350, 296, 22);
     getContentPane().add(comboBox_3);
     
-    JLabel lblFormeDeComptition = new JLabel("Forme de compétition : ");
+    JLabel lblFormeDeComptition = new JLabel("Côtes : ");
     lblFormeDeComptition.setBounds(25, 303, 145, 34);
     getContentPane().add(lblFormeDeComptition);
     
-    JComboBox comboBox_4 = new JComboBox();
-    comboBox_4.setModel(new DefaultComboBoxModel(new String[] {"Ronde suisse", "Ronde italienne", "Poules", "Poules puis élimination directe", "Élimination directe uniquement", "Poule(s) unique(s)"}));
-    comboBox_4.setToolTipText("Tournoi\r\nChampionnat");
-    comboBox_4.setBounds(370, 309, 296, 22);
+    JTextField comboBox_4 = new JTextField();
+    comboBox_4.setToolTipText("Décimal sous forme xx xxx,yy");
+    comboBox_4.setBounds(431, 309, 134, 22);
     getContentPane().add(comboBox_4);
     
     JLabel lblNomDeComptition = new JLabel("Nom de compétition : ");
@@ -81,7 +82,7 @@ public class fenetreGestionCompetitionsCreationEtape4Tournoi3 extends JFrame imp
     
     textField = new JTextField();
     textField.setToolTipText("S'il est déjà existant sous Poona, vous pouvez le saisir.\r\nSinon, s'il n'existe pas encore, le champ est grisé et inactif.");
-    textField.setBounds(370, 55, 296, 22);
+    textField.setBounds(370, 19, 296, 22);
     getContentPane().add(textField);
     textField.setColumns(10);
     
@@ -95,17 +96,63 @@ public class fenetreGestionCompetitionsCreationEtape4Tournoi3 extends JFrame imp
     getContentPane().add(btnSuivant);
     
     JLabel lblMini = new JLabel("Mini :");
-    lblMini.setBounds(370, 90, 145, 34);
+    lblMini.setBounds(370, 175, 145, 34);
     getContentPane().add(lblMini);
     
     JLabel lblMaxi = new JLabel("Maxi :");
-    lblMaxi.setBounds(370, 131, 145, 34);
+    lblMaxi.setBounds(370, 216, 145, 34);
     getContentPane().add(lblMaxi);
     
     JComboBox comboBox_5 = new JComboBox();
     comboBox_5.setModel(new DefaultComboBoxModel(new String[] {"NC", "P12", "P11", "P10", "P", "D9", "D8", "D7", "D", "R6", "R5", "R4", "R", "N3", "N2", "N1", "N"}));
-    comboBox_5.setBounds(521, 137, 145, 22);
+    comboBox_5.setBounds(521, 222, 145, 22);
     getContentPane().add(comboBox_5);
+    
+    JCheckBox chckbxSiimplesHommessh = new JCheckBox("Simples Hommes (SH)");
+    chckbxSiimplesHommessh.setBounds(370, 87, 162, 25);
+    getContentPane().add(chckbxSiimplesHommessh);
+    
+    JCheckBox chckbxSimplesDamessd = new JCheckBox("Simples Dames (SD)");
+    chckbxSimplesDamessd.setBounds(536, 86, 153, 25);
+    getContentPane().add(chckbxSimplesDamessd);
+    
+    JCheckBox chckbxDoublesHommesdh = new JCheckBox("Doubles Hommes (DH)");
+    chckbxDoublesHommesdh.setBounds(693, 87, 162, 25);
+    getContentPane().add(chckbxDoublesHommesdh);
+    
+    JLabel lblDisciplinesOuvertes = new JLabel("Disciplines ouvertes : ");
+    lblDisciplinesOuvertes.setBounds(25, 78, 175, 34);
+    getContentPane().add(lblDisciplinesOuvertes);
+    
+    JCheckBox chckbxDoublesDamesdd = new JCheckBox("Doubles Dames (DD)");
+    chckbxDoublesDamesdd.setBounds(859, 87, 153, 25);
+    getContentPane().add(chckbxDoublesDamesdd);
+    
+    JCheckBox chckbxDoublesMixtesdmx = new JCheckBox("Doubles Mixtes (DMx)");
+    chckbxDoublesMixtesdmx.setBounds(1016, 87, 153, 25);
+    getContentPane().add(chckbxDoublesMixtesdmx);
+    
+    JLabel lblDlimitationTableaux = new JLabel("Délimitation tableaux : ");
+    lblDlimitationTableaux.setBounds(25, 117, 175, 34);
+    getContentPane().add(lblDlimitationTableaux);
+    
+    JCheckBox chckbxClassements = new JCheckBox("Par classements");
+    chckbxClassements.setBounds(370, 126, 134, 25);
+    getContentPane().add(chckbxClassements);
+    
+    JCheckBox chckbxCtes = new JCheckBox("Par côtes");
+    chckbxCtes.setBounds(536, 125, 153, 25);
+    getContentPane().add(chckbxCtes);
+    
+    textField_1 = new JTextField();
+    textField_1.setToolTipText("S'il est déjà existant sous Poona, vous pouvez le saisir.\r\nSinon, s'il n'existe pas encore, le champ est grisé et inactif.");
+    textField_1.setColumns(10);
+    textField_1.setBounds(370, 50, 296, 22);
+    getContentPane().add(textField_1);
+    
+    JLabel lblIntitulTableauPour = new JLabel("Intitulé tableau pour l'affichage : ");
+    lblIntitulTableauPour.setBounds(25, 44, 203, 34);
+    getContentPane().add(lblIntitulTableauPour);
 
 //    this.getContentPane().add(bouton);
 //

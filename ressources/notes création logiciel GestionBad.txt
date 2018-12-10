@@ -7,6 +7,7 @@
 - gestion des mutations (documentation et implémentation processus concret)
 - gestion de commissions de discipline et litiges/d'IC national/fédé, régions/Ligue et départements/CODEP
 - gestion des salariés/emploi/contractualisation comité
+- création de calendriers exportables sur Windows Calendar ou Google Calendar à partir des listes de compétitions des joueurs/officiels
 
 Notes diverses :
 - lors rencontres : arbitres pouvant être différents d'arbitres désignés sur année, possibilité de mentionner un arbitre différent (cf feuilles BadNet)

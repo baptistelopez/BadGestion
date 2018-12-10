@@ -112,7 +112,7 @@ public class fenetreAuthentification extends JDialog
                             "Authentification",
                             JOptionPane.INFORMATION_MESSAGE);
                     succeeded = true;
-                    corpsFenetreAccueil fenAccueil = new fenetres.corpsFenetreAccueil ();
+                    FenetreAccueil fenAccueil = new fenetres.FenetreAccueil ();
                 	fenAccueil.setVisible(true);
                     dispose ();
                 } 
@@ -162,11 +162,14 @@ public class fenetreAuthentification extends JDialog
 //      fenetreAuthentification.getContentPane().add(btnLogin);
 //      fenetreAuthentification.setVisible(true);
         
-        try {
+        try 
+        {
   		  UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
 
-  		} catch (Exception e) {
-  		  }
+  		}
+        catch (Exception e) 
+        {
+  		}
         
     }
  
