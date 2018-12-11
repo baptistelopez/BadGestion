@@ -9,6 +9,7 @@
 - gestion de commissions de discipline et litiges/d'IC national/fédé, régions/Ligue et départements/CODEP
 - gestion des salariés/emploi/contractualisation comité
 - création de calendriers exportables sur Windows Calendar ou Google Calendar à partir des listes de compétitions des joueurs/officiels
+- simulateur classement/côte à l'issue compétition
 
 Notes diverses :
 - lors rencontres : arbitres pouvant être différents d'arbitres désignés sur année, possibilité de mentionner un arbitre différent (cf feuilles BadNet)
@@ -18,6 +19,7 @@ Notes diverses :
 - joueurs/dirigeants : tout ce qui tourne autour des assurances et gestion décla blessures au cours de la pratique
 - présence de scoreurs (IC notamment) avec/à la place/parmi JdL
 - possibilité de déclarer inscription à une compét' publique (y compris différenciée par tableau) ==> case à cocher lors de l'inscription en tant que joueur
+- simulateur classement/côte à l'issue compétition : s'inspirer du simulateur/calculette breton et des stats et données ICManager
 
 Notes diverses infobulles champs et étiquettes
 			|

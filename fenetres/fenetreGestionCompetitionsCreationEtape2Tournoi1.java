@@ -66,6 +66,14 @@ import javax.swing.ImageIcon;
 import ressources.Heures;
 import ressources.Minutes;
 import javax.swing.SwingConstants;
+import javax.swing.Box;
+import java.awt.Choice;
+import javax.swing.JTable;
+import javax.swing.border.LineBorder;
+import java.awt.Color;
+import javax.swing.ListSelectionModel;
+import javax.swing.table.DefaultTableModel;
+import java.awt.SystemColor;
 //import org.jdatepicker.util.JDatePickerUtil;
 
 public class fenetreGestionCompetitionsCreationEtape2Tournoi1 extends JFrame implements ActionListener, ItemListener {
@@ -91,6 +99,13 @@ public class fenetreGestionCompetitionsCreationEtape2Tournoi1 extends JFrame imp
   private JTextField textField_8_MontantInscription;
   private JTextField textField_10_NombreTableauxAutorisesJoueur;
   private JTextField textField_11_NbMaxMatchsParJourParJoueur;
+  private JTextField textField_NbTablMaxAutorisParJoueurDifferencieHFHommes;
+  private JTextField textField_1_NbTablMaxAutorisParJoueurDifferencieHFFemmes;
+  private JTextField textField;
+  private JTextField textField_1;
+  private JTextField textField_5;
+  private JTextField textField_6;
+  private JTable table;
 
 //  private JButton bouton = new JButton("Appel à la corpsFenetreGestionCompetitions");
 
@@ -317,9 +332,10 @@ public class fenetreGestionCompetitionsCreationEtape2Tournoi1 extends JFrame imp
     textField_TempsRepos = new JTextField();
     textField_TempsRepos.setEnabled(false);
     textField_TempsRepos.setText("20");
-    textField_TempsRepos.setToolTipText("En minutes ; voir le RGC (onglet Divers > Documentation bad > Compétitions > RGC) pour plus de précisions règlementaires ==> par défaut, valeur RGC : 20 minutes.");
+    textField_TempsRepos.setToolTipText("En minutes ; voir le RGC (onglet Divers > Documentation bad > Compétitions > RGC) pour plus de précisions règlementaires ==> par défaut, valeurs RGC : 20 minutes, 30 minutes maxi.");
     textField_TempsRepos.setColumns(10);
     textField_TempsRepos.setBounds(368, 137, 45, 22);
+    // à faire valider (InputVerifier, SimpleValidationAPI, JGoodies Validation) : max 30 minutes ==> si saisie d'un nombre supérieur à 30, affichage message erreur et non-prise en compte de la saisie jusqu'à saisie correcte
     getContentPane().add(textField_TempsRepos);
     
     JCheckBox chckbxDiffTpsReposDisciplines = new JCheckBox("Différencié");
@@ -413,16 +429,16 @@ chckbxDiffTpsReposDisciplines.addItemListener
     lblOrganisateursCompetition.setBounds(25, 213, 206, 34);
     getContentPane().add(lblOrganisateursCompetition);
     
-    JButton btnSuivant = new JButton("Suivant");
-    btnSuivant.addActionListener(this);
-    
     textField_5_OrganisateursCompetition = new JTextField();
     textField_5_OrganisateursCompetition.setToolTipText("S'il est déjà existant, répertorié et validé dans le logiciel, le champ sera rempli, grisé et inactif.\r\nSinon, s'il n'existe pas encore, le champ est vide. \r\nLe n° correspondant sera créé automatiquement à la fin du processus, lors de la transmission des informations saisies à Poona.\r\nPour rechercher un organisateur (OC/SOC), taper quelques lettres de son nom, de son prénom ou du nom/sigle de son club (casse indifférente), ou quelques chiffres de son n° de licence ou du n° d'affiliation de son club, puis choisir l'organisateur qui correspond à celui voulu à ajouter.");
     textField_5_OrganisateursCompetition.setColumns(10);
     textField_5_OrganisateursCompetition.setBounds(368, 219, 296, 22);
     getContentPane().add(textField_5_OrganisateursCompetition);
-    btnSuivant.setBounds(534, 763, 97, 25);
-    getContentPane().add(btnSuivant);
+    
+    JButton button_2_AjoutOrganisateurCompetition = new JButton("+");
+    button_2_AjoutOrganisateurCompetition.setToolTipText("Ajouter un tarif");
+    button_2_AjoutOrganisateurCompetition.setBounds(676, 218, 41, 25);
+    getContentPane().add(button_2_AjoutOrganisateurCompetition);
     
     JLabel lblJugesArbitresCompetition = new JLabel("Juge(s)-Arbitre(s) de la compétition : ");
     lblJugesArbitresCompetition.setBounds(25, 254, 228, 34);
@@ -434,14 +450,84 @@ chckbxDiffTpsReposDisciplines.addItemListener
     textField_6_JAsCompetition.setBounds(368, 260, 296, 22);
     getContentPane().add(textField_6_JAsCompetition);
     
-    JButton btnPrecedent = new JButton("Précédent");
-    btnPrecedent.setBounds(335, 763, 97, 25);
-    getContentPane().add(btnPrecedent);
+    JLabel lblAutoarbitragearbitrage = new JLabel("Déroulement des matchs en : ");
+    lblAutoarbitragearbitrage.setBounds(25, 301, 228, 34);
+    getContentPane().add(lblAutoarbitragearbitrage);
     
-    JLabel lblDatesCompetition = new JLabel("Date(s) et horaires prévisionnel(s) de la compétition : ");
+    JComboBox comboBox_3_Autoarbitragearbitrage = new JComboBox();
+    comboBox_3_Autoarbitragearbitrage.setModel(new DefaultComboBoxModel(new String[] {"Auto-arbitrage uniquement", "Arbitrage", "Auto-arbitrage et arbitrage"}));
+    comboBox_3_Autoarbitragearbitrage.setToolTipText("Auto-arbitrage uniquement (si absolument aucun arbitre n'est présent, disponible et disposé à officier sur la compétition, ou si l'arbitrage n'est pas autorisé/souhaité)\r\nArbitrage (si les matchs de la compétition doivent être intégralement arbitrés)\r\nAuto-arbitrage et arbitrage (si un arbitre peut être présent, disponible et disposé à officier sur un ou plusieurs matchs, autrement les matchs se déroulent en auto-arbitrage)");
+    comboBox_3_Autoarbitragearbitrage.setBounds(368, 307, 296, 22);
+    getContentPane().add(comboBox_3_Autoarbitragearbitrage);
+    
+    JLabel lblDatesCompetition = new JLabel("<html>Date(s) et horaires prévisionnel(s)<br>de la compétition :</html>");
     lblDatesCompetition.setToolTipText("Ces dates et horaires, y compris ceux d'ouverture et/ou de convocation des joueurs, peuvent être indiqués selon leur nature dans le Règlement Particulier (RP) et/ou la plaquette d'invitation et/ou l'affiche/les autres moyens de communication de la compétition ; pour les dates et horaires généraux en eux-mêmes, ils doivent respecter le RGC en terme d'autorisation et de dérogation.");
-    lblDatesCompetition.setBounds(25, 343, 311, 34);
+    lblDatesCompetition.setBounds(25, 343, 217, 77);
     getContentPane().add(lblDatesCompetition);
+    
+    JLabel lblDateHeureDebutCompetition = new JLabel("début : ");
+    lblDateHeureDebutCompetition.setBounds(368, 343, 57, 34);
+    getContentPane().add(lblDateHeureDebutCompetition);
+    
+    textField_7_DateDebutCompetition = new ObservingTextField();
+    textField_7_DateDebutCompetition.setToolTipText("S'il est déjà existant sous Poona mais pas encore répertorié dans le logiciel (première modification via le logiciel d'une compétition dont le dossier existe déjà sur Poona), vous pouvez le saisir.\r\nS'il est déjà existant et répertorié dans le logiciel, le champ sera rempli, grisé et inactif.\r\nSinon, s'il n'existe pas encore, le champ est vide.\r\nFormat : jour (en toutes lettres) JJ mois (en toutes lettres) AAAA");
+    textField_7_DateDebutCompetition.setColumns(10);
+    textField_7_DateDebutCompetition.setBounds(430, 349, 194, 22);
+    getContentPane().add(textField_7_DateDebutCompetition);
+    
+    JButton button_datedebutcompetition = new JButton("");
+    button_datedebutcompetition.addActionListener(new ActionListener() {
+    	public void actionPerformed(ActionEvent arg0) {
+    		String lang = null;
+//    		final Locale locale = getLocale(lang);
+    		final Locale locale = getLocale();
+    		DatePicker dp = new DatePicker(textField_7_DateDebutCompetition, locale);
+    		// previously selected date
+    		Date selectedDate = dp.parseDate(textField_7_DateDebutCompetition.getText());
+    		dp.setSelectedDate(selectedDate);
+//    		dp.setDefaultLocale(Locale.FRENCH);
+    		dp.start(textField_7_DateDebutCompetition);
+    	}
+//    	private Locale getLocale(String loc) {
+//    		if (loc != null && loc.length() > 0)
+//    			return new Locale(loc);
+//    		else
+////    			return Locale.FRANCE;
+//    			return Locale.FRENCH;
+//    		}
+    	
+//        public Locale getLocale() {
+//            if (this.locale == null) {
+//                this.locale = new Locale(System.getProperty("user.language"), System.getProperty("user.country"));
+//            }
+//            return this.locale;
+//        }
+        ;
+    });
+    button_datedebutcompetition.setIcon(new ImageIcon(fenetreGestionCompetitionsCreationEtape2Tournoi1.class.getResource("/ressources/icons8-planner-15.png")));
+    button_datedebutcompetition.setBounds(633, 348, 31, 25);
+    getContentPane().add(button_datedebutcompetition);
+    
+    JComboBox comboBox_5_HeureDebutCompetition = new JComboBox();
+    comboBox_5_HeureDebutCompetition.setMaximumRowCount(12);
+    comboBox_5_HeureDebutCompetition.setModel(new DefaultComboBoxModel(new String[] {"00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23"}));
+    comboBox_5_HeureDebutCompetition.setSelectedIndex(8);
+    comboBox_5_HeureDebutCompetition.setToolTipText("Heures (00 à 23)\r\nValeur par défaut : 08h00 (voir RGC)");
+    comboBox_5_HeureDebutCompetition.setBounds(672, 349, 52, 22);
+    getContentPane().add(comboBox_5_HeureDebutCompetition);
+    
+    JLabel lblHDateHeureDebutCompetition = new JLabel("h");
+    lblHDateHeureDebutCompetition.setHorizontalAlignment(SwingConstants.CENTER);
+    lblHDateHeureDebutCompetition.setBounds(725, 343, 23, 34);
+    getContentPane().add(lblHDateHeureDebutCompetition);
+    
+    JComboBox comboBox_7_MinuteDebutCompetition = new JComboBox();
+    comboBox_7_MinuteDebutCompetition.setMaximumRowCount(10);
+    comboBox_7_MinuteDebutCompetition.setModel(new DefaultComboBoxModel(new String[] {"00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59"}));
+    comboBox_7_MinuteDebutCompetition.setSelectedIndex(0);
+    comboBox_7_MinuteDebutCompetition.setToolTipText("Minutes (00 à 59)");
+    comboBox_7_MinuteDebutCompetition.setBounds(749, 349, 52, 22);
+    getContentPane().add(comboBox_7_MinuteDebutCompetition);
     
 //    textField_7 = new JDatePicker();
 //    textField_7.getButton().addActionListener(new ActionListener() {
@@ -527,45 +613,6 @@ chckbxDiffTpsReposDisciplines.addItemListener
     lblInclusDateHeureDebutCompetition.setBounds(809, 343, 52, 34);
     getContentPane().add(lblInclusDateHeureDebutCompetition);
     
-    textField_7_DateDebutCompetition = new ObservingTextField();
-    textField_7_DateDebutCompetition.setToolTipText("S'il est déjà existant sous Poona mais pas encore répertorié dans le logiciel (première modification via le logiciel d'une compétition dont le dossier existe déjà sur Poona), vous pouvez le saisir.\r\nS'il est déjà existant et répertorié dans le logiciel, le champ sera rempli, grisé et inactif.\r\nSinon, s'il n'existe pas encore, le champ est vide.\r\nFormat : jour (en toutes lettres) JJ mois (en toutes lettres) AAAA");
-    textField_7_DateDebutCompetition.setColumns(10);
-    textField_7_DateDebutCompetition.setBounds(430, 349, 194, 22);
-    getContentPane().add(textField_7_DateDebutCompetition);
-    
-    JButton button_datedebutcompetition = new JButton("");
-    button_datedebutcompetition.addActionListener(new ActionListener() {
-    	public void actionPerformed(ActionEvent arg0) {
-    		String lang = null;
-//    		final Locale locale = getLocale(lang);
-    		final Locale locale = getLocale();
-    		DatePicker dp = new DatePicker(textField_7_DateDebutCompetition, locale);
-    		// previously selected date
-    		Date selectedDate = dp.parseDate(textField_7_DateDebutCompetition.getText());
-    		dp.setSelectedDate(selectedDate);
-//    		dp.setDefaultLocale(Locale.FRENCH);
-    		dp.start(textField_7_DateDebutCompetition);
-    	}
-//    	private Locale getLocale(String loc) {
-//    		if (loc != null && loc.length() > 0)
-//    			return new Locale(loc);
-//    		else
-////    			return Locale.FRANCE;
-//    			return Locale.FRENCH;
-//    		}
-    	
-//        public Locale getLocale() {
-//            if (this.locale == null) {
-//                this.locale = new Locale(System.getProperty("user.language"), System.getProperty("user.country"));
-//            }
-//            return this.locale;
-//        }
-        ;
-    });
-    button_datedebutcompetition.setIcon(new ImageIcon(fenetreGestionCompetitionsCreationEtape2Tournoi1.class.getResource("/ressources/icons8-planner-15.png")));
-    button_datedebutcompetition.setBounds(633, 348, 31, 25);
-    getContentPane().add(button_datedebutcompetition);
-    
 //    JDatePickerImpl datePickerImpl = new JDatePickerImpl((JDatePanelImpl) null, (AbstractFormatter) null);
 //    datePickerImpl.setBounds(219, 500, 342, 124);
 //    getContentPane().add(datePickerImpl);
@@ -599,35 +646,31 @@ chckbxDiffTpsReposDisciplines.addItemListener
     getContentPane().add(button_datefincompetition);
     
     JLabel lblTarifsInscriptionCompetition = new JLabel("Tarif(s) d'inscription à la compétition : ");
-    lblTarifsInscriptionCompetition.setBounds(25, 635, 228, 34);
+    lblTarifsInscriptionCompetition.setBounds(25, 700, 228, 34);
     getContentPane().add(lblTarifsInscriptionCompetition);
     
     JComboBox comboBox_1_TypeParticipant = new JComboBox();
     comboBox_1_TypeParticipant.setModel(new DefaultComboBoxModel(new String[] {"Par joueur", "Par équipe"}));
     comboBox_1_TypeParticipant.setToolTipText("Tournoi\r\nChampionnat");
-    comboBox_1_TypeParticipant.setBounds(672, 641, 116, 22);
+    comboBox_1_TypeParticipant.setBounds(672, 706, 116, 22);
     getContentPane().add(comboBox_1_TypeParticipant);
     
     textField_8_MontantInscription = new JTextField();
     textField_8_MontantInscription.setToolTipText("S'il est déjà existant sous Poona mais pas encore répertorié dans le logiciel (première modification via le logiciel d'une compétition dont le dossier existe déjà sur Poona), vous pouvez le saisir.\r\nS'il est déjà existant et répertorié dans le logiciel, le champ sera rempli, grisé et inactif.\r\nSinon, s'il n'existe pas encore, le champ est vide.");
     textField_8_MontantInscription.setColumns(10);
-    textField_8_MontantInscription.setBounds(335, 642, 73, 22);
+    textField_8_MontantInscription.setBounds(335, 706, 73, 22);
     getContentPane().add(textField_8_MontantInscription);
     
     JButton button_AjoutTarifInscription = new JButton("+");
     button_AjoutTarifInscription.setToolTipText("Ajouter un tarif");
-    button_AjoutTarifInscription.setBounds(796, 640, 41, 25);
+    button_AjoutTarifInscription.setBounds(796, 705, 41, 25);
     getContentPane().add(button_AjoutTarifInscription);
     
     JComboBox comboBox_2_TableauTarifInscription = new JComboBox();
     comboBox_2_TableauTarifInscription.setModel(new DefaultComboBoxModel(new String[] {"Simple", "Double", "Mixte"}));
     comboBox_2_TableauTarifInscription.setToolTipText("Tournoi\r\nChampionnat");
-    comboBox_2_TableauTarifInscription.setBounds(464, 642, 97, 22);
+    comboBox_2_TableauTarifInscription.setBounds(464, 706, 97, 22);
     getContentPane().add(comboBox_2_TableauTarifInscription);
-    
-    JLabel lblDateHeureDebutCompetition = new JLabel("début : ");
-    lblDateHeureDebutCompetition.setBounds(368, 343, 57, 34);
-    getContentPane().add(lblDateHeureDebutCompetition);
     
     JLabel lblDateHeureFinCompetition = new JLabel("fin : ");
     lblDateHeureFinCompetition.setBounds(368, 386, 57, 34);
@@ -650,7 +693,7 @@ chckbxDiffTpsReposDisciplines.addItemListener
     getContentPane().add(chckbxNbTablMaxParJoueurDifferencieHF);
     
     JLabel lblNombreMaxMatchsParJourParJoueur = new JLabel("Nombre maximum de matchs par jour pour chaque joueur : ");
-    lblNombreMaxMatchsParJourParJoueur.setBounds(25, 588, 354, 34);
+    lblNombreMaxMatchsParJourParJoueur.setBounds(25, 657, 354, 34);
     getContentPane().add(lblNombreMaxMatchsParJourParJoueur);
     
     textField_11_NbMaxMatchsParJourParJoueur = new JTextField();
@@ -658,11 +701,11 @@ chckbxDiffTpsReposDisciplines.addItemListener
     textField_11_NbMaxMatchsParJourParJoueur.setToolTipText("voir le RGC (onglet Divers > Documentation bad > Compétitions > RGC) pour plus de précisions règlementaires ==> par défaut, la valeur est celle du RGC : 8, et le champ est grisé.");
     textField_11_NbMaxMatchsParJourParJoueur.setText("8");
     textField_11_NbMaxMatchsParJourParJoueur.setColumns(10);
-    textField_11_NbMaxMatchsParJourParJoueur.setBounds(421, 598, 45, 22);
+    textField_11_NbMaxMatchsParJourParJoueur.setBounds(421, 663, 45, 22);
     getContentPane().add(textField_11_NbMaxMatchsParJourParJoueur);
     
     JCheckBox chckbxDerogationJANbMaxMatchsParJourParJoueur = new JCheckBox("Dérogation JA");
-    chckbxDerogationJANbMaxMatchsParJourParJoueur.setBounds(474, 597, 124, 25);
+    chckbxDerogationJANbMaxMatchsParJourParJoueur.setBounds(474, 662, 124, 25);
     getContentPane().add(chckbxDerogationJANbMaxMatchsParJourParJoueur);
     
     JCheckBox chckbxNbTablAutorisesParJoueurDifferencieSeriesClassement = new JCheckBox("Différencié selon séries classement joueurs");
@@ -670,44 +713,16 @@ chckbxDiffTpsReposDisciplines.addItemListener
     chckbxNbTablAutorisesParJoueurDifferencieSeriesClassement.setBounds(368, 508, 287, 25);
     getContentPane().add(chckbxNbTablAutorisesParJoueurDifferencieSeriesClassement);
     
-    JLabel lblAutoarbitragearbitrage = new JLabel("Déroulement des matchs en : ");
-    lblAutoarbitragearbitrage.setBounds(25, 301, 228, 34);
-    getContentPane().add(lblAutoarbitragearbitrage);
-    
-    JComboBox comboBox_3_Autoarbitragearbitrage = new JComboBox();
-    comboBox_3_Autoarbitragearbitrage.setModel(new DefaultComboBoxModel(new String[] {"Auto-arbitrage uniquement", "Arbitrage", "Auto-arbitrage et arbitrage"}));
-    comboBox_3_Autoarbitragearbitrage.setToolTipText("Auto-arbitrage uniquement (si absolument aucun arbitre n'est présent, disponible et disposé à officier sur la compétition, ou si l'arbitrage n'est pas autorisé/souhaité)\r\nArbitrage (si les matchs de la compétition doivent être intégralement arbitrés)\r\nAuto-arbitrage et arbitrage (si un arbitre peut être présent, disponible et disposé à officier sur un ou plusieurs matchs, autrement les matchs se déroulent en auto-arbitrage)");
-    comboBox_3_Autoarbitragearbitrage.setBounds(368, 307, 296, 22);
-    getContentPane().add(comboBox_3_Autoarbitragearbitrage);
-    
-    JComboBox comboBox_5_HeureDebutCompetition = new JComboBox();
-    comboBox_5_HeureDebutCompetition.setMaximumRowCount(12);
-    comboBox_5_HeureDebutCompetition.setEnabled(false);
-    comboBox_5_HeureDebutCompetition.setModel(new DefaultComboBoxModel(new String[] {"00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23"}));
-    comboBox_5_HeureDebutCompetition.setSelectedIndex(8);
-    comboBox_5_HeureDebutCompetition.setToolTipText("Heures (00 à 23)");
-    comboBox_5_HeureDebutCompetition.setBounds(672, 349, 52, 22);
-    getContentPane().add(comboBox_5_HeureDebutCompetition);
-    
     JComboBox comboBox_6_TypeDefinitionTarif = new JComboBox();
     comboBox_6_TypeDefinitionTarif.setModel(new DefaultComboBoxModel(new String[] {"Remise", "Taux", "Valeur"}));
     comboBox_6_TypeDefinitionTarif.setToolTipText("Remise\r\nTaux : \r\nValeur : si vous voulez uniquement considérer le tarif final");
-    comboBox_6_TypeDefinitionTarif.setBounds(567, 641, 97, 22);
+    comboBox_6_TypeDefinitionTarif.setBounds(567, 706, 97, 22);
     getContentPane().add(comboBox_6_TypeDefinitionTarif);
-    
-    JComboBox comboBox_7_MinuteDebutCompetition = new JComboBox();
-    comboBox_7_MinuteDebutCompetition.setEnabled(false);
-    comboBox_7_MinuteDebutCompetition.setMaximumRowCount(10);
-    comboBox_7_MinuteDebutCompetition.setModel(new DefaultComboBoxModel(new String[] {"00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59"}));
-    comboBox_7_MinuteDebutCompetition.setSelectedIndex(0);
-    comboBox_7_MinuteDebutCompetition.setToolTipText("Minutes (00 à 59)");
-    comboBox_7_MinuteDebutCompetition.setBounds(749, 349, 52, 22);
-    getContentPane().add(comboBox_7_MinuteDebutCompetition);
     
     JComboBox comboBox_8_HeureFinCompetition = new JComboBox();
     comboBox_8_HeureFinCompetition.setMaximumRowCount(12);
-    comboBox_8_HeureFinCompetition.setEnabled(false);
-    comboBox_8_HeureFinCompetition.setModel(new DefaultComboBoxModel(Heures.values()));
+    comboBox_8_HeureFinCompetition.setModel(new DefaultComboBoxModel(new String[] {"00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23"}));
+    comboBox_8_HeureFinCompetition.setSelectedIndex(19);
     comboBox_8_HeureFinCompetition.setToolTipText("Heures (00 à 23)\r\nValeur par défaut : 19h (voir RGC), grisé et inactif (activable et modifiable si dérogation JA)");
     comboBox_8_HeureFinCompetition.setBounds(672, 389, 52, 22);
     getContentPane().add(comboBox_8_HeureFinCompetition);
@@ -717,25 +732,14 @@ chckbxDiffTpsReposDisciplines.addItemListener
     button_1_AjoutJACompetition.setBounds(676, 259, 41, 25);
     getContentPane().add(button_1_AjoutJACompetition);
     
-    JButton button_2_AjoutOrganisateurCompetition = new JButton("+");
-    button_2_AjoutOrganisateurCompetition.setToolTipText("Ajouter un tarif");
-    button_2_AjoutOrganisateurCompetition.setBounds(676, 218, 41, 25);
-    getContentPane().add(button_2_AjoutOrganisateurCompetition);
-    
-    JLabel lblHDateHeureDebutCompetition = new JLabel("h");
-    lblHDateHeureDebutCompetition.setHorizontalAlignment(SwingConstants.CENTER);
-    lblHDateHeureDebutCompetition.setBounds(725, 343, 23, 34);
-    getContentPane().add(lblHDateHeureDebutCompetition);
-    
     JLabel labelDateHeureFinCompetition = new JLabel("h");
     labelDateHeureFinCompetition.setHorizontalAlignment(SwingConstants.CENTER);
     labelDateHeureFinCompetition.setBounds(725, 384, 23, 34);
     getContentPane().add(labelDateHeureFinCompetition);
     
     JComboBox comboBox_9_MinuteFinCompetition = new JComboBox();
-    comboBox_9_MinuteFinCompetition.setEnabled(false);
     comboBox_9_MinuteFinCompetition.setMaximumRowCount(10);
-    comboBox_9_MinuteFinCompetition.setModel(new DefaultComboBoxModel(Minutes.values()));
+    comboBox_9_MinuteFinCompetition.setModel(new DefaultComboBoxModel(new String[] {"00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59"}));
     comboBox_9_MinuteFinCompetition.setToolTipText("Minutes (00 à 59)");
     comboBox_9_MinuteFinCompetition.setBounds(749, 390, 52, 22);
     getContentPane().add(comboBox_9_MinuteFinCompetition);
@@ -745,17 +749,117 @@ chckbxDiffTpsReposDisciplines.addItemListener
     getContentPane().add(label_1_InclusDateFinCompetition);
     
     JComboBox comboBox_10_DeviseTarifInscriptionCompetition = new JComboBox();
-    comboBox_10_DeviseTarifInscriptionCompetition.setToolTipText("Heures (00 à 23)");
-    comboBox_10_DeviseTarifInscriptionCompetition.setBounds(414, 641, 41, 22);
+    comboBox_10_DeviseTarifInscriptionCompetition.setModel(new DefaultComboBoxModel(new String[] {"€", "$", "£", "¥"}));
+    comboBox_10_DeviseTarifInscriptionCompetition.setToolTipText("Devises (euro EUR, dollar US USD, livre sterling GBP, yen JPY)");
+    comboBox_10_DeviseTarifInscriptionCompetition.setBounds(414, 706, 41, 22);
     getContentPane().add(comboBox_10_DeviseTarifInscriptionCompetition);
     
     JCheckBox checkBox_DateHorairesCompetitionDerogationJA = new JCheckBox("Dérogation JA");
     checkBox_DateHorairesCompetitionDerogationJA.setBounds(869, 348, 124, 25);
+    // si case cochée, les sélecteurs d'horaire de début ne renverront pas d'erreur si l'horaire sélectionné est inférieur à celui du RGC
+    // si case cochée + case Nocturne cochée, les sélecteurs d'horaire de début passent à 23h00
     getContentPane().add(checkBox_DateHorairesCompetitionDerogationJA);
     
     JCheckBox chckbxCompetitionNocturne = new JCheckBox("Nocturne");
     chckbxCompetitionNocturne.setBounds(869, 391, 124, 25);
+    // si case cochée, les sélecteurs d'horaire de début passent à 23h00, se grisent et se désactivent
+    // si case cochée + case Déro JA cochée, les sélecteurs d'horaire de début passent à 23h00, se dégrisent et s'activent
     getContentPane().add(chckbxCompetitionNocturne);
+    
+    JButton btnSuivant = new JButton("Suivant");
+    btnSuivant.addActionListener(this);
+    
+    JButton btnPrecedent = new JButton("Précédent");
+    btnPrecedent.setBounds(335, 763, 97, 25);
+    getContentPane().add(btnPrecedent);
+    btnSuivant.setBounds(534, 763, 97, 25);
+    getContentPane().add(btnSuivant);
+    
+    JLabel lblNbTablMaxAutorisParJoueurDifferencieHFHommes = new JLabel("Hommes : ");
+    lblNbTablMaxAutorisParJoueurDifferencieHFHommes.setBounds(492, 473, 69, 34);
+    getContentPane().add(lblNbTablMaxAutorisParJoueurDifferencieHFHommes);
+    
+    JLabel lblNbTablMaxAutorisParJoueurDifferencieHFFemmes = new JLabel("Femmes : ");
+    lblNbTablMaxAutorisParJoueurDifferencieHFFemmes.setBounds(629, 473, 69, 34);
+    getContentPane().add(lblNbTablMaxAutorisParJoueurDifferencieHFFemmes);
+    
+    textField_NbTablMaxAutorisParJoueurDifferencieHFHommes = new JTextField();
+    textField_NbTablMaxAutorisParJoueurDifferencieHFHommes.setToolTipText("S'il est déjà existant, répertorié et validé dans le logiciel, le champ sera rempli, grisé et inactif.\r\nSinon, s'il n'existe pas encore, le champ est vide. \r\nLe n° correspondant sera créé automatiquement à la fin du processus, lors de la transmission des informations saisies à Poona.\r\nPour rechercher un organisateur (OC/SOC), taper quelques lettres de son nom, de son prénom ou du nom/sigle de son club (casse indifférente), ou quelques chiffres de son n° de licence ou du n° d'affiliation de son club, puis choisir l'organisateur qui correspond à celui voulu à ajouter.");
+    textField_NbTablMaxAutorisParJoueurDifferencieHFHommes.setColumns(10);
+    textField_NbTablMaxAutorisParJoueurDifferencieHFHommes.setBounds(565, 479, 45, 22);
+    getContentPane().add(textField_NbTablMaxAutorisParJoueurDifferencieHFHommes);
+    
+    textField_1_NbTablMaxAutorisParJoueurDifferencieHFFemmes = new JTextField();
+    textField_1_NbTablMaxAutorisParJoueurDifferencieHFFemmes.setToolTipText("S'il est déjà existant, répertorié et validé dans le logiciel, le champ sera rempli, grisé et inactif.\r\nSinon, s'il n'existe pas encore, le champ est vide. \r\nLe n° correspondant sera créé automatiquement à la fin du processus, lors de la transmission des informations saisies à Poona.\r\nPour rechercher un organisateur (OC/SOC), taper quelques lettres de son nom, de son prénom ou du nom/sigle de son club (casse indifférente), ou quelques chiffres de son n° de licence ou du n° d'affiliation de son club, puis choisir l'organisateur qui correspond à celui voulu à ajouter.");
+    textField_1_NbTablMaxAutorisParJoueurDifferencieHFFemmes.setColumns(10);
+    textField_1_NbTablMaxAutorisParJoueurDifferencieHFFemmes.setBounds(703, 479, 45, 22);
+    getContentPane().add(textField_1_NbTablMaxAutorisParJoueurDifferencieHFFemmes);
+    
+    JLabel lblN = new JLabel("N : ");
+    lblN.setBounds(667, 503, 23, 34);
+    getContentPane().add(lblN);
+    
+    textField = new JTextField();
+    textField.setToolTipText("S'il est déjà existant, répertorié et validé dans le logiciel, le champ sera rempli, grisé et inactif.\r\nSinon, s'il n'existe pas encore, le champ est vide. \r\nLe n° correspondant sera créé automatiquement à la fin du processus, lors de la transmission des informations saisies à Poona.\r\nPour rechercher un organisateur (OC/SOC), taper quelques lettres de son nom, de son prénom ou du nom/sigle de son club (casse indifférente), ou quelques chiffres de son n° de licence ou du n° d'affiliation de son club, puis choisir l'organisateur qui correspond à celui voulu à ajouter.");
+    textField.setColumns(10);
+    textField.setBounds(691, 509, 45, 22);
+    getContentPane().add(textField);
+    
+    JLabel lblR = new JLabel("R : ");
+    lblR.setBounds(749, 503, 23, 34);
+    getContentPane().add(lblR);
+    
+    textField_1 = new JTextField();
+    textField_1.setToolTipText("S'il est déjà existant, répertorié et validé dans le logiciel, le champ sera rempli, grisé et inactif.\r\nSinon, s'il n'existe pas encore, le champ est vide. \r\nLe n° correspondant sera créé automatiquement à la fin du processus, lors de la transmission des informations saisies à Poona.\r\nPour rechercher un organisateur (OC/SOC), taper quelques lettres de son nom, de son prénom ou du nom/sigle de son club (casse indifférente), ou quelques chiffres de son n° de licence ou du n° d'affiliation de son club, puis choisir l'organisateur qui correspond à celui voulu à ajouter.");
+    textField_1.setColumns(10);
+    textField_1.setBounds(773, 509, 45, 22);
+    getContentPane().add(textField_1);
+    
+    JLabel lblD = new JLabel("D : ");
+    lblD.setBounds(830, 503, 23, 34);
+    getContentPane().add(lblD);
+    
+    textField_5 = new JTextField();
+    textField_5.setToolTipText("S'il est déjà existant, répertorié et validé dans le logiciel, le champ sera rempli, grisé et inactif.\r\nSinon, s'il n'existe pas encore, le champ est vide. \r\nLe n° correspondant sera créé automatiquement à la fin du processus, lors de la transmission des informations saisies à Poona.\r\nPour rechercher un organisateur (OC/SOC), taper quelques lettres de son nom, de son prénom ou du nom/sigle de son club (casse indifférente), ou quelques chiffres de son n° de licence ou du n° d'affiliation de son club, puis choisir l'organisateur qui correspond à celui voulu à ajouter.");
+    textField_5.setColumns(10);
+    textField_5.setBounds(854, 509, 45, 22);
+    getContentPane().add(textField_5);
+    
+    JLabel lblP = new JLabel("P : ");
+    lblP.setBounds(912, 503, 23, 34);
+    getContentPane().add(lblP);
+    
+    textField_6 = new JTextField();
+    textField_6.setToolTipText("S'il est déjà existant, répertorié et validé dans le logiciel, le champ sera rempli, grisé et inactif.\r\nSinon, s'il n'existe pas encore, le champ est vide. \r\nLe n° correspondant sera créé automatiquement à la fin du processus, lors de la transmission des informations saisies à Poona.\r\nPour rechercher un organisateur (OC/SOC), taper quelques lettres de son nom, de son prénom ou du nom/sigle de son club (casse indifférente), ou quelques chiffres de son n° de licence ou du n° d'affiliation de son club, puis choisir l'organisateur qui correspond à celui voulu à ajouter.");
+    textField_6.setColumns(10);
+    textField_6.setBounds(936, 509, 45, 22);
+    getContentPane().add(textField_6);
+    
+    table = new JTable();
+    table.setBorder(new LineBorder(new Color(130, 135, 144), 5));
+    table.setBackground(Color.WHITE);
+    table.setForeground(Color.WHITE);
+    table.setModel(new DefaultTableModel(
+    	new Object[][] {
+    		{null, null, null, null, null},
+    		{null, null, null, null, null},
+    	},
+    	new String[] {
+    		"H/F", "N", "R", "D", "P"
+    	}
+    ) {
+    	Class[] columnTypes = new Class[] {
+    		String.class, Integer.class, Integer.class, Integer.class, Integer.class
+    	};
+    	public Class getColumnClass(int columnIndex) {
+    		return columnTypes[columnIndex];
+    	}
+    });
+    table.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
+    table.setCellSelectionEnabled(true);
+    table.setColumnSelectionAllowed(true);
+    table.setBounds(368, 641, 364, -98);
+    getContentPane().add(table);
     
 //    getContentPane().add(textField_7);
     
