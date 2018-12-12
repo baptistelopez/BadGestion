@@ -10,6 +10,11 @@
 - gestion des salariés/emploi/contractualisation comité
 - création de calendriers exportables sur Windows Calendar ou Google Calendar à partir des listes de compétitions des joueurs/officiels
 - simulateur classement/côte à l'issue compétition
+- intégration interaction et accès espace MyFFBad
+- internationalisation champs/variables/données
+- autocomplétion et recherche semi-auto ("Google-like") des données
+- statistiques (pour toutes catégs d'utilisateurs du log : joueurs, officiels, formateurs, responsables et dirigeants instances, etc.)
+- validation entrées/saisie/choix données/cases/listes, etc.
 
 Notes diverses :
 - lors rencontres : arbitres pouvant être différents d'arbitres désignés sur année, possibilité de mentionner un arbitre différent (cf feuilles BadNet)
@@ -20,6 +25,7 @@ Notes diverses :
 - présence de scoreurs (IC notamment) avec/à la place/parmi JdL
 - possibilité de déclarer inscription à une compét' publique (y compris différenciée par tableau) ==> case à cocher lors de l'inscription en tant que joueur
 - simulateur classement/côte à l'issue compétition : s'inspirer du simulateur/calculette breton et des stats et données ICManager
+- listes déroulantes : éditables (pour autocomplétion ?)
 
 Notes diverses infobulles champs et étiquettes
 			|
