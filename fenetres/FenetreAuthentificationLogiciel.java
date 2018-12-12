@@ -36,7 +36,7 @@ import java.awt.SystemColor;
 import javax.swing.UIManager;
 import javax.swing.JCheckBox;
 
-public class fenetreAuthentificationLogiciel extends JFrame {
+public class FenetreAuthentificationLogiciel extends JFrame {
 
 	private JFrame frameAuthLogiciel;
 	private JPasswordField pwdFldAuthLogicielMdp;
@@ -53,7 +53,7 @@ public class fenetreAuthentificationLogiciel extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					fenetreAuthentificationLogiciel window = new fenetreAuthentificationLogiciel();
+					FenetreAuthentificationLogiciel window = new FenetreAuthentificationLogiciel();
 					window.frameAuthLogiciel.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -65,7 +65,7 @@ public class fenetreAuthentificationLogiciel extends JFrame {
 	/**
 	 * Create the application.
 	 */
-	public fenetreAuthentificationLogiciel() 
+	public FenetreAuthentificationLogiciel() 
 	{
 		initialize();
 		
@@ -142,7 +142,7 @@ public class fenetreAuthentificationLogiciel extends JFrame {
                 if ( authentification.authenticate (getUsername (), getPassword ()) )
                 {
                 	succeeded = true;
-//                    JOptionPane.showMessageDialog(fenetreAuthentificationLogiciel.this,
+//                    JOptionPane.showMessageDialog(FenetreAuthentificationLogiciel.this,
 //                            "Bonjour/bonsoir " + getUsername () + "!",
 //                            "Authentification",
 //                            JOptionPane.INFORMATION_MESSAGE);
@@ -158,7 +158,7 @@ public class fenetreAuthentificationLogiciel extends JFrame {
                 else 
                 {
                     JOptionPane.showMessageDialog 
-                    (fenetreAuthentificationLogiciel.this,
+                    (FenetreAuthentificationLogiciel.this,
                             "Nom d'utilisateur et/ou mot de passe invalide",
                             "Authentification",
                             JOptionPane.ERROR_MESSAGE);
@@ -338,10 +338,10 @@ public class fenetreAuthentificationLogiciel extends JFrame {
 		if (obj == null) {
 			return false;
 		}
-		if (!(obj instanceof fenetreAuthentificationLogiciel)) {
+		if (!(obj instanceof FenetreAuthentificationLogiciel)) {
 			return false;
 		}
-		fenetreAuthentificationLogiciel other = (fenetreAuthentificationLogiciel) obj;
+		FenetreAuthentificationLogiciel other = (FenetreAuthentificationLogiciel) obj;
 		if (b != other.b) {
 			return false;
 		}
@@ -356,7 +356,7 @@ public class fenetreAuthentificationLogiciel extends JFrame {
 //	 */
 //	@Override
 //	public String toString() {
-//		return "fenetreAuthentificationLogiciel [succeeded=" + succeeded + ", b=" + b + ", getPwdFldAuthLogicielMdp()="
+//		return "FenetreAuthentificationLogiciel [succeeded=" + succeeded + ", b=" + b + ", getPwdFldAuthLogicielMdp()="
 //				+ getPassword() + ", getTxtFldAuthLogicielNomUtilisateur()="
 //				+ getUsername() + ", isSucceeded()=" + isSucceeded() + ", isB()=" + isB()
 //				+ ", hashCode()=" + hashCode() + ", getClass()=" + getClass() + ", toString()=" + super.toString()

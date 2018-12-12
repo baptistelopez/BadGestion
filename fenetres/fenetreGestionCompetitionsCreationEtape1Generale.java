@@ -148,6 +148,7 @@ public class fenetreGestionCompetitionsCreationEtape1Generale extends JFrame imp
     getContentPane().add(lblquipementsDeLa);
     
     textField_1 = new JComboBox();
+    textField_1.setEditable(true);
     textField_1.setModel(new DefaultComboBoxModel(new String[] {"", "Saisir un équipement non-répertorié"}));
     textField_1.setToolTipText("Équipement (gymnase/lieu de pratique) de la compétition, exemples :\r\n- Gymnase Tartempion\r\n- Salle omnisports Unetelle\r\n- etc.");
     textField_1.setBounds(247, 385, 620, 22);
@@ -158,6 +159,7 @@ public class fenetreGestionCompetitionsCreationEtape1Generale extends JFrame imp
     getContentPane().add(lblSallesDeLa);
     
     textField_2 = new JComboBox();
+    textField_2.setEditable(true);
     textField_2.setModel(new DefaultComboBoxModel(new String[] {"", "Saisir une salle non-répertoriée"}));
     textField_2.setToolTipText("Équipement (gymnase/lieu de pratique) de la compétition, exemples :\r\n- Gymnase Tartempion\r\n- Salle omnisports Unetelle\r\n- etc.\r\nChamp facultatif.");
     textField_2.setBounds(247, 426, 620, 22);

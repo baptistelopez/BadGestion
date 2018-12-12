@@ -1,5 +1,7 @@
 package objets;
 
+// préposés aux compétitions (chaperons anti-dopage, GEO)
+
 public class objetCompetitions {
 
   private String nom, sexe, age, cheveux, taille;

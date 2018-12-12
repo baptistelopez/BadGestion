@@ -26,6 +26,7 @@ Notes diverses :
 - possibilité de déclarer inscription à une compét' publique (y compris différenciée par tableau) ==> case à cocher lors de l'inscription en tant que joueur
 - simulateur classement/côte à l'issue compétition : s'inspirer du simulateur/calculette breton et des stats et données ICManager
 - listes déroulantes : éditables (pour autocomplétion ?)
+- listes déroulantes/zone de texte de saisie > tables/ modifiables (ajout/modif/suppression)
 
 Notes diverses infobulles champs et étiquettes
 			|

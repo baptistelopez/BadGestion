@@ -7,6 +7,10 @@ package objets;
  * @author blopez
  *
  */
+
+// CODEPs inclus
+// 
+
 public class objetLigues {
 
 	/**

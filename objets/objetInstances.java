@@ -7,6 +7,9 @@ package objets;
  * @author blopez
  *
  */
+
+// Dirigeants
+
 public class objetInstances {
 
 	/**
