@@ -74,6 +74,7 @@ import java.awt.Color;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 import java.awt.SystemColor;
+import javax.swing.JScrollPane;
 //import org.jdatepicker.util.JDatePickerUtil;
 
 public class fenetreGestionCompetitionsCreationEtape2Tournoi1 extends JFrame implements ActionListener, ItemListener {
@@ -106,6 +107,7 @@ public class fenetreGestionCompetitionsCreationEtape2Tournoi1 extends JFrame imp
   private JTextField textField_5;
   private JTextField textField_6;
   private JTable table;
+  private JTable table_1;
 
 //  private JButton bouton = new JButton("Appel à la corpsFenetreGestionCompetitions");
 
@@ -835,7 +837,7 @@ chckbxDiffTpsReposDisciplines.addItemListener
     textField_6.setBounds(936, 509, 45, 22);
     getContentPane().add(textField_6);
     
-    table = new JTable();
+    /*table = new JTable();
     table.setBorder(new LineBorder(new Color(130, 135, 144), 5));
     table.setBackground(Color.WHITE);
     table.setForeground(Color.WHITE);
@@ -859,7 +861,39 @@ chckbxDiffTpsReposDisciplines.addItemListener
     table.setCellSelectionEnabled(true);
     table.setColumnSelectionAllowed(true);
     table.setBounds(368, 641, 364, -98);
-    getContentPane().add(table);
+    //add(new JScrollPane(scrTbl));
+    getContentPane().add(new JScrollPane(table));*/
+    
+    JScrollPane scrollPane_1 = new JScrollPane(table_1);
+    scrollPane_1.setViewportBorder(new LineBorder(new Color(0, 0, 0), 5));
+    scrollPane_1.setBounds(375, 650, 332, -102);
+    getContentPane().add(scrollPane_1);
+    scrollPane_1.setVisible(true);
+    
+    table_1 = new JTable();
+    table_1.setModel(new DefaultTableModel(
+    	new Object[][] {
+    		{null, null, null, null, null},
+    		{null, null, null, null, null},
+    	},
+    	new String[] {
+    		"H/F", "N", "R", "D", "P"
+    	}
+    ) {
+    	boolean[] columnEditables = new boolean[] {
+    		false, true, true, true, true
+    	};
+    	public boolean isCellEditable(int row, int column) {
+    		return columnEditables[column];
+    	}
+    });
+    table_1.setFillsViewportHeight(true);
+    table_1.setColumnSelectionAllowed(true);
+    table_1.setCellSelectionEnabled(true);
+    table_1.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
+    table_1.setBorder(new LineBorder(new Color(0, 0, 0), 5));
+    scrollPane_1.setViewportView(table_1);
+    table_1.setVisible(true);
     
 //    getContentPane().add(textField_7);
     
