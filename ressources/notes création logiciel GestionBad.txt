@@ -2,7 +2,7 @@
 - gestion des formations à thème particulier (exple : entraînement > thème du service en double)
 - désigner capitaines d'équipes IC
 - désigner arbitres sur l'année
-- gestion de comptes logiciels/web/applicatifs/bases de données (dont permettre ajout de comptes "particuliers" externes (exple : cptes sur sites web de ligues, CODEPs, etc.))
+- gestion de comptes logiciels/web/applicatifs/bases de données (dont permettre ajout de comptes "particuliers" externes (exple : cptes sur sites web de ligues, CODEPs, clubs, etc.))
 - interfaçage/rétrocompat' avec Badiste/BadNet/Tournament Planner/BadIC/ICManager/Poona
 - possibilité de déclarer inscription à une compét' publique (y compris différenciée par tableau)
 - gestion des mutations (documentation et implémentation processus concret)
@@ -15,6 +15,7 @@
 - autocomplétion et recherche semi-auto ("Google-like") des données
 - statistiques (pour toutes catégs d'utilisateurs du log : joueurs, officiels, formateurs, responsables et dirigeants instances, etc.)
 - validation entrées/saisie/choix données/cases/listes, etc.
+- paramétrage des données générales de compétition permettant l'internationalisation (exple : celles comme le temps de repos entre les matchs ou le nb max de matchs quotidiens par joueur, issues du RGC (en France) ou du GCR (BWF)) dans un item de menu dédié (sauvegarde d'un jeu de règles propres aux pays les plus importants du bad ?)
 
 Notes diverses :
 - lors rencontres : arbitres pouvant être différents d'arbitres désignés sur année, possibilité de mentionner un arbitre différent (cf feuilles BadNet)
