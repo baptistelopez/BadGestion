@@ -860,13 +860,30 @@ chckbxDiffTpsReposDisciplines.addItemListener
     //add(new JScrollPane(scrTbl));
     getContentPane().add(new JScrollPane(table));*/
     
-    JScrollPane scrollPane_1 = new JScrollPane(table_1);
+    JScrollPane scrollPane_1 = new JScrollPane();
     scrollPane_1.setViewportBorder(new LineBorder(new Color(0, 0, 0), 5));
-    scrollPane_1.setBounds(375, 650, 332, -102);
+    scrollPane_1.setBounds(375, 687, 332, -102);
+    //scrollPane_1.setViewportView(table_1);
     getContentPane().add(scrollPane_1);
     scrollPane_1.setVisible(true);
     
+    JButton btnPrecedent = new JButton("Précédent");
+    btnPrecedent.setBounds(335, 804, 97, 25);
+    getContentPane().add(btnPrecedent);
+    
+    JButton btnSuivant = new JButton("Suivant");
+    btnSuivant.addActionListener(this);
+    btnSuivant.setBounds(534, 804, 97, 25);
+    getContentPane().add(btnSuivant);
+    
+    JScrollPane scrollPane = new JScrollPane();
+    scrollPane.setBounds(368, 581, 450, 77);
+    scrollPane.setBorder(new LineBorder(new Color(0, 0, 0), 1));
+    getContentPane().add(scrollPane);
+    
+    //dissocier table de scrollpane si table placée ds scrollpane par cliquer-glisser, puis surrounder table par scrollpane pr afficher l'ensemble correctement
     table_1 = new JTable();
+    scrollPane.setViewportView(table_1);
     table_1.setModel(new DefaultTableModel(
     	new Object[][] {
     		{null, null, null, null, null},
@@ -887,18 +904,8 @@ chckbxDiffTpsReposDisciplines.addItemListener
     table_1.setColumnSelectionAllowed(true);
     table_1.setCellSelectionEnabled(true);
     table_1.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
-    table_1.setBorder(new LineBorder(new Color(0, 0, 0), 5));
-    scrollPane_1.setViewportView(table_1);
+    table_1.setBorder(new LineBorder(new Color(0, 0, 0), 1));
     table_1.setVisible(true);
-    
-    JButton btnPrecedent = new JButton("Précédent");
-    btnPrecedent.setBounds(335, 804, 97, 25);
-    getContentPane().add(btnPrecedent);
-    
-    JButton btnSuivant = new JButton("Suivant");
-    btnSuivant.addActionListener(this);
-    btnSuivant.setBounds(534, 804, 97, 25);
-    getContentPane().add(btnSuivant);
     
     JLabel lblTempsDchauffement = new JLabel("Temps d'échauffement : ");
     lblTempsDchauffement.setBounds(25, 172, 145, 34);
