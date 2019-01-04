@@ -28,6 +28,9 @@ Notes diverses :
 - simulateur classement/côte à l'issue compétition : s'inspirer du simulateur/calculette breton et des stats et données ICManager
 - listes déroulantes : éditables (pour autocomplétion ?)
 - listes déroulantes/zone de texte de saisie > tables/ modifiables (ajout/modif/suppression)
+- utilisation JUnit pour les tests unitaires
+- utilisation Spring Core et Security pour l'interaction web
+- utilisation JPA/Hibernate pour l'interaction-liaison avec les bases de données embarquées (possibilité de les modifier, invisible des utilisateurs (transparent pour eux))
 
 Notes diverses infobulles champs et étiquettes
 			|

@@ -102,10 +102,6 @@ public class fenetreGestionCompetitionsCreationEtape2Tournoi1 extends JFrame imp
   private JTextField textField_11_NbMaxMatchsParJourParJoueur;
   private JTextField textField_NbTablMaxAutorisParJoueurDifferencieHFHommes;
   private JTextField textField_1_NbTablMaxAutorisParJoueurDifferencieHFFemmes;
-  private JTextField textField;
-  private JTextField textField_1;
-  private JTextField textField_5;
-  private JTextField textField_6;
   private JTable table;
   private JTable table_1;
   private JTextField textField_7;
@@ -715,9 +711,9 @@ chckbxDiffTpsReposDisciplines.addItemListener
     chckbxDerogationJANbMaxMatchsParJourParJoueur.setBounds(474, 703, 124, 25);
     getContentPane().add(chckbxDerogationJANbMaxMatchsParJourParJoueur);
     
-    JCheckBox chckbxNbTablAutorisesParJoueurDifferencieSeriesClassement = new JCheckBox("Différencié selon séries classement joueurs");
+    JCheckBox chckbxNbTablAutorisesParJoueurDifferencieSeriesClassement = new JCheckBox("Différencié selon séries classement joueurs et/ou HF : saisir dans le tableau ci-dessous");
     chckbxNbTablAutorisesParJoueurDifferencieSeriesClassement.setToolTipText("À cocher si une différenciation est prévue selon les séries de classement des joueurs");
-    chckbxNbTablAutorisesParJoueurDifferencieSeriesClassement.setBounds(368, 549, 287, 25);
+    chckbxNbTablAutorisesParJoueurDifferencieSeriesClassement.setBounds(368, 580, 539, 25);
     getContentPane().add(chckbxNbTablAutorisesParJoueurDifferencieSeriesClassement);
     
     JComboBox comboBox_6_TypeDefinitionTarif = new JComboBox();
@@ -793,46 +789,6 @@ chckbxDiffTpsReposDisciplines.addItemListener
     textField_1_NbTablMaxAutorisParJoueurDifferencieHFFemmes.setBounds(703, 520, 45, 22);
     getContentPane().add(textField_1_NbTablMaxAutorisParJoueurDifferencieHFFemmes);
     
-    JLabel lblN = new JLabel("N : ");
-    lblN.setBounds(667, 544, 23, 34);
-    getContentPane().add(lblN);
-    
-    textField = new JTextField();
-    textField.setToolTipText("S'il est déjà existant, répertorié et validé dans le logiciel, le champ sera rempli, grisé et inactif.\r\nSinon, s'il n'existe pas encore, le champ est vide. \r\nLe n° correspondant sera créé automatiquement à la fin du processus, lors de la transmission des informations saisies à Poona.\r\nPour rechercher un organisateur (OC/SOC), taper quelques lettres de son nom, de son prénom ou du nom/sigle de son club (casse indifférente), ou quelques chiffres de son n° de licence ou du n° d'affiliation de son club, puis choisir l'organisateur qui correspond à celui voulu à ajouter.");
-    textField.setColumns(10);
-    textField.setBounds(691, 550, 45, 22);
-    getContentPane().add(textField);
-    
-    JLabel lblR = new JLabel("R : ");
-    lblR.setBounds(749, 544, 23, 34);
-    getContentPane().add(lblR);
-    
-    textField_1 = new JTextField();
-    textField_1.setToolTipText("S'il est déjà existant, répertorié et validé dans le logiciel, le champ sera rempli, grisé et inactif.\r\nSinon, s'il n'existe pas encore, le champ est vide. \r\nLe n° correspondant sera créé automatiquement à la fin du processus, lors de la transmission des informations saisies à Poona.\r\nPour rechercher un organisateur (OC/SOC), taper quelques lettres de son nom, de son prénom ou du nom/sigle de son club (casse indifférente), ou quelques chiffres de son n° de licence ou du n° d'affiliation de son club, puis choisir l'organisateur qui correspond à celui voulu à ajouter.");
-    textField_1.setColumns(10);
-    textField_1.setBounds(773, 550, 45, 22);
-    getContentPane().add(textField_1);
-    
-    JLabel lblD = new JLabel("D : ");
-    lblD.setBounds(830, 544, 23, 34);
-    getContentPane().add(lblD);
-    
-    textField_5 = new JTextField();
-    textField_5.setToolTipText("S'il est déjà existant, répertorié et validé dans le logiciel, le champ sera rempli, grisé et inactif.\r\nSinon, s'il n'existe pas encore, le champ est vide. \r\nLe n° correspondant sera créé automatiquement à la fin du processus, lors de la transmission des informations saisies à Poona.\r\nPour rechercher un organisateur (OC/SOC), taper quelques lettres de son nom, de son prénom ou du nom/sigle de son club (casse indifférente), ou quelques chiffres de son n° de licence ou du n° d'affiliation de son club, puis choisir l'organisateur qui correspond à celui voulu à ajouter.");
-    textField_5.setColumns(10);
-    textField_5.setBounds(854, 550, 45, 22);
-    getContentPane().add(textField_5);
-    
-    JLabel lblP = new JLabel("P : ");
-    lblP.setBounds(912, 544, 23, 34);
-    getContentPane().add(lblP);
-    
-    textField_6 = new JTextField();
-    textField_6.setToolTipText("S'il est déjà existant, répertorié et validé dans le logiciel, le champ sera rempli, grisé et inactif.\r\nSinon, s'il n'existe pas encore, le champ est vide. \r\nLe n° correspondant sera créé automatiquement à la fin du processus, lors de la transmission des informations saisies à Poona.\r\nPour rechercher un organisateur (OC/SOC), taper quelques lettres de son nom, de son prénom ou du nom/sigle de son club (casse indifférente), ou quelques chiffres de son n° de licence ou du n° d'affiliation de son club, puis choisir l'organisateur qui correspond à celui voulu à ajouter.");
-    textField_6.setColumns(10);
-    textField_6.setBounds(936, 550, 45, 22);
-    getContentPane().add(textField_6);
-    
     /*table = new JTable();
     table.setBorder(new LineBorder(new Color(130, 135, 144), 5));
     table.setBackground(Color.WHITE);
@@ -877,17 +833,18 @@ chckbxDiffTpsReposDisciplines.addItemListener
     getContentPane().add(btnSuivant);
     
     JScrollPane scrollPane = new JScrollPane();
-    scrollPane.setBounds(368, 581, 450, 77);
+    scrollPane.setBounds(368, 612, 444, 73);
     scrollPane.setBorder(new LineBorder(new Color(0, 0, 0), 1));
     getContentPane().add(scrollPane);
     
     //dissocier table de scrollpane si table placée ds scrollpane par cliquer-glisser, puis surrounder table par scrollpane pr afficher l'ensemble correctement
+    // cf https://baptiste-wicht.developpez.com/tutoriels/java/swing/jtable/ pour l'amélioration de la table
     table_1 = new JTable();
     scrollPane.setViewportView(table_1);
     table_1.setModel(new DefaultTableModel(
     	new Object[][] {
-    		{null, null, null, null, null},
-    		{null, null, null, null, null},
+    		{"H", null, null, null, null},
+    		{"F", null, null, null, null},
     	},
     	new String[] {
     		"H/F", "N", "R", "D", "P"
@@ -948,6 +905,11 @@ chckbxDiffTpsReposDisciplines.addItemListener
     textField_8.setColumns(10);
     textField_8.setBounds(815, 96, 31, 22);
     getContentPane().add(textField_8);
+    
+    JLabel lblOu = new JLabel("OU");
+    lblOu.setHorizontalAlignment(SwingConstants.CENTER);
+    lblOu.setBounds(573, 546, 25, 34);
+    getContentPane().add(lblOu);
     
 //    getContentPane().add(textField_7);
     
