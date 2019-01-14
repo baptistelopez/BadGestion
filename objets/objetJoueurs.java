@@ -8,9 +8,10 @@ package objets;
  *
  */
 
-// de type Licencies ou Adherents
+// de type Licencies ou Adherents (donc indirectement de type Personne)
 // comporte aussi données club (objetClubs), voire données instances (objetInstances)
 // générique (compétiteur et non-compétiteur)
+// inclut données sanctions (cartons jaunes/rouges/noirs)
 
 public class objetJoueurs {
 

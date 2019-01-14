@@ -18,11 +18,13 @@ import javax.swing.JTextField;
 import javax.swing.UIManager;
 import javax.swing.JSeparator;
 import javax.swing.JCheckBox;
+import javax.swing.JProgressBar;
 
 public class fenetreGestionCompetitionsCreationEtape4Tournoi3 extends JFrame implements ActionListener {
 //	private Fenetre2 fen;
 	private JTextField textField;
 	private JTextField textField_1;
+	private JTextField textField_2;
 
 //  private JButton bouton = new JButton("Appel à la corpsFenetreGestionCompetitions");
 
@@ -48,111 +50,154 @@ public class fenetreGestionCompetitionsCreationEtape4Tournoi3 extends JFrame imp
     this.setLocationRelativeTo(null);
     getContentPane().setLayout(null);
     
-    JLabel lblNewLabel = new JLabel("Niveaux :");
-    lblNewLabel.setBounds(25, 175, 145, 34);
+    JLabel lblNewLabel = new JLabel("Niveaux de classements :");
+    lblNewLabel.setBounds(24, 215, 145, 34);
     getContentPane().add(lblNewLabel);
     
     JComboBox comboBox = new JComboBox();
     comboBox.setModel(new DefaultComboBoxModel(new String[] {"NC", "P12", "P11", "P10", "P", "D9", "D8", "D7", "D", "R6", "R5", "R4", "R", "N3", "N2", "N1", "N"}));
-    comboBox.setBounds(521, 181, 145, 22);
+    comboBox.setBounds(520, 221, 145, 22);
     getContentPane().add(comboBox);
     
     JLabel lblNumAutorisationCompetition = new JLabel("Intitulé tableau : ");
-    lblNumAutorisationCompetition.setBounds(25, 13, 175, 34);
+    lblNumAutorisationCompetition.setBounds(24, 53, 175, 34);
     getContentPane().add(lblNumAutorisationCompetition);
     
-    JComboBox comboBox_3 = new JComboBox();
-    comboBox_3.setModel(new DefaultComboBoxModel(new String[] {"Amicale", "Officielle"}));
-    comboBox_3.setToolTipText("Amicale (non-officielle/officieuse)\r\nOfficielle (enregistrée dans un ou plusieurs logiciel(s) : BadNet/ICManager, et en base de données : Poona)");
-    comboBox_3.setBounds(370, 350, 296, 22);
-    getContentPane().add(comboBox_3);
-    
     JLabel lblFormeDeComptition = new JLabel("Côtes : ");
-    lblFormeDeComptition.setBounds(25, 303, 145, 34);
+    lblFormeDeComptition.setBounds(24, 302, 145, 34);
     getContentPane().add(lblFormeDeComptition);
     
     JTextField comboBox_4 = new JTextField();
     comboBox_4.setToolTipText("Décimal sous forme xx xxx,yy");
-    comboBox_4.setBounds(431, 309, 134, 22);
+    comboBox_4.setBounds(520, 349, 145, 22);
     getContentPane().add(comboBox_4);
-    
-    JLabel lblNomDeComptition = new JLabel("Nom de compétition : ");
-    lblNomDeComptition.setBounds(25, 344, 145, 34);
-    getContentPane().add(lblNomDeComptition);
     
     textField = new JTextField();
     textField.setToolTipText("S'il est déjà existant sous Poona, vous pouvez le saisir.\r\nSinon, s'il n'existe pas encore, le champ est grisé et inactif.");
-    textField.setBounds(370, 19, 296, 22);
+    textField.setBounds(369, 59, 296, 22);
     getContentPane().add(textField);
     textField.setColumns(10);
     
     JSeparator separator = new JSeparator();
-    separator.setBounds(180, 389, 1, 2);
+    separator.setBounds(179, 429, 1, 2);
     getContentPane().add(separator);
     
     JButton btnSuivant = new JButton("Suivant");
     btnSuivant.addActionListener(this);
-    btnSuivant.setBounds(569, 394, 97, 25);
+    btnSuivant.setBounds(568, 538, 97, 25);
     getContentPane().add(btnSuivant);
     
     JLabel lblMini = new JLabel("Mini :");
-    lblMini.setBounds(370, 175, 145, 34);
+    lblMini.setBounds(369, 215, 145, 34);
     getContentPane().add(lblMini);
     
     JLabel lblMaxi = new JLabel("Maxi :");
-    lblMaxi.setBounds(370, 216, 145, 34);
+    lblMaxi.setBounds(369, 256, 145, 34);
     getContentPane().add(lblMaxi);
     
     JComboBox comboBox_5 = new JComboBox();
     comboBox_5.setModel(new DefaultComboBoxModel(new String[] {"NC", "P12", "P11", "P10", "P", "D9", "D8", "D7", "D", "R6", "R5", "R4", "R", "N3", "N2", "N1", "N"}));
-    comboBox_5.setBounds(521, 222, 145, 22);
+    comboBox_5.setBounds(520, 262, 145, 22);
     getContentPane().add(comboBox_5);
     
     JCheckBox chckbxSiimplesHommessh = new JCheckBox("Simples Hommes (SH)");
-    chckbxSiimplesHommessh.setBounds(370, 87, 162, 25);
+    chckbxSiimplesHommessh.setBounds(369, 127, 162, 25);
     getContentPane().add(chckbxSiimplesHommessh);
     
     JCheckBox chckbxSimplesDamessd = new JCheckBox("Simples Dames (SD)");
-    chckbxSimplesDamessd.setBounds(536, 86, 153, 25);
+    chckbxSimplesDamessd.setBounds(535, 126, 153, 25);
     getContentPane().add(chckbxSimplesDamessd);
     
     JCheckBox chckbxDoublesHommesdh = new JCheckBox("Doubles Hommes (DH)");
-    chckbxDoublesHommesdh.setBounds(693, 87, 162, 25);
+    chckbxDoublesHommesdh.setBounds(692, 127, 162, 25);
     getContentPane().add(chckbxDoublesHommesdh);
     
     JLabel lblDisciplinesOuvertes = new JLabel("Disciplines ouvertes : ");
-    lblDisciplinesOuvertes.setBounds(25, 78, 175, 34);
+    lblDisciplinesOuvertes.setBounds(24, 118, 175, 34);
     getContentPane().add(lblDisciplinesOuvertes);
     
     JCheckBox chckbxDoublesDamesdd = new JCheckBox("Doubles Dames (DD)");
-    chckbxDoublesDamesdd.setBounds(859, 87, 153, 25);
+    chckbxDoublesDamesdd.setBounds(858, 127, 153, 25);
     getContentPane().add(chckbxDoublesDamesdd);
     
     JCheckBox chckbxDoublesMixtesdmx = new JCheckBox("Doubles Mixtes (DMx)");
-    chckbxDoublesMixtesdmx.setBounds(1016, 87, 153, 25);
+    chckbxDoublesMixtesdmx.setBounds(1015, 127, 153, 25);
     getContentPane().add(chckbxDoublesMixtesdmx);
     
     JLabel lblDlimitationTableaux = new JLabel("Délimitation tableaux : ");
-    lblDlimitationTableaux.setBounds(25, 117, 175, 34);
+    lblDlimitationTableaux.setBounds(24, 157, 175, 34);
     getContentPane().add(lblDlimitationTableaux);
     
     JCheckBox chckbxClassements = new JCheckBox("Par classements");
-    chckbxClassements.setBounds(370, 126, 134, 25);
+    chckbxClassements.setBounds(369, 162, 134, 25);
     getContentPane().add(chckbxClassements);
     
     JCheckBox chckbxCtes = new JCheckBox("Par côtes");
-    chckbxCtes.setBounds(536, 125, 153, 25);
+    chckbxCtes.setBounds(535, 162, 153, 25);
     getContentPane().add(chckbxCtes);
     
     textField_1 = new JTextField();
     textField_1.setToolTipText("S'il est déjà existant sous Poona, vous pouvez le saisir.\r\nSinon, s'il n'existe pas encore, le champ est grisé et inactif.");
     textField_1.setColumns(10);
-    textField_1.setBounds(370, 50, 296, 22);
+    textField_1.setBounds(369, 90, 296, 22);
     getContentPane().add(textField_1);
     
     JLabel lblIntitulTableauPour = new JLabel("Intitulé tableau pour l'affichage : ");
-    lblIntitulTableauPour.setBounds(25, 44, 203, 34);
+    lblIntitulTableauPour.setBounds(24, 84, 203, 34);
     getContentPane().add(lblIntitulTableauPour);
+    
+    JLabel label = new JLabel("Mini :");
+    label.setBounds(369, 302, 145, 34);
+    getContentPane().add(label);
+    
+    JLabel label_1 = new JLabel("Maxi :");
+    label_1.setBounds(369, 343, 145, 34);
+    getContentPane().add(label_1);
+    
+    textField_2 = new JTextField();
+    textField_2.setToolTipText("Décimal sous forme xx xxx,yy");
+    textField_2.setBounds(520, 308, 145, 22);
+    getContentPane().add(textField_2);
+    
+    JCheckBox chckbxParCatgoriesDge = new JCheckBox("Par catégories d'âge");
+    chckbxParCatgoriesDge.setBounds(692, 162, 153, 25);
+    getContentPane().add(chckbxParCatgoriesDge);
+    
+    JLabel lblCatgoriesDge = new JLabel("Catégories d'âge :");
+    lblCatgoriesDge.setBounds(24, 384, 145, 34);
+    getContentPane().add(lblCatgoriesDge);
+    
+    JLabel label_3 = new JLabel("Mini :");
+    label_3.setBounds(369, 384, 145, 34);
+    getContentPane().add(label_3);
+    
+    JComboBox comboBox_1 = new JComboBox();
+    comboBox_1.setBounds(520, 390, 145, 22);
+    getContentPane().add(comboBox_1);
+    
+    JLabel label_4 = new JLabel("Maxi :");
+    label_4.setBounds(369, 425, 145, 34);
+    getContentPane().add(label_4);
+    
+    JComboBox comboBox_2 = new JComboBox();
+    comboBox_2.setBounds(520, 431, 145, 22);
+    getContentPane().add(comboBox_2);
+    
+    JProgressBar progressBar = new JProgressBar();
+    progressBar.setBounds(369, 23, 296, 14);
+    getContentPane().add(progressBar);
+    
+    JLabel lblProgressiontape = new JLabel("Progression étape : ");
+    lblProgressiontape.setBounds(24, 13, 175, 34);
+    getContentPane().add(lblProgressiontape);
+    
+    JLabel lblProgressionCrationTournoi = new JLabel("Progression création tournoi : ");
+    lblProgressionCrationTournoi.setBounds(24, 590, 175, 34);
+    getContentPane().add(lblProgressionCrationTournoi);
+    
+    JProgressBar progressBar_1 = new JProgressBar();
+    progressBar_1.setBounds(369, 600, 296, 14);
+    getContentPane().add(progressBar_1);
 
 //    this.getContentPane().add(bouton);
 //

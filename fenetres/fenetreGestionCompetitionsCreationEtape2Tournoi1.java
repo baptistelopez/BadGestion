@@ -44,6 +44,8 @@ import javax.swing.JSeparator;
 import javax.swing.JCheckBox;
 import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.JFormattedTextField.AbstractFormatter;
+import javax.swing.table.TableColumn;
+import javax.swing.DefaultCellEditor;
 
 //import org.jdatepicker.JDatePanel;
 //import org.jdatepicker.JDatePicker;
@@ -75,6 +77,7 @@ import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 import java.awt.SystemColor;
 import javax.swing.JScrollPane;
+import javax.swing.JList;
 //import org.jdatepicker.util.JDatePickerUtil;
 
 public class fenetreGestionCompetitionsCreationEtape2Tournoi1 extends JFrame implements ActionListener, ItemListener {
@@ -108,6 +111,7 @@ public class fenetreGestionCompetitionsCreationEtape2Tournoi1 extends JFrame imp
   private JTextField textField_9;
   private JTextField textField_10;
   private JTextField textField_8;
+  private JTextField textField;
 
 //  private JButton bouton = new JButton("Appel à la corpsFenetreGestionCompetitions");
 
@@ -711,9 +715,9 @@ chckbxDiffTpsReposDisciplines.addItemListener
     chckbxDerogationJANbMaxMatchsParJourParJoueur.setBounds(474, 703, 124, 25);
     getContentPane().add(chckbxDerogationJANbMaxMatchsParJourParJoueur);
     
-    JCheckBox chckbxNbTablAutorisesParJoueurDifferencieSeriesClassement = new JCheckBox("Différencié selon séries classement joueurs et/ou HF : saisir dans le tableau ci-dessous");
+    JCheckBox chckbxNbTablAutorisesParJoueurDifferencieSeriesClassement = new JCheckBox("Différencié selon séries classement joueurs et/ou HF : sélectionnez les valeurs dans le tableau ci-dessous");
     chckbxNbTablAutorisesParJoueurDifferencieSeriesClassement.setToolTipText("À cocher si une différenciation est prévue selon les séries de classement des joueurs");
-    chckbxNbTablAutorisesParJoueurDifferencieSeriesClassement.setBounds(368, 580, 539, 25);
+    chckbxNbTablAutorisesParJoueurDifferencieSeriesClassement.setBounds(368, 580, 647, 25);
     getContentPane().add(chckbxNbTablAutorisesParJoueurDifferencieSeriesClassement);
     
     JComboBox comboBox_6_TypeDefinitionTarif = new JComboBox();
@@ -824,15 +828,18 @@ chckbxDiffTpsReposDisciplines.addItemListener
     scrollPane_1.setVisible(true);
     
     JButton btnPrecedent = new JButton("Précédent");
-    btnPrecedent.setBounds(335, 804, 97, 25);
+    btnPrecedent.setBounds(335, 889, 97, 25);
     getContentPane().add(btnPrecedent);
     
     JButton btnSuivant = new JButton("Suivant");
     btnSuivant.addActionListener(this);
-    btnSuivant.setBounds(534, 804, 97, 25);
+    btnSuivant.setBounds(534, 889, 97, 25);
     getContentPane().add(btnSuivant);
     
+    // scrollPane avec JTable à masquer si case correspondante pas cochée
     JScrollPane scrollPane = new JScrollPane();
+    scrollPane.setToolTipText("Saisir le nombre de tableaux maxi autorisé par joueur selon les séries de classement et les genres H/F.");
+    scrollPane.setViewportBorder(new LineBorder(new Color(0, 0, 0)));
     scrollPane.setBounds(368, 612, 444, 73);
     scrollPane.setBorder(new LineBorder(new Color(0, 0, 0), 1));
     getContentPane().add(scrollPane);
@@ -850,13 +857,37 @@ chckbxDiffTpsReposDisciplines.addItemListener
     		"H/F", "N", "R", "D", "P"
     	}
     ) {
-    	boolean[] columnEditables = new boolean[] {
+    	Class[] columnTypes = new Class[] {
+    		String.class, Integer.class, Integer.class, Integer.class, Integer.class
+    	};
+    	public Class getColumnClass(int columnIndex) {
+    		return columnTypes[columnIndex];
+    	}
+    	/* boolean[] columnEditables = new boolean[] {
+    		false, true, true, true, true }; */
+    		
+    	boolean [] canEdit = new boolean [] 
+    	{
     		false, true, true, true, true
     	};
+    	
     	public boolean isCellEditable(int row, int column) {
-    		return columnEditables[column];
+    		//return columnEditables[column];
+    		return canEdit[column];
     	}
+    	
+    	//setUpNColumn(table_1.getColumnModel ().getColumn (2));
+		public void setUpNColumn (JTable table_1, TableColumn NColumn)
+		{
+			JComboBox comboBox = new JComboBox ();
+			comboBox.addItem("-");
+			comboBox.addItem("1");
+			comboBox.addItem("2");
+			comboBox.addItem("3");
+			NColumn.setCellEditor (new DefaultCellEditor (comboBox));
+		}
     });
+    table_1.getColumnModel().getColumn(0).setResizable(false);
     table_1.setFillsViewportHeight(true);
     table_1.setColumnSelectionAllowed(true);
     table_1.setCellSelectionEnabled(true);
@@ -910,6 +941,42 @@ chckbxDiffTpsReposDisciplines.addItemListener
     lblOu.setHorizontalAlignment(SwingConstants.CENTER);
     lblOu.setBounds(573, 546, 25, 34);
     getContentPane().add(lblOu);
+    
+    textField = new JTextField();
+    textField.setToolTipText("S'il est déjà existant sous Poona mais pas encore répertorié dans le logiciel (première modification via le logiciel d'une compétition dont le dossier existe déjà sur Poona), vous pouvez le saisir.\r\nS'il est déjà existant et répertorié dans le logiciel, le champ sera rempli, grisé et inactif.\r\nSinon, s'il n'existe pas encore, le champ est vide.");
+    textField.setColumns(10);
+    textField.setBounds(335, 792, 73, 22);
+    getContentPane().add(textField);
+    
+    JComboBox comboBox = new JComboBox();
+    comboBox.setToolTipText("Devises (euro EUR, dollar US USD, livre sterling GBP, yen JPY)");
+    comboBox.setBounds(414, 792, 41, 22);
+    getContentPane().add(comboBox);
+    
+    JComboBox comboBox_1 = new JComboBox();
+    comboBox_1.setToolTipText("Tournoi\r\nChampionnat");
+    comboBox_1.setBounds(464, 792, 97, 22);
+    getContentPane().add(comboBox_1);
+    
+    JComboBox comboBox_2 = new JComboBox();
+    comboBox_2.setToolTipText("Remise\r\nTaux : \r\nValeur : si vous voulez uniquement considérer le tarif final");
+    comboBox_2.setBounds(567, 792, 97, 22);
+    getContentPane().add(comboBox_2);
+    
+    JComboBox comboBox_3 = new JComboBox();
+    comboBox_3.setToolTipText("Tournoi\r\nChampionnat");
+    comboBox_3.setBounds(672, 792, 116, 22);
+    getContentPane().add(comboBox_3);
+    
+    JButton button = new JButton("+");
+    button.setToolTipText("Ajouter un tarif");
+    button.setBounds(796, 791, 41, 25);
+    getContentPane().add(button);
+    
+    JButton button_1 = new JButton("-");
+    button_1.setToolTipText("Supprimer un tarif");
+    button_1.setBounds(848, 791, 41, 25);
+    getContentPane().add(button_1);
     
 //    getContentPane().add(textField_7);
     
