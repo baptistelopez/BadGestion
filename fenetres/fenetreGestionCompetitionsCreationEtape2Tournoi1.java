@@ -78,6 +78,8 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.SystemColor;
 import javax.swing.JScrollPane;
 import javax.swing.JList;
+import javax.swing.JProgressBar;
+import javax.swing.AbstractListModel;
 //import org.jdatepicker.util.JDatePickerUtil;
 
 public class fenetreGestionCompetitionsCreationEtape2Tournoi1 extends JFrame implements ActionListener, ItemListener {
@@ -295,10 +297,18 @@ public class fenetreGestionCompetitionsCreationEtape2Tournoi1 extends JFrame imp
 
     this.setTitle("GestionBad - Gestion compétition > Création compétition > Étape 2 : Caractéristiques générales Tournoi");
 
-    this.setSize(1262, 1018);
+    this.setSize(1262, 1417);
 
     this.setLocationRelativeTo(null);
     getContentPane().setLayout(null);
+    
+    JSeparator separator_ProgressionEtapeDossierAutorisation = new JSeparator();
+    separator_ProgressionEtapeDossierAutorisation.setBounds(25, 43, 950, 1);
+    getContentPane().add(separator_ProgressionEtapeDossierAutorisation);
+    
+    JProgressBar progressBar_Etape = new JProgressBar();
+    progressBar_Etape.setBounds(370, 18, 296, 14);
+    getContentPane().add(progressBar_Etape);
     
     JLabel lblNumAutorisationCompetition = new JLabel("N° dossier d'autorisation : ");
     lblNumAutorisationCompetition.setBounds(25, 49, 175, 34);
@@ -316,7 +326,7 @@ public class fenetreGestionCompetitionsCreationEtape2Tournoi1 extends JFrame imp
     textField_NumDossierAutorisation.setColumns(10);
     
     JSeparator separator_DossierAutorisationFormatScore = new JSeparator();
-    separator_DossierAutorisationFormatScore.setBounds(25, 85, 950, 1);
+    separator_DossierAutorisationFormatScore.setBounds(25, 86, 950, 1);
     getContentPane().add(separator_DossierAutorisationFormatScore);
     
     JLabel lblFormatScore = new JLabel("Format de score :");
@@ -422,15 +432,9 @@ chckbxDiffTpsReposDisciplines.addItemListener
     chckbxDiffTpsReposDisciplines.setBounds(421, 136, 99, 25);
     getContentPane().add(chckbxDiffTpsReposDisciplines);
     
-    JLabel lblFormeCompetition = new JLabel("Forme de la compétition : ");
-    lblFormeCompetition.setBounds(25, 213, 156, 34);
+    JLabel lblFormeCompetition = new JLabel("Forme particulière de la compétition : ");
+    lblFormeCompetition.setBounds(25, 213, 228, 34);
     getContentPane().add(lblFormeCompetition);
-    
-    JComboBox comboBox_FormeCompetition = new JComboBox();
-    comboBox_FormeCompetition.setModel(new DefaultComboBoxModel(new String[] {"Ronde suisse", "Ronde italienne", "Poules", "Poules puis élimination directe", "Élimination directe uniquement", "Poule(s) unique(s)", "Rencontres entre équipes"}));
-    comboBox_FormeCompetition.setToolTipText("Tournoi\r\nChampionnat");
-    comboBox_FormeCompetition.setBounds(368, 219, 296, 22);
-    getContentPane().add(comboBox_FormeCompetition);
     
     JLabel lblOrganisateursCompetition = new JLabel("Organisateur(s) de la compétition : ");
     lblOrganisateursCompetition.setBounds(25, 254, 206, 34);
@@ -977,6 +981,30 @@ chckbxDiffTpsReposDisciplines.addItemListener
     button_1.setToolTipText("Supprimer un tarif");
     button_1.setBounds(848, 791, 41, 25);
     getContentPane().add(button_1);
+    
+    JLabel label = new JLabel("Progression étape : ");
+    label.setBounds(25, 8, 175, 34);
+    getContentPane().add(label);
+    
+    JLabel lblProgressionCrationComptition = new JLabel("Progression création compétition : ");
+    lblProgressionCrationComptition.setBounds(25, 927, 217, 34);
+    getContentPane().add(lblProgressionCrationComptition);
+    
+    JProgressBar progressBar_Competition = new JProgressBar();
+    progressBar_Competition.setBounds(370, 937, 296, 14);
+    getContentPane().add(progressBar_Competition);
+    
+    JSeparator separator = new JSeparator();
+    separator.setBounds(25, 209, 950, 1);
+    getContentPane().add(separator);
+    
+    // (compéts par équipe) Ronde italienne : Formule constituée d'une succession de sets entre 2 équipes avec changement de joueurs après chaque set. Le vainqueur de la rencontre est celui qui a le plus de points.
+    JComboBox comboBox_4_FormeParticuliereCompetition = new JComboBox();
+    comboBox_4_FormeParticuliereCompetition.setToolTipText("cf Enquête - Formats et Formules de Compétitions : https://sondage.ffbad.org/index.php/493121\r\n- Ronde suisse : Format en plusieurs rondes où chaque joueur rencontre des personnes ayant des statistiques proches. Format permettant de produire un classement intégral.\r\n- Entrées échelonnées : Arbre à élimination directe avec entrée possible à différents stades en fonction d'un rang, d'une côte ou d'un classement.\r\n- Double élimination : Arbre à élimination directe où les perdants de chaque tour alimentent un autre arbre à élimination. Les vainqueurs de chaque arbre se rencontrent pour désigner le vainqueur global du tableau.\r\n- Double repêchage : Arbre à élimination directe où les perdants de chaque tour alimente un autre arbre à élimination directe. Le vainqueur du deuxième arbre termine 3° du tableau.\r\n- Poule de poule : Phase qualificative en poules suivi d'une phase finale en poules constituée des joueurs de même rang de la phase qualificative.\r\n- Consolante : Tableau pouvant prendre la forme de poules ou élimination directe constitué des perdants de la phase qualificative ou de la phase finale.");
+    comboBox_4_FormeParticuliereCompetition.setModel(new DefaultComboBoxModel(new String[] {"Ronde suisse", "Entrées échelonnées", "Double élimination", "Double repêchage", "Poule de poule", "Consolante"}));
+    comboBox_4_FormeParticuliereCompetition.setSelectedIndex(0);
+    comboBox_4_FormeParticuliereCompetition.setBounds(368, 219, 296, 22);
+    getContentPane().add(comboBox_4_FormeParticuliereCompetition);
     
 //    getContentPane().add(textField_7);
     
