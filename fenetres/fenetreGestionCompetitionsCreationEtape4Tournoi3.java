@@ -45,7 +45,7 @@ public class fenetreGestionCompetitionsCreationEtape4Tournoi3 extends JFrame imp
 
     this.setTitle("GestionBad - Gestion compétition > Création compétition > Étape 4 : Définition tableaux");
 
-    this.setSize(1327, 684);
+    this.setSize(1327, 713);
 
     this.setLocationRelativeTo(null);
     getContentPane().setLayout(null);
@@ -81,11 +81,6 @@ public class fenetreGestionCompetitionsCreationEtape4Tournoi3 extends JFrame imp
     JSeparator separator = new JSeparator();
     separator.setBounds(179, 429, 1, 2);
     getContentPane().add(separator);
-    
-    JButton btnSuivant = new JButton("Suivant");
-    btnSuivant.addActionListener(this);
-    btnSuivant.setBounds(568, 538, 97, 25);
-    getContentPane().add(btnSuivant);
     
     JLabel lblMini = new JLabel("Mini :");
     lblMini.setBounds(369, 215, 145, 34);
@@ -172,6 +167,7 @@ public class fenetreGestionCompetitionsCreationEtape4Tournoi3 extends JFrame imp
     getContentPane().add(label_3);
     
     JComboBox comboBox_1 = new JComboBox();
+    comboBox_1.setModel(new DefaultComboBoxModel(new String[] {"Minibad", "Poussins 1", "Poussins 2", "Poussins", "Benjamins 1", "Benjamins 2", "Benjamins", "Minimes 1", "Minimes 2", "Minimes", "Cadets 1", "Cadets 2", "Cadets", "Juniors 1", "Juniors 2", "Juniors", "Seniors", "Vétérans"}));
     comboBox_1.setBounds(520, 390, 145, 22);
     getContentPane().add(comboBox_1);
     
@@ -180,24 +176,49 @@ public class fenetreGestionCompetitionsCreationEtape4Tournoi3 extends JFrame imp
     getContentPane().add(label_4);
     
     JComboBox comboBox_2 = new JComboBox();
+    comboBox_2.setModel(new DefaultComboBoxModel(new String[] {"Minibad", "Poussins 1", "Poussins 2", "Poussins", "Benjamins 1", "Benjamins 2", "Benjamins", "Minimes 1", "Minimes 2", "Minimes", "Cadets 1", "Cadets 2", "Cadets", "Juniors 1", "Juniors 2", "Juniors", "Seniors", "Vétérans"}));
     comboBox_2.setBounds(520, 431, 145, 22);
     getContentPane().add(comboBox_2);
     
-    JProgressBar progressBar = new JProgressBar();
-    progressBar.setBounds(369, 23, 296, 14);
-    getContentPane().add(progressBar);
+    // en cochant la case (cas de tableau limité à un seul classement), la liste déroul. maxi prend la valeur de la liste déroul. mini, se grise et n'est pas modifiable ==> permet meilleure validation et sécu. saisie
+    JCheckBox chckbxMaxiMini = new JCheckBox("Maxi = mini");
+    chckbxMaxiMini.setBounds(692, 236, 97, 25);
+    getContentPane().add(chckbxMaxiMini);
+    
+    JCheckBox checkBox = new JCheckBox("Maxi = mini");
+    checkBox.setBounds(692, 325, 97, 25);
+    getContentPane().add(checkBox);
+    
+    JCheckBox checkBox_1 = new JCheckBox("Maxi = mini");
+    checkBox_1.setBounds(692, 406, 97, 25);
+    getContentPane().add(checkBox_1);
     
     JLabel lblProgressiontape = new JLabel("Progression étape : ");
-    lblProgressiontape.setBounds(24, 13, 175, 34);
+    lblProgressiontape.setBounds(24, 482, 175, 34);
     getContentPane().add(lblProgressiontape);
     
-    JLabel lblProgressionCrationTournoi = new JLabel("Progression création tournoi : ");
-    lblProgressionCrationTournoi.setBounds(24, 590, 175, 34);
+    JProgressBar progressBar_Etape = new JProgressBar();
+    progressBar_Etape.setStringPainted(true);
+    progressBar_Etape.setBounds(369, 488, 296, 22);
+    getContentPane().add(progressBar_Etape);
+    
+    JLabel lblProgressionCrationTournoi = new JLabel("Progression création compétition : ");
+    lblProgressionCrationTournoi.setBounds(24, 519, 203, 34);
     getContentPane().add(lblProgressionCrationTournoi);
     
-    JProgressBar progressBar_1 = new JProgressBar();
-    progressBar_1.setBounds(369, 600, 296, 14);
-    getContentPane().add(progressBar_1);
+    JProgressBar progressBar_1_Competition = new JProgressBar();
+    progressBar_1_Competition.setStringPainted(true);
+    progressBar_1_Competition.setBounds(369, 525, 296, 22);
+    getContentPane().add(progressBar_1_Competition);
+    
+    JButton button = new JButton("Précédent");
+    button.setBounds(369, 578, 97, 25);
+    getContentPane().add(button);
+    
+    JButton btnSuivant = new JButton("Suivant");
+    btnSuivant.addActionListener(this);
+    btnSuivant.setBounds(568, 578, 97, 25);
+    getContentPane().add(btnSuivant);
 
 //    this.getContentPane().add(bouton);
 //

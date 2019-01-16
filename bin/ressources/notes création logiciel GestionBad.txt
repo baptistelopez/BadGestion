@@ -13,7 +13,7 @@
 - intégration interaction et accès espace MyFFBad
 - internationalisation champs/variables/données
 - autocomplétion et recherche semi-auto ("Google-like") des données
-- statistiques (pour toutes catégs d'utilisateurs du log : joueurs, officiels, formateurs, responsables et dirigeants instances, etc.)
+- statistiques (pour toutes catégs d'utilisateurs du log : joueurs, officiels, formateurs, responsables et dirigeants instances, etc.) : cf Badzaï (Serge et Cédric)
 - validation entrées/saisie/choix données/cases/listes, etc.
 - paramétrage des données générales de compétition permettant l'internationalisation (exple : celles comme le temps de repos entre les matchs ou le nb max de matchs quotidiens par joueur, issues du RGC (en France) ou du GCR (BWF)) dans un item de menu dédié (sauvegarde d'un jeu de règles propres aux pays les plus importants du bad ?)
 
