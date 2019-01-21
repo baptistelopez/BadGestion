@@ -124,7 +124,7 @@ public class fenetreGestionCompetitionsCreationEtape4Tournoi3 extends JFrame imp
     getContentPane().add(lblDlimitationTableaux);
     
     JCheckBox chckbxClassements = new JCheckBox("Par classements");
-    chckbxClassements.setBounds(369, 162, 134, 25);
+    chckbxClassements.setBounds(692, 162, 134, 25);
     getContentPane().add(chckbxClassements);
     
     JCheckBox chckbxCtes = new JCheckBox("Par côtes");
@@ -150,12 +150,13 @@ public class fenetreGestionCompetitionsCreationEtape4Tournoi3 extends JFrame imp
     getContentPane().add(label_1);
     
     textField_2 = new JTextField();
+    textField_2.setText("0,00");
     textField_2.setToolTipText("Décimal sous forme xx xxx,yy");
     textField_2.setBounds(520, 308, 145, 22);
     getContentPane().add(textField_2);
     
     JCheckBox chckbxParCatgoriesDge = new JCheckBox("Par catégories d'âge");
-    chckbxParCatgoriesDge.setBounds(692, 162, 153, 25);
+    chckbxParCatgoriesDge.setBounds(858, 162, 153, 25);
     getContentPane().add(chckbxParCatgoriesDge);
     
     JLabel lblCatgoriesDge = new JLabel("Catégories d'âge :");
@@ -182,14 +183,17 @@ public class fenetreGestionCompetitionsCreationEtape4Tournoi3 extends JFrame imp
     
     // en cochant la case (cas de tableau limité à un seul classement), la liste déroul. maxi prend la valeur de la liste déroul. mini, se grise et n'est pas modifiable ==> permet meilleure validation et sécu. saisie
     JCheckBox chckbxMaxiMini = new JCheckBox("Maxi = mini");
+    chckbxMaxiMini.setToolTipText("Si un tableau comprend un seul classement ou une seule série de classements (donc si le classement ou la série de classements minimum est aussi celui/celle maximum)");
     chckbxMaxiMini.setBounds(692, 236, 97, 25);
     getContentPane().add(chckbxMaxiMini);
     
-    JCheckBox checkBox = new JCheckBox("Maxi = mini");
-    checkBox.setBounds(692, 325, 97, 25);
-    getContentPane().add(checkBox);
+    JCheckBox chckbxSiUnTableau = new JCheckBox("Maxi = mini");
+    chckbxSiUnTableau.setToolTipText("Si un tableau comprend une seule valeur de côte (donc si la côte minimum est aussi celle maximum)");
+    chckbxSiUnTableau.setBounds(692, 325, 97, 25);
+    getContentPane().add(chckbxSiUnTableau);
     
     JCheckBox checkBox_1 = new JCheckBox("Maxi = mini");
+    checkBox_1.setToolTipText("Si un tableau comprend une seule catégorie d'âge \"déclinée\" ou une seule catégorie d'âge \"générale\" (donc si la catégorie d'âge \"particulière\" ou \"générale\" minimum est aussi celui/celle maximum)");
     checkBox_1.setBounds(692, 406, 97, 25);
     getContentPane().add(checkBox_1);
     
@@ -219,6 +223,10 @@ public class fenetreGestionCompetitionsCreationEtape4Tournoi3 extends JFrame imp
     btnSuivant.addActionListener(this);
     btnSuivant.setBounds(568, 578, 97, 25);
     getContentPane().add(btnSuivant);
+    
+    JCheckBox chckbxParRangs = new JCheckBox("Par rangs");
+    chckbxParRangs.setBounds(369, 162, 153, 25);
+    getContentPane().add(chckbxParRangs);
 
 //    this.getContentPane().add(bouton);
 //
