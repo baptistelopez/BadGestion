@@ -105,21 +105,21 @@ public class fenetreGestionCompetitionsCreationEtape3Tournoi2 extends JFrame imp
     getContentPane().add(comboBox_5_LigueJoueur);
     
     JLabel lblPaysfdration = new JLabel("Pays/fédération :");
-    lblPaysfdration.setBounds(231, 290, 104, 34);
+    lblPaysfdration.setBounds(231, 278, 104, 34);
     getContentPane().add(lblPaysfdration);
     
     JComboBox comboBox = new JComboBox();
     comboBox.setToolTipText("Sigle + Région");
-    comboBox.setBounds(231, 326, 219, 22);
+    comboBox.setBounds(231, 314, 219, 22);
     getContentPane().add(comboBox);
     
     JLabel label_3 = new JLabel("Ligue :");
-    label_3.setBounds(231, 363, 44, 34);
+    label_3.setBounds(231, 338, 44, 34);
     getContentPane().add(label_3);
     
     JComboBox comboBox_1 = new JComboBox();
     comboBox_1.setToolTipText("Sigle + Région");
-    comboBox_1.setBounds(231, 399, 219, 22);
+    comboBox_1.setBounds(231, 374, 219, 22);
     getContentPane().add(comboBox_1);
     
     JLabel lblDpt = new JLabel("Département :");
@@ -132,21 +132,21 @@ public class fenetreGestionCompetitionsCreationEtape3Tournoi2 extends JFrame imp
     getContentPane().add(comboBox_6);
     
     JLabel lblVille = new JLabel("Ville :");
-    lblVille.setBounds(469, 290, 44, 34);
+    lblVille.setBounds(469, 278, 44, 34);
     getContentPane().add(lblVille);
     
     JComboBox comboBox_7 = new JComboBox();
     comboBox_7.setToolTipText("code postal + ville");
-    comboBox_7.setBounds(469, 326, 219, 22);
+    comboBox_7.setBounds(469, 314, 219, 22);
     getContentPane().add(comboBox_7);
     
     JLabel lblInstance = new JLabel("Instance :");
-    lblInstance.setBounds(469, 363, 63, 34);
+    lblInstance.setBounds(469, 338, 63, 34);
     getContentPane().add(lblInstance);
     
     JComboBox comboBox_11 = new JComboBox();
     comboBox_11.setToolTipText("sigle + n° d'instance + nom instance");
-    comboBox_11.setBounds(469, 399, 219, 22);
+    comboBox_11.setBounds(469, 374, 219, 22);
     getContentPane().add(comboBox_11);
     
     JLabel lblRangs = new JLabel("Rangs : ");
@@ -216,13 +216,13 @@ public class fenetreGestionCompetitionsCreationEtape3Tournoi2 extends JFrame imp
     getContentPane().add(textField_4);
     
     JLabel lblFormeDeComptition = new JLabel("Catégorie d'âge : ");
-    lblFormeDeComptition.setBounds(28, 592, 145, 34);
+    lblFormeDeComptition.setBounds(28, 591, 145, 34);
     getContentPane().add(lblFormeDeComptition);
     
     JComboBox comboBox_4 = new JComboBox();
     comboBox_4.setModel(new DefaultComboBoxModel(new String[] {"Minibad", "Poussins 1", "Poussins 2", "Poussins", "Benjamins 1", "Benjamins 2", "Benjamins", "Minimes 1", "Minimes 2", "Minimes", "Cadets 1", "Cadets 2", "Cadets", "Juniors 1", "Juniors 2", "Juniors", "Seniors", "Vétérans"}));
     comboBox_4.setToolTipText("Tournoi\r\nChampionnat");
-    comboBox_4.setBounds(234, 604, 216, 22);
+    comboBox_4.setBounds(234, 597, 216, 22);
     getContentPane().add(comboBox_4);
     
     JButton btnRinitialiserLaRecherche = new JButton("Réinitialiser la recherche du joueur");
@@ -246,16 +246,19 @@ public class fenetreGestionCompetitionsCreationEtape3Tournoi2 extends JFrame imp
     label_2.setBounds(25, 717, 145, 34);
     getContentPane().add(label_2);
     
- // récupère les infos des tableaux créés dans l'étape précéd., adaptées aux infos du joueur sélectionné (H/F, classements/séries tournoi compatibles avec ceux/celles du joueur)
-    JComboBox comboBox_2 = new JComboBox();
-    comboBox_2.setToolTipText("Tournoi\r\nChampionnat");
-    comboBox_2.setBounds(231, 723, 219, 22);
-    getContentPane().add(comboBox_2);
+ // récupère les infos des tableaux créés dans l'étape précéd., 1°) adaptées aux infos du joueur sélectionné (H/F, classements/séries tournoi compatibles avec ceux/celles du joueur)
+ // 2°) la valeur sélectionnée par défaut parmi celles proposées doit être la plus corresp. avec le joueur sélectionné
+
+    JComboBox comboBox_2_CategorieAgeInscription = new JComboBox();
+    comboBox_2_CategorieAgeInscription.setToolTipText("Tournoi\r\nChampionnat");
+    comboBox_2_CategorieAgeInscription.setBounds(231, 723, 138, 22);
+    getContentPane().add(comboBox_2_CategorieAgeInscription);
     
     JLabel lblDiscipline = new JLabel("Discipline : ");
     lblDiscipline.setBounds(25, 758, 145, 34);
     getContentPane().add(lblDiscipline);
     
+    //... donc (Simple/Double) Hommes si le joueur est un garçon ou un homme, (Simple/Double) Dames si la joueuse est une fille ou une femme
     JComboBox comboBox_5 = new JComboBox();
     comboBox_5.setToolTipText("SH (Simple Hommes)\r\nSD (Simple Dames)\r\nDH (Double Hommes)\r\nDD (Double Dames)\r\nDMx (Double Mixte)\r\n");
     comboBox_5.setBounds(231, 764, 138, 22);
@@ -269,16 +272,6 @@ public class fenetreGestionCompetitionsCreationEtape3Tournoi2 extends JFrame imp
     comboBox_12.setToolTipText("SH (Simple Hommes)\r\nSD (Simple Dames)\r\nDH (Double Hommes)\r\nDD (Double Dames)\r\nDMx (Double Mixte)\r\n");
     comboBox_12.setBounds(231, 805, 138, 22);
     getContentPane().add(comboBox_12);
-    
-    JLabel lblNomDeComptition = new JLabel("Parabad ? ");
-    lblNomDeComptition.setBounds(30, 849, 76, 34);
-    getContentPane().add(lblNomDeComptition);
-    
-    JComboBox comboBox_3 = new JComboBox();
-    comboBox_3.setModel(new DefaultComboBoxModel(new String[] {"Tableaux valides (uniquement)", "Tableaux Parabad (uniquement)", "Tableaux Parabad et valides"}));
-    comboBox_3.setToolTipText("Tournoi\r\nChampionnat");
-    comboBox_3.setBounds(231, 855, 219, 22);
-    getContentPane().add(comboBox_3);
     
     JLabel label = new JLabel("Progression étape : ");
     label.setBounds(25, 925, 175, 34);
@@ -302,6 +295,7 @@ public class fenetreGestionCompetitionsCreationEtape3Tournoi2 extends JFrame imp
     button.setBounds(231, 1003, 97, 25);
     getContentPane().add(button);
     
+    // en cliquant sur Suivant, l'inscription doit être horodatée, et un historique des modifications doit être tenu (peut entrer en ligne de compte pour l'établissement de liste d'attente)
     JButton btnSuivant = new JButton("Suivant");
     //    btnSuivant.addActionListener(this);
         btnSuivant.addActionListener(new ActionListener() 
@@ -320,6 +314,16 @@ public class fenetreGestionCompetitionsCreationEtape3Tournoi2 extends JFrame imp
         		);
         btnSuivant.setBounds(430, 1003, 97, 25);
         getContentPane().add(btnSuivant);
+        
+        // en ajout inscription lors création compétition : à ne plus afficher une fois 2 inscriptions enregistrées si le joueur/la joueuse est autorisé(e) à s'inscrire sur 2 tabl., une fois 3 inscriptions enregistrées si le joueur/la joueuse est autorisé(e) à s'inscrire sur 3 tabl. (et dans tous les cas puisque maxi)
+        JButton button_1 = new JButton("+");
+        button_1.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        	}
+        });
+        button_1.setToolTipText("Ajouter un tarif");
+        button_1.setBounds(383, 722, 41, 107);
+        getContentPane().add(button_1);
 
 //    this.getContentPane().add(bouton);
 //

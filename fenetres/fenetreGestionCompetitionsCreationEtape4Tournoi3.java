@@ -25,6 +25,8 @@ public class fenetreGestionCompetitionsCreationEtape4Tournoi3 extends JFrame imp
 	private JTextField textField;
 	private JTextField textField_1;
 	private JTextField textField_2;
+	private JTextField textField_3;
+	private JTextField textField_4;
 
 //  private JButton bouton = new JButton("Appel à la corpsFenetreGestionCompetitions");
 
@@ -45,7 +47,7 @@ public class fenetreGestionCompetitionsCreationEtape4Tournoi3 extends JFrame imp
 
     this.setTitle("GestionBad - Gestion compétition > Création compétition > Étape 4 : Définition tableaux");
 
-    this.setSize(1327, 713);
+    this.setSize(1327, 902);
 
     this.setLocationRelativeTo(null);
     getContentPane().setLayout(null);
@@ -198,35 +200,73 @@ public class fenetreGestionCompetitionsCreationEtape4Tournoi3 extends JFrame imp
     getContentPane().add(checkBox_1);
     
     JLabel lblProgressiontape = new JLabel("Progression étape : ");
-    lblProgressiontape.setBounds(24, 482, 175, 34);
+    lblProgressiontape.setBounds(24, 586, 175, 34);
     getContentPane().add(lblProgressiontape);
     
     JProgressBar progressBar_Etape = new JProgressBar();
     progressBar_Etape.setStringPainted(true);
-    progressBar_Etape.setBounds(369, 488, 296, 22);
+    progressBar_Etape.setBounds(369, 592, 296, 22);
     getContentPane().add(progressBar_Etape);
     
     JLabel lblProgressionCrationTournoi = new JLabel("Progression création compétition : ");
-    lblProgressionCrationTournoi.setBounds(24, 519, 203, 34);
+    lblProgressionCrationTournoi.setBounds(24, 623, 203, 34);
     getContentPane().add(lblProgressionCrationTournoi);
     
     JProgressBar progressBar_1_Competition = new JProgressBar();
     progressBar_1_Competition.setStringPainted(true);
-    progressBar_1_Competition.setBounds(369, 525, 296, 22);
+    progressBar_1_Competition.setBounds(369, 629, 296, 22);
     getContentPane().add(progressBar_1_Competition);
     
     JButton button = new JButton("Précédent");
-    button.setBounds(369, 578, 97, 25);
+    button.setBounds(369, 682, 97, 25);
     getContentPane().add(button);
     
     JButton btnSuivant = new JButton("Suivant");
     btnSuivant.addActionListener(this);
-    btnSuivant.setBounds(568, 578, 97, 25);
+    btnSuivant.setBounds(568, 682, 97, 25);
     getContentPane().add(btnSuivant);
     
     JCheckBox chckbxParRangs = new JCheckBox("Par rangs");
     chckbxParRangs.setBounds(369, 162, 153, 25);
     getContentPane().add(chckbxParRangs);
+    
+    JLabel lblNombreMaxiDe = new JLabel("<html>Capacité maximale de joueurs/<br>paires du tableau :</html>");
+    lblNombreMaxiDe.setBounds(24, 461, 189, 48);
+    getContentPane().add(lblNombreMaxiDe);
+    
+    textField_3 = new JTextField();
+    textField_3.setToolTipText("Entier sous forme x(xx)");
+    textField_3.setText("0");
+    textField_3.setBounds(369, 478, 60, 22);
+    getContentPane().add(textField_3);
+    
+    JLabel lbltableauFusionnerouSupprimer = new JLabel("<html>Tableau à fusionner ou<br>supprimer si moins de :</html>");
+    lbltableauFusionnerouSupprimer.setBounds(24, 501, 139, 48);
+    getContentPane().add(lbltableauFusionnerouSupprimer);
+    
+    textField_4 = new JTextField();
+    textField_4.setToolTipText("Entier sous forme x(xx)");
+    textField_4.setText("0");
+    textField_4.setBounds(369, 518, 60, 22);
+    getContentPane().add(textField_4);
+    
+    JComboBox comboBox_3 = new JComboBox();
+    comboBox_3.setModel(new DefaultComboBoxModel(new String[] {"Joueurs", "Paires"}));
+    comboBox_3.setBounds(441, 478, 90, 22);
+    getContentPane().add(comboBox_3);
+    
+    JComboBox comboBox_6 = new JComboBox();
+    comboBox_6.setModel(new DefaultComboBoxModel(new String[] {"Joueurs", "Paires"}));
+    comboBox_6.setBounds(441, 518, 90, 22);
+    getContentPane().add(comboBox_6);
+    
+    JLabel lblInscrites = new JLabel("inscrit(e)s");
+    lblInscrites.setBounds(547, 478, 74, 22);
+    getContentPane().add(lblInscrites);
+    
+    JLabel lblInscrites_1 = new JLabel("inscrit(e)s dedans");
+    lblInscrites_1.setBounds(547, 518, 118, 22);
+    getContentPane().add(lblInscrites_1);
 
 //    this.getContentPane().add(bouton);
 //
