@@ -16,7 +16,39 @@ import javax.swing.UIManager;
 import javax.swing.JSeparator;
 import javax.swing.JCheckBox;
 import javax.swing.JProgressBar;
+import java.awt.*;
+import javax.swing.JTabbedPane;
+import javax.swing.JPanel;
+import javax.swing.JList;
+import javax.swing.DefaultListModel;
+import javax.swing.*;
+
+import fenetres.DualListBox;
+
+import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.*;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.SortedSet;
+import java.util.TreeSet;
+
+import javax.swing.AbstractListModel;
+import javax.swing.BorderFactory;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JList;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.ListCellRenderer;
+import javax.swing.ListModel;
 
 public class fenetreGestionCompetitionsCreationEtape3Tournoi2 extends JFrame implements ActionListener {
 //	private Fenetre2 fen;
@@ -29,6 +61,9 @@ public class fenetreGestionCompetitionsCreationEtape3Tournoi2 extends JFrame imp
 	private JTextField textField_1;
 	private JTextField textField_2;
 	private JTextField textField_4;
+	
+	private DualListBox doublelistepaires;
+	private DualListBox dual;
 
 //  private JButton bouton = new JButton("Appel à la corpsFenetreGestionCompetitions");
 
@@ -321,9 +356,22 @@ public class fenetreGestionCompetitionsCreationEtape3Tournoi2 extends JFrame imp
         	public void actionPerformed(ActionEvent e) {
         	}
         });
-        button_1.setToolTipText("Ajouter un tarif");
+        button_1.setToolTipText("Ajouter un tableau d'inscription");
         button_1.setBounds(383, 722, 41, 107);
         getContentPane().add(button_1);
+        
+        JTabbedPane tabbedPane_1 = new JTabbedPane(JTabbedPane.TOP);
+        tabbedPane_1.setBounds(714, 31, 612, 492);
+        getContentPane().add(tabbedPane_1);
+        
+        JPanel panel = new JPanel();
+        tabbedPane_1.addTab("Inscriptions joueurs", null, panel, null);
+        
+        JPanel panel_1 = new JPanel();
+        DualListBox doublelistepaires = new DualListBox();
+        tabbedPane_1.addTab("Formation paires (doubles et mixtes)", null, panel_1, null);
+        
+        panel_1.setLayout(new GridLayout(0, 2, 0, 0));
 
 //    this.getContentPane().add(bouton);
 //
@@ -344,8 +392,8 @@ public class fenetreGestionCompetitionsCreationEtape3Tournoi2 extends JFrame imp
 //    });      
 
     this.setVisible(true);      
-
   }
+
 
 @Override
 public void actionPerformed(ActionEvent e) {
@@ -361,5 +409,6 @@ public static void main(String[] args) {
     // TODO Auto-generated method stub
       
 	fenetreGestionCompetitionsCreationEtape3Tournoi2 fen= new fenetreGestionCompetitionsCreationEtape3Tournoi2();
+    
 }
 }
