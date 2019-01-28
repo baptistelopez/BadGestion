@@ -200,6 +200,7 @@ public class DualListBox extends JPanel {
   }
 
   public static void main(String args[]) {
+	// JFrame frame = new JFrame("Dual List Box Tester");
     JFrame doublelistepaires = new JFrame("Dual List Box Tester");
     doublelistepaires.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     DualListBox dual = new DualListBox();
