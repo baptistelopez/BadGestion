@@ -33,7 +33,7 @@ Notes diverses :
 - utilisation JPA/Hibernate pour l'interaction-liaison avec les bases de données embarquées (possibilité de les modifier, invisible des utilisateurs (transparent pour eux))
 - ne pas oublier les matchs inter-genres ("transgenres" pour la fédé)
 - cf annexes et rôles/conseils aux officiels techniques dans les Règles du bad (complètes) pour éléments à mettre en oeuvre concernant les officiels
-- 
+- JdL : dispos terrains (en ligne/en triangle/autre) & nb JdL & numérotations (ordinale/"à la française"/autre (internationale...)) + ordres E/S (positions et/ou rangs ordinal/numérotation concrète)
 
 Notes diverses infobulles champs et étiquettes
 			|
